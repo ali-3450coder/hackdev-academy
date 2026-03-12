@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bölüm 3: Profesyonel HTML | HackDev Academy</title>
+  <meta name="author" content="Muhammed Ali">
+  <meta name="copyright" content="© 2025 Muhammed Ali. Tüm hakları saklıdır.">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/bolum.css">
+  <script>
+    (function(){var t=localStorage.getItem('hackdev_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+</head>
+<body data-bolum-id="3">
+
+<script>
+window.QUIZ_DATA = {
+  b3_q01:{correct:'b'}, b3_q02:{correct:'c'}, b3_q03:{correct:'a'},
+  b3_q04:{correct:'d'}, b3_q05:{correct:'b'}, b3_q06:{correct:'c'},
+  b3_q07:{correct:'a'}, b3_q08:{correct:'b'}, b3_q09:{correct:'d'},
+  b3_q10:{correct:'a'}, b3_q11:{correct:'c'}, b3_q12:{correct:'b'}
+};
+</script>
+
+<div class="bolum-layout">
+  <aside class="bolum-sidebar" id="bolumSidebar">
+    <div class="sidebar-header">
+      <a href="/dashboard/index.html" class="sidebar-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg>
+        HackDev
+      </a>
+      <button class="theme-toggle" data-theme-toggle title="Tema değiştir">🌙</button>
+    </div>
+    <div class="sidebar-user-mini">
+      <img data-user-avatar src="" alt="Avatar" class="user-avatar-mini" width="32" height="32">
+      <span data-user-name class="user-name-mini">...</span>
+    </div>
+    <div class="sidebar-bolum-info">
+      <div class="bolum-tag">BÖLÜM 03</div>
+      <div class="bolum-sidebar-title">Profesyonel HTML</div>
+    </div>
+    <nav class="konu-nav">
+      <a href="#s01" class="konu-nav-item" data-konu-marker="s01">▸01 HTML Yazım Standartları</a>
+      <a href="#s02" class="konu-nav-item" data-konu-marker="s02">▸02 Boilerplate Şablonu</a>
+      <a href="#s03" class="konu-nav-item" data-konu-marker="s03">▸03 SEO Temelleri</a>
+      <a href="#s04" class="konu-nav-item" data-konu-marker="s04">▸04 Open Graph</a>
+      <a href="#s05" class="konu-nav-item" data-konu-marker="s05">▸05 Favicon Sistemi</a>
+      <a href="#s06" class="konu-nav-item" data-konu-marker="s06">▸06 Web Performansı</a>
+      <a href="#s07" class="konu-nav-item" data-konu-marker="s07">▸07 Responsive Design</a>
+      <a href="#s08" class="konu-nav-item" data-konu-marker="s08">▸08 Erişilebilirlik (a11y)</a>
+      <a href="#s09" class="konu-nav-item" data-konu-marker="s09">▸09 Form UX Best Practices</a>
+      <a href="#s10" class="konu-nav-item" data-konu-marker="s10">▸10 HTML ve Güvenlik</a>
+      <a href="#s11" class="konu-nav-item" data-konu-marker="s11">▸11 Landing Page Anatomisi</a>
+      <a href="#s12" class="konu-nav-item" data-konu-marker="s12">▸12 Blog Sayfası Yapısı</a>
+      <a href="#s13" class="konu-nav-item" data-konu-marker="s13">▸13 E-Ticaret HTML</a>
+      <a href="#s14" class="konu-nav-item" data-konu-marker="s14">▸14 Dashboard HTML</a>
+      <a href="#s15" class="konu-nav-item" data-konu-marker="s15">▸15 Email HTML</a>
+      <a href="#s16" class="konu-nav-item" data-konu-marker="s16">▸16 Print CSS</a>
+      <a href="#s17" class="konu-nav-item" data-konu-marker="s17">▸17 PWA Temelleri</a>
+      <a href="#s18" class="konu-nav-item" data-konu-marker="s18">▸18 HTML Test ve Doğrulama</a>
+      <a href="#s19" class="konu-nav-item" data-konu-marker="s19">▸19 Deployment</a>
+      <a href="#s20" class="konu-nav-item" data-konu-marker="s20">▸20 Portfolyo Projesi</a>
+      <a href="#s21" class="konu-nav-item" data-konu-marker="s21">▸21 Pratik Görevler</a>
+      <a href="#quiz" class="konu-nav-item" style="color:var(--acid)">📝 Quiz</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="logout-btn" data-logout>🚪 Çıkış Yap</button>
+    </div>
+  </aside>
+
+  <main class="bolum-main">
+    <header class="bolum-topbar">
+      <button class="sidebar-toggle" data-sidebar-toggle aria-label="Menüyü aç">☰</button>
+      <div class="bolum-breadcrumb">
+        <a href="/dashboard/index.html">Dashboard</a><span>›</span><span>Bölüm 3</span>
+      </div>
+      <div class="topbar-progress">
+        <span class="topbar-progress-label" id="topbarProgressLabel">0/21</span>
+        <div class="progress-bar" style="width:120px"><div class="progress-fill" id="topbarProgressBar" style="width:0%"></div></div>
+      </div>
+    </header>
+
+    <div class="bolum-content">
+      <div class="bolum-hero">
+        <div class="bolum-hero-tag">BÖLÜM 03</div>
+        <h1 class="bolum-hero-title">Profesyonel HTML</h1>
+        <p class="bolum-hero-sub">SEO'dan performansa, erişilebilirlikten CSP güvenliğine. Sektörde kullanılan gerçek standartlar ve portfolyo projesi ile taçlandırılmış kapsamlı bölüm.</p>
+        <div class="bolum-hero-meta"><span>📖 21 Konu</span><span>📝 12 Quiz Sorusu</span><span>⏱ ~5-6 saat</span></div>
+      </div>
+
+      <!-- ▸01 -->
+      <section class="konu-section" id="s01" data-konu-id="s01">
+        <h2 class="konu-title"><span class="konu-num">▸01</span> HTML Yazım Standartları ve Code Style</h2>
+        <div class="code-block"><div class="code-header"><span>HTML Yazım Kuralları</span></div>
+<pre><code class="language-html">&lt;!-- ✅ Doğru format --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;  &lt;!-- 2 boşluk girintileme --&gt;
+  &lt;title&gt;Başlık&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;!-- ✅ Küçük harf etiket adları --&gt;
+  &lt;h1 class="baslik"&gt;Başlık&lt;/h1&gt;
+
+  &lt;!-- ✅ Çift tırnak kullan --&gt;
+  &lt;img src="foto.jpg" alt="Açıklama"&gt;
+
+  &lt;!-- ✅ Boolean özellik kısa form --&gt;
+  &lt;input type="checkbox" checked&gt;
+  &lt;script defer src="app.js"&gt;&lt;/script&gt;
+
+  &lt;!-- ❌ Yanlış: büyük harf, tek tırnak, gereksiz kapanış --&gt;
+  &lt;IMG SRC='foto.jpg' ALT='Açıklama' /&gt;
+  &lt;INPUT TYPE='checkbox' CHECKED='checked' /&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+        <div class="callout callout-info"><strong>💡 EditorConfig ve Prettier:</strong> .editorconfig dosyası ile tüm ekip aynı formatı kullanır. Prettier otomatik format uygular.</div>
+      </section>
+
+      <!-- ▸02 -->
+      <section class="konu-section" id="s02" data-konu-id="s02">
+        <h2 class="konu-title"><span class="konu-num">▸02</span> Boilerplate — Endüstri Standardı HTML Şablonu</h2>
+        <div class="code-block"><div class="code-header"><span>Production-Ready HTML Boilerplate</span></div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr" dir="ltr"&gt;
+&lt;head&gt;
+  &lt;!-- Karakter Kodlama --&gt;
+  &lt;meta charset="UTF-8"&gt;
+
+  &lt;!-- Viewport --&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+  &lt;!-- IE Compatibility --&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+
+  &lt;!-- SEO --&gt;
+  &lt;title&gt;Sayfa Başlığı | Site Adı&lt;/title&gt;
+  &lt;meta name="description" content="150-160 karakter açıklama"&gt;
+  &lt;link rel="canonical" href="https://example.com/sayfa"&gt;
+
+  &lt;!-- Open Graph --&gt;
+  &lt;meta property="og:title" content="Başlık"&gt;
+  &lt;meta property="og:description" content="Açıklama"&gt;
+  &lt;meta property="og:image" content="https://example.com/og.jpg"&gt;
+  &lt;meta property="og:url" content="https://example.com/sayfa"&gt;
+  &lt;meta property="og:type" content="website"&gt;
+
+  &lt;!-- Favicon Seti --&gt;
+  &lt;link rel="icon" type="image/svg+xml" href="/favicon.svg"&gt;
+  &lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"&gt;
+  &lt;link rel="apple-touch-icon" href="/apple-touch-icon.png"&gt;
+  &lt;link rel="manifest" href="/manifest.json"&gt;
+
+  &lt;!-- Performans --&gt;
+  &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+  &lt;link rel="preload" href="fonts/font.woff2" as="font" crossorigin&gt;
+
+  &lt;!-- Kritik CSS --&gt;
+  &lt;style&gt;/* above-the-fold kritik stiller */&lt;/style&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+
+  &lt;!-- Tema rengi (mobil tarayıcı) --&gt;
+  &lt;meta name="theme-color" content="#080c12"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;main&gt;...&lt;/main&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+
+  &lt;script defer src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸03 -->
+      <section class="konu-section" id="s03" data-konu-id="s03">
+        <h2 class="konu-title"><span class="konu-num">▸03</span> SEO Temelleri — Yapısal SEO</h2>
+        <p>Arama motoru optimizasyonu teknik HTML düzeyinde başlar. En önemli faktörler:</p>
+        <div class="code-block"><div class="code-header"><span>SEO Kritik HTML Noktaları</span></div>
+<pre><code class="language-html">&lt;!-- 1. Title: 50-60 karakter, anahtar kelime başta --&gt;
+&lt;title&gt;HTML Öğren — HackDev Academy&lt;/title&gt;
+
+&lt;!-- 2. Description: 150-160 karakter, CTA içermeli --&gt;
+&lt;meta name="description" content="Güvenlik odaklı HTML eğitimiyle sıfırdan uzmanlığa. Şimdi başla!"&gt;
+
+&lt;!-- 3. Canonical: duplicate content önle --&gt;
+&lt;link rel="canonical" href="https://example.com/html-ogren"&gt;
+
+&lt;!-- 4. Heading hiyerarşisi: her sayfada 1 h1 --&gt;
+&lt;h1&gt;HTML Öğren — Başlangıç Rehberi&lt;/h1&gt;
+  &lt;h2&gt;HTML Nedir?&lt;/h2&gt;
+  &lt;h2&gt;Temel Etiketler&lt;/h2&gt;
+
+&lt;!-- 5. Görsel alt metni --&gt;
+&lt;img src="html-diagram.svg" alt="HTML belge yapısı diyagramı"&gt;
+
+&lt;!-- 6. İç linkleme --&gt;
+&lt;a href="/bolum/02-html-etiketleri"&gt;HTML Etiketleri Rehberi&lt;/a&gt;
+
+&lt;!-- 7. Semantic markup --&gt;
+&lt;article&gt;
+  &lt;header&gt;&lt;h1&gt;...&lt;/h1&gt;&lt;time datetime="2025-01-15"&gt;...&lt;/time&gt;&lt;/header&gt;
+  &lt;main&gt;İçerik...&lt;/main&gt;
+&lt;/article&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸04 -->
+      <section class="konu-section" id="s04" data-konu-id="s04">
+        <h2 class="konu-title"><span class="konu-num">▸04</span> Open Graph ve Sosyal Medya Entegrasyonu</h2>
+        <div class="code-block"><div class="code-header"><span>Tam Sosyal Medya Meta Etiketleri</span></div>
+<pre><code class="language-html">&lt;!-- Open Graph Protokolü --&gt;
+&lt;meta property="og:type" content="article"&gt;
+&lt;meta property="og:locale" content="tr_TR"&gt;
+&lt;meta property="og:site_name" content="HackDev Academy"&gt;
+&lt;meta property="og:title" content="HTML Öğren"&gt;
+&lt;meta property="og:description" content="Kapsamlı HTML eğitimi"&gt;
+&lt;meta property="og:image" content="https://hackdev.academy/og/html.jpg"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;
+&lt;meta property="og:image:alt" content="HackDev HTML Kursu"&gt;
+&lt;meta property="og:url" content="https://hackdev.academy/bolum/1"&gt;
+
+&lt;!-- Article için ek --&gt;
+&lt;meta property="article:published_time" content="2025-01-15T09:00:00+03:00"&gt;
+&lt;meta property="article:author" content="Muhammed Ali"&gt;
+&lt;meta property="article:tag" content="HTML"&gt;
+
+&lt;!-- Twitter/X Card --&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;meta name="twitter:site" content="@hackdevacademy"&gt;
+&lt;meta name="twitter:creator" content="@hackdevacademy"&gt;
+&lt;meta name="twitter:title" content="HTML Öğren"&gt;
+&lt;meta name="twitter:description" content="Kapsamlı HTML eğitimi"&gt;
+&lt;meta name="twitter:image" content="https://hackdev.academy/og/html.jpg"&gt;</code></pre></div>
+        <div class="callout callout-info"><strong>💡 OG Görsel Boyutu:</strong> 1200×630px PNG veya JPG. Metin içeriyorsa 5Mb altı tutun.</div>
+      </section>
+
+      <!-- ▸05 -->
+      <section class="konu-section" id="s05" data-konu-id="s05">
+        <h2 class="konu-title"><span class="konu-num">▸05</span> Favicon Sistemi — Tüm Platformlar</html:title>
+        <div class="code-block"><div class="code-header"><span>Kapsamlı Favicon Seti</span></div>
+<pre><code class="language-html">&lt;!-- Temel --&gt;
+&lt;link rel="icon" href="/favicon.ico" sizes="any"&gt;
+
+&lt;!-- SVG (modern tarayıcılar, her çözünürlükte net) --&gt;
+&lt;link rel="icon" type="image/svg+xml" href="/favicon.svg"&gt;
+
+&lt;!-- PNG boyutları --&gt;
+&lt;link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"&gt;
+
+&lt;!-- Apple Touch Icon (iOS ev ekranı) --&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"&gt;
+
+&lt;!-- Android / Chrome --&gt;
+&lt;link rel="manifest" href="/manifest.json"&gt;
+&lt;meta name="theme-color" content="#080c12"&gt;
+
+&lt;!-- manifest.json içeriği --&gt;
+&lt;!--
+{
+  "name": "HackDev Academy",
+  "short_name": "HackDev",
+  "icons": [
+    {"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ],
+  "theme_color": "#080c12",
+  "background_color": "#080c12",
+  "display": "standalone"
+}
+--&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸06 -->
+      <section class="konu-section" id="s06" data-konu-id="s06">
+        <h2 class="konu-title"><span class="konu-num">▸06</span> Web Performansı — Critical CSS, Lazy Loading, Preload</h2>
+        <div class="code-block"><div class="code-header"><span>Performans Optimizasyon Teknikleri</span></div>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;!-- Kritik CSS inline (ilk görünüm için) --&gt;
+  &lt;style&gt;
+    /* Yalnızca above-the-fold için kritik stiller */
+    body { margin: 0; font-family: sans-serif; }
+    header { background: #080c12; }
+  &lt;/style&gt;
+
+  &lt;!-- Ana CSS lazy (blocking yok) --&gt;
+  &lt;link rel="preload" href="style.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'"&gt;
+  &lt;noscript&gt;&lt;link rel="stylesheet" href="style.css"&gt;&lt;/noscript&gt;
+
+  &lt;!-- Font preload --&gt;
+  &lt;link rel="preload" href="font.woff2" as="font" type="font/woff2" crossorigin&gt;
+
+  &lt;!-- DNS prefetch ve preconnect --&gt;
+  &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+  &lt;link rel="dns-prefetch" href="https://analytics.example.com"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;!-- LCP görseli: fetchpriority="high" --&gt;
+  &lt;img src="hero.webp" alt="Hero" fetchpriority="high" width="1200" height="600"&gt;
+
+  &lt;!-- Diğer görseller: lazy loading --&gt;
+  &lt;img src="foto.webp" alt="Foto" loading="lazy" width="800" height="600"&gt;
+
+  &lt;!-- Script defer --&gt;
+  &lt;script defer src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸07 -->
+      <section class="konu-section" id="s07" data-konu-id="s07">
+        <h2 class="konu-title"><span class="konu-num">▸07</span> Responsive Design Temelleri</h2>
+        <div class="code-block"><div class="code-header"><span>Viewport ve Mobile-First Yaklaşım</span></div>
+<pre><code class="language-html">&lt;!-- Viewport meta: ZORUNLU --&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+&lt;!-- Responsive görsel --&gt;
+&lt;img
+  src="foto-800.jpg"
+  srcset="foto-400.jpg 400w, foto-800.jpg 800w, foto-1600.jpg 1600w"
+  sizes="(max-width: 480px) 400px, (max-width: 900px) 800px, 1600px"
+  alt="Responsive fotoğraf"
+&gt;
+
+&lt;!-- CSS: Mobile-First --&gt;
+&lt;style&gt;
+  /* Mobil: temel stiller (varsayılan) */
+  .grid { display: block; }
+
+  /* Tablet: 768px ve üstü */
+  @media (min-width: 768px) {
+    .grid { display: grid; grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Desktop: 1200px ve üstü */
+  @media (min-width: 1200px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* Koyu tema tercihi */
+  @media (prefers-color-scheme: dark) {
+    body { background: #080c12; color: #e8edf5; }
+  }
+
+  /* Az animasyon tercihi */
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+&lt;/style&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸08 -->
+      <section class="konu-section" id="s08" data-konu-id="s08">
+        <h2 class="konu-title"><span class="konu-num">▸08</span> Erişilebilirlik (a11y) — WCAG, Klavye, Screen Reader</h2>
+        <div class="code-block"><div class="code-header"><span>Erişilebilirlik En İyi Pratikleri</span></div>
+<pre><code class="language-html">&lt;!-- 1. Skip link: klavye kullanıcıları için --&gt;
+&lt;a href="#main" class="skip-link"&gt;Ana içeriğe geç&lt;/a&gt;
+
+&lt;!-- 2. Odak yönetimi --&gt;
+&lt;style&gt;:focus-visible { outline: 2px solid #b8f535; outline-offset: 2px; }&lt;/style&gt;
+
+&lt;!-- 3. ARIA live bölgeler --&gt;
+&lt;div role="status" aria-live="polite" aria-atomic="true"&gt;
+  Yükleniyor... &lt;!-- Dinamik güncelleme --&gt;
+&lt;/div&gt;
+
+&lt;!-- 4. Form erişilebilirliği --&gt;
+&lt;div&gt;
+  &lt;label for="sifre"&gt;Şifre &lt;abbr title="Zorunlu"&gt;*&lt;/abbr&gt;&lt;/label&gt;
+  &lt;input id="sifre" type="password" required
+    aria-required="true"
+    aria-describedby="sifre-hint sifre-hata"&gt;
+  &lt;p id="sifre-hint"&gt;En az 8 karakter, büyük harf, rakam&lt;/p&gt;
+  &lt;p id="sifre-hata" role="alert" aria-live="assertive"&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- 5. Renk kontrastı: en az 4.5:1 (AA) --&gt;
+&lt;!-- Araç: https://webaim.org/resources/contrastchecker/ --&gt;
+
+&lt;!-- 6. Görüntü erişilebilirliği --&gt;
+&lt;img src="grafik.png" alt="2025 yılı HTML kullanım istatistikleri"&gt;
+&lt;img src="dekor.svg" alt="" role="presentation"&gt; &lt;!-- Dekoratif --&gt;</code></pre></div>
+        <div class="callout callout-info"><strong>💡 WCAG 2.1 Seviyeleri:</strong> A (temel), AA (standart, yasal uyum genelde bu), AAA (en yüksek). Çoğu proje AA hedefler.</div>
+      </section>
+
+      <!-- ▸09 -->
+      <section class="konu-section" id="s09" data-konu-id="s09">
+        <h2 class="konu-title"><span class="konu-num">▸09</span> Form UX Best Practices</h2>
+        <div class="code-block"><div class="code-header"><span>Kullanıcı Dostu Form Tasarımı</span></div>
+<pre><code class="language-html">&lt;form autocomplete="on"&gt;
+  &lt;!-- autocomplete değerleri --&gt;
+  &lt;input name="name" autocomplete="name" type="text"&gt;
+  &lt;input name="email" autocomplete="email" type="email"&gt;
+  &lt;input name="tel" autocomplete="tel" type="tel" inputmode="tel"&gt;
+  &lt;input name="current-password" autocomplete="current-password" type="password"&gt;
+  &lt;input name="new-password" autocomplete="new-password" type="password"&gt;
+  &lt;input name="street-address" autocomplete="street-address"&gt;
+  &lt;input name="postal-code" autocomplete="postal-code" inputmode="numeric"&gt;
+  &lt;input name="cc-number" autocomplete="cc-number" inputmode="numeric"&gt;
+
+  &lt;!-- inputmode: doğru klavye aç --&gt;
+  &lt;input inputmode="numeric"&gt;   → Numpad
+  &lt;input inputmode="email"&gt;     → @ tuşu görünür
+  &lt;input inputmode="url"&gt;       → . ve / tuşu kolay
+  &lt;input inputmode="search"&gt;    → "Enter" yerine "Ara"
+  &lt;input inputmode="decimal"&gt;   → Ondalık numpad
+
+  &lt;!-- autofocus: sadece bir elemana --&gt;
+  &lt;input type="text" autofocus&gt;
+
+  &lt;!-- enterkeyhint: mobil klavye Enter butonu --&gt;
+  &lt;input enterkeyhint="next"&gt;      → "Sonraki"
+  &lt;input enterkeyhint="done"&gt;      → "Bitti"
+  &lt;input enterkeyhint="search"&gt;    → "Ara"
+  &lt;input enterkeyhint="send"&gt;      → "Gönder"
+&lt;/form&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸10 -->
+      <section class="konu-section" id="s10" data-konu-id="s10">
+        <h2 class="konu-title"><span class="konu-num">▸10</span> HTML ve Güvenlik — CSP Gerçek Uygulama</h2>
+        <div class="callout callout-security"><strong>🛡️ Content Security Policy (CSP)</strong><p>CSP, XSS saldırılarını önleyen en güçlü güvenlik başlığıdır. Hangi kaynaklardan içerik yüklenebileceğini belirler.</p></div>
+        <div class="code-block"><div class="code-header"><span>CSP Uygulama Yöntemleri</span></div>
+<pre><code class="language-html">&lt;!-- Yöntem 1: Meta etiketi (sınırlı) --&gt;
+&lt;meta http-equiv="Content-Security-Policy"
+  content="
+    default-src 'self';
+    script-src 'self' 'nonce-abc123';
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' https: data:;
+    connect-src 'self' https://api.example.com;
+    frame-ancestors 'none';
+    base-uri 'self';
+    form-action 'self'
+  "
+&gt;
+
+&lt;!-- Yöntem 2: HTTP Header (tercih edilen) --&gt;
+&lt;!-- Sunucuda: Content-Security-Policy: ... --&gt;
+
+&lt;!-- Nonce ile inline script --&gt;
+&lt;script nonce="abc123"&gt;
+  // Bu script güvenilir
+&lt;/script&gt;
+
+&lt;!-- Diğer güvenlik başlıkları --&gt;
+&lt;!-- X-Frame-Options: DENY              → Clickjacking önle --&gt;
+&lt;!-- X-Content-Type-Options: nosniff   → MIME sniffing önle --&gt;
+&lt;!-- Referrer-Policy: strict-origin    → Referrer kontrolü --&gt;
+&lt;!-- Permissions-Policy: camera=()     → API erişimini kısıtla --&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸11 -->
+      <section class="konu-section" id="s11" data-konu-id="s11">
+        <h2 class="konu-title"><span class="konu-num">▸11</span> Landing Page Anatomisi</h2>
+        <div class="code-block"><div class="code-header"><span>Landing Page HTML Yapısı</span></div>
+<pre><code class="language-html">&lt;body&gt;
+  &lt;!-- 1. NAVİGASYON --&gt;
+  &lt;header role="banner"&gt;
+    &lt;nav aria-label="Ana navigasyon"&gt;
+      &lt;a href="/" aria-label="Ana sayfa"&gt;&lt;img src="logo.svg" alt="Logo"&gt;&lt;/a&gt;
+      &lt;ul role="list"&gt;
+        &lt;li&gt;&lt;a href="#ozellikler"&gt;Özellikler&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#fiyat"&gt;Fiyat&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;a href="/kayit" class="btn-cta"&gt;Ücretsiz Başla&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main id="main"&gt;
+    &lt;!-- 2. HERO --&gt;
+    &lt;section aria-labelledby="hero-title"&gt;
+      &lt;h1 id="hero-title"&gt;Ürün/Hizmet Ana Faydası&lt;/h1&gt;
+      &lt;p&gt;Alt başlık — değer önerisi&lt;/p&gt;
+      &lt;div class="cta-group"&gt;
+        &lt;a href="/kayit" class="btn-primary"&gt;Ücretsiz Başla&lt;/a&gt;
+        &lt;a href="#demo"&gt;Demo İzle&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 3. SOSYAL KANIT --&gt;
+    &lt;section aria-label="Müşteri logoları"&gt;
+      &lt;p&gt;X+ şirket güveniyor&lt;/p&gt;
+      &lt;!-- Logo grid --&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 4. ÖZELLİKLER --&gt;
+    &lt;section id="ozellikler" aria-labelledby="features-title"&gt;
+      &lt;h2 id="features-title"&gt;Özellikler&lt;/h2&gt;
+      &lt;ul role="list" class="feature-grid"&gt;
+        &lt;li&gt;&lt;h3&gt;Özellik 1&lt;/h3&gt;&lt;p&gt;Açıklama&lt;/p&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 5. CTA --&gt;
+    &lt;section&gt;
+      &lt;h2&gt;Hemen Başla&lt;/h2&gt;
+      &lt;a href="/kayit" class="btn-primary btn-large"&gt;Ücretsiz Hesap Oluştur&lt;/a&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer role="contentinfo"&gt;&lt;/footer&gt;
+&lt;/body&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸12 -->
+      <section class="konu-section" id="s12" data-konu-id="s12">
+        <h2 class="konu-title"><span class="konu-num">▸12</span> Blog / Makale Sayfası Yapısı</h2>
+        <div class="code-block"><div class="code-header"><span>SEO-Optimized Blog Sayfası</span></div>
+<pre><code class="language-html">&lt;main&gt;
+  &lt;article itemscope itemtype="https://schema.org/BlogPosting"&gt;
+    &lt;header&gt;
+      &lt;h1 itemprop="headline"&gt;Makale Başlığı&lt;/h1&gt;
+      &lt;div class="article-meta"&gt;
+        &lt;address rel="author"&gt;
+          &lt;a rel="author" href="/yazar/ali"&gt;Muhammed Ali&lt;/a&gt;
+        &lt;/address&gt;
+        &lt;time itemprop="datePublished" datetime="2025-01-15"&gt;
+          15 Ocak 2025
+        &lt;/time&gt;
+        &lt;time itemprop="dateModified" datetime="2025-02-01"&gt;
+          Güncellendi: 1 Şubat 2025
+        &lt;/time&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Öne çıkan görsel --&gt;
+      &lt;figure&gt;
+        &lt;img itemprop="image" src="kapak.jpg"
+          alt="Makale kapak görseli açıklaması"
+          fetchpriority="high"&gt;
+        &lt;figcaption&gt;Görsel açıklaması&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/header&gt;
+
+    &lt;!-- Makale içeriği --&gt;
+    &lt;div itemprop="articleBody"&gt;
+      &lt;p&gt;Makale metni...&lt;/p&gt;
+      &lt;h2&gt;Alt Başlık&lt;/h2&gt;
+      &lt;blockquote cite="https://kaynak.com"&gt;
+        &lt;p&gt;Alıntı metni...&lt;/p&gt;
+      &lt;/blockquote&gt;
+    &lt;/div&gt;
+
+    &lt;footer&gt;
+      &lt;nav aria-label="Etiketler"&gt;
+        &lt;a rel="tag" href="/etiket/html"&gt;HTML&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+
+  &lt;nav aria-label="Makale gezintisi"&gt;
+    &lt;a rel="prev" href="/onceki-makale"&gt;← Önceki&lt;/a&gt;
+    &lt;a rel="next" href="/sonraki-makale"&gt;Sonraki →&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/main&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸13 -->
+      <section class="konu-section" id="s13" data-konu-id="s13">
+        <h2 class="konu-title"><span class="konu-num">▸13</span> E-Ticaret Ürün Sayfası HTML</h2>
+        <div class="code-block"><div class="code-header"><span>Product Page Yapısı + Schema.org</span></div>
+<pre><code class="language-html">&lt;main&gt;
+  &lt;article itemscope itemtype="https://schema.org/Product"&gt;
+    &lt;meta itemprop="name" content="Ürün Adı"&gt;
+    &lt;meta itemprop="sku" content="SKU-001"&gt;
+
+    &lt;!-- Görsel galeri --&gt;
+    &lt;figure&gt;
+      &lt;img itemprop="image" src="urun.jpg" alt="Ürün fotoğrafı"&gt;
+    &lt;/figure&gt;
+
+    &lt;div class="product-info"&gt;
+      &lt;h1 itemprop="name"&gt;Ürün Adı&lt;/h1&gt;
+
+      &lt;!-- Fiyat --&gt;
+      &lt;div itemprop="offers" itemscope itemtype="https://schema.org/Offer"&gt;
+        &lt;meta itemprop="priceCurrency" content="TRY"&gt;
+        &lt;span itemprop="price" content="299.90"&gt;₺299,90&lt;/span&gt;
+        &lt;link itemprop="availability" href="https://schema.org/InStock"&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Derecelendirme --&gt;
+      &lt;div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating"&gt;
+        &lt;span itemprop="ratingValue"&gt;4.8&lt;/span&gt;/5
+        (&lt;span itemprop="reviewCount"&gt;128&lt;/span&gt; yorum)
+      &lt;/div&gt;
+
+      &lt;!-- Sepete ekle formu --&gt;
+      &lt;form action="/sepet/ekle" method="POST"&gt;
+        &lt;input type="hidden" name="urun_id" value="001"&gt;
+        &lt;label for="adet"&gt;Adet:&lt;/label&gt;
+        &lt;input type="number" id="adet" name="adet" min="1" max="10" value="1"&gt;
+        &lt;button type="submit"&gt;Sepete Ekle&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸14 -->
+      <section class="konu-section" id="s14" data-konu-id="s14">
+        <h2 class="konu-title"><span class="konu-num">▸14</span> Dashboard / Admin Panel HTML Yapısı</h2>
+        <div class="code-block"><div class="code-header"><span>Admin Dashboard Yapısı</span></div>
+<pre><code class="language-html">&lt;body class="dashboard"&gt;
+  &lt;!-- Skip link --&gt;
+  &lt;a href="#main" class="skip-link"&gt;Ana içeriğe geç&lt;/a&gt;
+
+  &lt;div class="layout"&gt;
+
+    &lt;!-- Sidebar navigasyon --&gt;
+    &lt;nav class="sidebar" aria-label="Yönetim paneli menüsü"&gt;
+      &lt;div class="sidebar-header"&gt;
+        &lt;a href="/"&gt;&lt;img src="logo.svg" alt="Logo"&gt;&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;ul role="list"&gt;
+        &lt;li&gt;
+          &lt;a href="/dashboard" aria-current="page"&gt;
+            &lt;span aria-hidden="true"&gt;🏠&lt;/span&gt; Dashboard
+          &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a href="/kullanicilar"&gt;
+            &lt;span aria-hidden="true"&gt;👥&lt;/span&gt; Kullanıcılar
+          &lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;!-- Ana içerik --&gt;
+    &lt;div class="main-wrapper"&gt;
+      &lt;header class="topbar"&gt;
+        &lt;button aria-label="Menüyü aç" aria-expanded="false" aria-controls="sidebar"&gt;☰&lt;/button&gt;
+        &lt;h1&gt;Dashboard&lt;/h1&gt;
+        &lt;nav aria-label="Kullanıcı menüsü"&gt;
+          &lt;button aria-haspopup="true"&gt;Profil&lt;/button&gt;
+        &lt;/nav&gt;
+      &lt;/header&gt;
+
+      &lt;main id="main"&gt;
+        &lt;section aria-labelledby="istatistikler"&gt;
+          &lt;h2 id="istatistikler"&gt;İstatistikler&lt;/h2&gt;
+          &lt;!-- Stat kartları --&gt;
+        &lt;/section&gt;
+      &lt;/main&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸15 -->
+      <section class="konu-section" id="s15" data-konu-id="s15">
+        <h2 class="konu-title"><span class="konu-num">▸15</span> Email HTML — Table-Based Layout</h2>
+        <div class="callout callout-warn"><strong>⚠️ Email HTML'i farklıdır!</strong><p>Email istemcileri (Outlook, Gmail) modern CSS'i desteklemez. Tablo tabanlı layout ve inline CSS zorunludur.</p></div>
+        <div class="code-block"><div class="code-header"><span>Email HTML Şablonu</span></div>
+<pre><code class="language-html">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+  &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Email Başlığı&lt;/title&gt;
+  &lt;style&gt;
+    /* Yalnızca genel reset -- INLINE CSS kullan! */
+    body { margin: 0; padding: 0; background-color: #f4f4f4; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Email genişliği: max 600px --&gt;
+  &lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;
+    &lt;tr&gt;
+      &lt;td align="center"&gt;
+        &lt;table width="600" cellpadding="0" cellspacing="0" border="0"
+          style="max-width:600px; margin:0 auto; background:#ffffff;"&gt;
+          &lt;tr&gt;
+            &lt;td style="padding:40px; font-family:Arial,sans-serif;"&gt;
+              &lt;h1 style="color:#080c12; font-size:24px; margin-bottom:16px;"&gt;
+                Başlık
+              &lt;/h1&gt;
+              &lt;p style="color:#3d5470; font-size:16px; line-height:1.6;"&gt;
+                Email içeriği...
+              &lt;/p&gt;
+              &lt;a href="https://example.com"
+                style="display:inline-block;padding:14px 28px;background:#b8f535;
+                  color:#080c12;text-decoration:none;font-weight:bold;border-radius:6px;"&gt;
+                Butona Tıkla
+              &lt;/a&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸16 -->
+      <section class="konu-section" id="s16" data-konu-id="s16">
+        <h2 class="konu-title"><span class="konu-num">▸16</span> Print CSS — Baskı için Stil</h2>
+        <div class="code-block"><div class="code-header"><span>Print Media Query</span></div>
+<pre><code class="language-html">&lt;link rel="stylesheet" href="print.css" media="print"&gt;
+
+&lt;style&gt;
+  @media print {
+    /* Gereksiz elemanları gizle */
+    nav, aside, .sidebar, .topbar,
+    button, .no-print { display: none !important; }
+
+    /* Link URL'lerini göster */
+    a[href^="http"]::after {
+      content: " (" attr(href) ")";
+      font-size: 0.8em;
+      color: #555;
+    }
+
+    /* Sayfa sonu kontrolü */
+    h2, h3 { page-break-after: avoid; }
+    img, table, figure { page-break-inside: avoid; }
+
+    /* Sayfa kenar boşlukları */
+    @page {
+      margin: 2cm;
+      size: A4 portrait;
+    }
+
+    /* Renkleri baskıya uygun yap */
+    body { color: #000 !important; background: #fff !important; }
+    * { box-shadow: none !important; text-shadow: none !important; }
+  }
+&lt;/style&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸17 -->
+      <section class="konu-section" id="s17" data-konu-id="s17">
+        <h2 class="konu-title"><span class="konu-num">▸17</span> Progressive Web App (PWA) Temelleri</h2>
+        <div class="code-block"><div class="code-header"><span>PWA Temel Kurulum</span></div>
+<pre><code class="language-html">&lt;!-- 1. manifest.json bağla --&gt;
+&lt;link rel="manifest" href="/manifest.json"&gt;
+&lt;meta name="theme-color" content="#080c12"&gt;
+&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;
+&lt;meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"&gt;
+&lt;link rel="apple-touch-icon" href="/icon-180.png"&gt;
+
+&lt;!-- 2. Service Worker kayıt --&gt;
+&lt;script&gt;
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg =&gt; console.log('SW kayıt:', reg.scope))
+      .catch(err =&gt; console.error('SW hata:', err));
+  }
+&lt;/script&gt;
+
+&lt;!-- 3. manifest.json örneği --&gt;
+&lt;!--
+{
+  "name": "HackDev Academy",
+  "short_name": "HackDev",
+  "description": "Web eğitim platformu",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080c12",
+  "theme_color": "#080c12",
+  "orientation": "portrait-primary",
+  "icons": [
+    {"src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ],
+  "screenshots": [
+    {"src": "/screenshot-wide.png", "sizes": "1280x720", "type": "image/png", "form_factor": "wide"},
+    {"src": "/screenshot-narrow.png", "sizes": "390x844", "type": "image/png", "form_factor": "narrow"}
+  ]
+}
+--&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸18 -->
+      <section class="konu-section" id="s18" data-konu-id="s18">
+        <h2 class="konu-title"><span class="konu-num">▸18</span> HTML Test ve Doğrulama</h2>
+        <div class="code-block"><div class="code-header"><span>HTML Kalite Araçları</span></div>
+<pre><code class="language-html">&lt;!-- 1. W3C Validator --&gt;
+&lt;!-- validator.w3.org — URL veya kod yapıştır, hata raporu al --&gt;
+
+&lt;!-- 2. Lighthouse (Chrome DevTools) --&gt;
+&lt;!-- F12 → Lighthouse → Generate report --&gt;
+&lt;!-- Puanlar: Performance, Accessibility, Best Practices, SEO, PWA --&gt;
+
+&lt;!-- 3. axe DevTools (tarayıcı eklentisi) --&gt;
+&lt;!-- Erişilebilirlik sorunlarını otomatik tespit --&gt;
+
+&lt;!-- 4. HTMLHint (VS Code eklentisi) --&gt;
+&lt;!-- .htmlhintrc yapılandırma --&gt;
+
+&lt;!-- 5. html-validate (npm) --&gt;
+&lt;!-- npm install -D html-validate --&gt;
+&lt;!-- npx html-validate "**/*.html" --&gt;
+
+&lt;!-- 6. Lighthouse CI (otomatik test) --&gt;
+&lt;!-- package.json scripts:
+  "lighthouse": "lhci autorun"
+--&gt;
+
+&lt;!-- 7. Pa11y (erişilebilirlik CI) --&gt;
+&lt;!-- npx pa11y https://example.com --&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸19 -->
+      <section class="konu-section" id="s19" data-konu-id="s19">
+        <h2 class="konu-title"><span class="konu-num">▸19</span> Deployment — Yayına Alma</h2>
+        <div class="code-block"><div class="code-header"><span>Deployment Seçenekleri</span></div>
+<pre><code class="language-html">&lt;!-- GitHub Pages (statik siteler) --&gt;
+&lt;!--
+1. Repository → Settings → Pages
+2. Branch: main, Folder: / (root) veya /docs
+3. URL: username.github.io/repo-name
+4. Özel domain: CNAME dosyası ekle
+--&gt;
+
+&lt;!-- Netlify --&gt;
+&lt;!--
+1. netlify.com → New site from Git
+2. Klasörü sürükle-bırak veya Git bağla
+3. netlify.toml:
+   [build]
+     publish = "public"
+     command = "npm run build"
+   [[redirects]]
+     from = "/*"
+     to = "/index.html"
+     status = 200
+--&gt;
+
+&lt;!-- Vercel --&gt;
+&lt;!--
+1. vercel.com → Import Project → Git
+2. Framework: None (HTML/CSS/JS için)
+3. vercel.json:
+   {
+     "rewrites": [{"source": "/(.*)", "destination": "/index.html"}]
+   }
+--&gt;
+
+&lt;!-- VPS/Sunucu (Nginx) --&gt;
+&lt;!--
+server {
+    listen 80;
+    server_name example.com;
+    root /var/www/html;
+    index index.html;
+    location / { try_files $uri $uri/ /index.html; }
+    gzip on;
+    gzip_types text/html text/css application/javascript;
+}
+--&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸20 Portfolyo Projesi -->
+      <section class="konu-section" id="s20" data-konu-id="s20">
+        <h2 class="konu-title"><span class="konu-num">▸20</span> Kapsamlı Proje: Portfolyo Sitesi</h2>
+        <p>Tüm bölüm boyunca öğrenilenleri bir araya getirerek profesyonel bir portfolyo sitesi oluştur.</p>
+
+        <div class="callout callout-info">
+          <strong>📋 Proje Gereksinimleri</strong>
+          <ul style="padding-left:1.2rem;line-height:2;margin-top:8px;color:var(--text2)">
+            <li>✓ Semantic HTML5 yapısı (header, nav, main, section, article, footer)</li>
+            <li>✓ Tam boilerplate (meta, OG, favicon)</li>
+            <li>✓ Responsive tasarım (mobil-first)</li>
+            <li>✓ Erişilebilirlik (ARIA, skip link, focus)</li>
+            <li>✓ W3C doğrulamasından geçmesi</li>
+            <li>✓ Lighthouse Score 90+</li>
+          </ul>
+        </div>
+
+        <div class="code-block"><div class="code-header"><span>Portfolyo Ana Yapısı</span></div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Adın Soyadın — Frontend Developer&lt;/title&gt;
+  &lt;meta name="description" content="Frontend Developer portfolyosu"&gt;
+  &lt;link rel="canonical" href="https://adiniz.com"&gt;
+  &lt;meta property="og:title" content="Adın — Developer"&gt;
+  &lt;meta property="og:image" content="https://adiniz.com/og.jpg"&gt;
+  &lt;link rel="icon" type="image/svg+xml" href="/favicon.svg"&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;a href="#main" class="skip-link"&gt;Ana içeriğe geç&lt;/a&gt;
+
+  &lt;header&gt;
+    &lt;nav aria-label="Ana navigasyon"&gt;
+      &lt;a href="/"&gt;A.S.&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#hakkimda"&gt;Hakkımda&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#projeler"&gt;Projeler&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#iletisim"&gt;İletişim&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main id="main"&gt;
+    &lt;section id="hero" aria-labelledby="hero-h1"&gt;
+      &lt;h1 id="hero-h1"&gt;Merhaba, ben &lt;span&gt;Adın Soyadın&lt;/span&gt;&lt;/h1&gt;
+      &lt;p&gt;Frontend Developer &amp; HTML Uzmanı&lt;/p&gt;
+      &lt;a href="#projeler"&gt;Projelerimi Gör&lt;/a&gt;
+    &lt;/section&gt;
+
+    &lt;section id="hakkimda" aria-labelledby="hakkimda-h"&gt;
+      &lt;h2 id="hakkimda-h"&gt;Hakkımda&lt;/h2&gt;
+      &lt;img src="profil.jpg" alt="Adın Soyadın profil fotoğrafı"&gt;
+      &lt;p&gt;Açıklama...&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section id="projeler" aria-labelledby="projeler-h"&gt;
+      &lt;h2 id="projeler-h"&gt;Projeler&lt;/h2&gt;
+      &lt;ul role="list" class="proje-grid"&gt;
+        &lt;li&gt;
+          &lt;article&gt;
+            &lt;h3&gt;Proje Adı&lt;/h3&gt;
+            &lt;p&gt;Açıklama&lt;/p&gt;
+            &lt;a href="https://github.com/..." target="_blank"
+              rel="noopener noreferrer"&gt;GitHub&lt;/a&gt;
+          &lt;/article&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+
+    &lt;section id="iletisim" aria-labelledby="iletisim-h"&gt;
+      &lt;h2 id="iletisim-h"&gt;İletişim&lt;/h2&gt;
+      &lt;form action="/iletisim" method="POST"&gt;
+        &lt;label for="ad"&gt;Ad:&lt;/label&gt;
+        &lt;input type="text" id="ad" name="ad" required autocomplete="name"&gt;
+        &lt;label for="email"&gt;E-posta:&lt;/label&gt;
+        &lt;input type="email" id="email" name="email" required autocomplete="email"&gt;
+        &lt;label for="mesaj"&gt;Mesaj:&lt;/label&gt;
+        &lt;textarea id="mesaj" name="mesaj" required rows="5"&gt;&lt;/textarea&gt;
+        &lt;button type="submit"&gt;Gönder&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;© 2025 Adın Soyadın. Tüm hakları saklıdır.&lt;/p&gt;
+  &lt;/footer&gt;
+
+  &lt;script defer src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+
+      </section>
+
+      <!-- ▸21 Pratik Görevler -->
+      <section class="konu-section" id="s21" data-konu-id="s21">
+        <h2 class="konu-title"><span class="konu-num">▸21</span> Pratik Görevler</h2>
+        <p>Bu bölümde öğrendiklerini pekiştirmek için aşağıdaki görevleri tamamla:</p>
+
+        <div class="task-list">
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b3_t01" class="task-checkbox">
+              <span class="task-text">Portfolyo HTML şablonunu oluştur ve W3C Validator'dan geçir</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b3_t02" class="task-checkbox">
+              <span class="task-text">Tüm OG ve Twitter Card meta etiketlerini ekle</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b3_t03" class="task-checkbox">
+              <span class="task-text">Favicon SVG + PNG seti oluştur ve bağla</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b3_t04" class="task-checkbox">
+              <span class="task-text">Skip link ve ARIA etiketlerini ekle; axe ile erişilebilirlik testi yap</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b3_t05" class="task-checkbox">
+              <span class="task-text">Lighthouse ile performans, SEO ve erişilebilirlik puanı ölç (hedef: 90+)</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b3_t06" class="task-checkbox">
+              <span class="task-text">GitHub Pages veya Netlify'a deploy et</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUIZ -->
+      <section class="quiz-section" id="quiz">
+        <div class="quiz-header">
+          <h2 class="quiz-title">📝 Bölüm 3 Quizi</h2>
+          <p class="quiz-sub">12 soru · %70 geçme eşiği · Bölümü tamamlamak için gerekli</p>
+        </div>
+
+        <div class="quiz-question" data-question-id="b3_q01">
+          <div class="question-text">1. Content Security Policy (CSP) ne işe yarar?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Şifreleme sağlar</div>
+            <div class="quiz-option" data-answer="b">b) Hangi kaynaklardan içerik yüklenebileceğini belirleyerek XSS önler</div>
+            <div class="quiz-option" data-answer="c">c) Veritabanı bağlantısı güvenliğini sağlar</div>
+            <div class="quiz-option" data-answer="d">d) CDN performansını artırır</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ B</strong> — CSP, tarayıcıya hangi kaynakların güvenilir olduğunu söyler. Saldırganın enjekte ettiği scriptler politikaya uymadığı için çalışmaz.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b3_q02">
+          <div class="question-text">2. Email HTML'de neden table tabanlı layout kullanılır?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) CSS daha hızlı yüklenir</div>
+            <div class="quiz-option" data-answer="b">b) Tablo layoutu daha güzel görünür</div>
+            <div class="quiz-option" data-answer="c">c) Email istemcileri modern CSS'i tam desteklemez, tablo evrensel çalışır</div>
+            <div class="quiz-option" data-answer="d">d) SEO için gereklidir</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ C</strong> — Outlook gibi istemciler Flexbox/Grid'i desteklemez. Table layout 20 yıldır tutarlı çalıştığı için email standardı haline geldi.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b3_q03">
+          <div class="question-text">3. link rel="preload" ne için kullanılır?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Tarayıcıya kritik kaynağı erken yüklemesini söyler, performansı artırır</div>
+            <div class="quiz-option" data-answer="b">b) Kaynağı önbelleğe kaydeder</div>
+            <div class="quiz-option" data-answer="c">c) SEO için sayfa önceliğini belirler</div>
+            <div class="quiz-option" data-answer="d">d) CSS animasyonu başlatır</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ A</strong> — preload, tarayıcıya "bu kaynağı en yüksek öncelikle indir" der. LCP görseli, kritik fontlar ve CSS için idealdir.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b3_q04">
+          <div class="question-text">4. WCAG 2.1 AA standardında minimum renk kontrastı oranı nedir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) 2:1</div>
+            <div class="quiz-option" data-answer="b">b) 3:1</div>
+            <div class="quiz-option" data-answer="c">c) 4:1</div>
+            <div class="quiz-option" data-answer="d">d) 4.5:1</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ D</strong> — WCAG 2.1 AA seviyesinde metin için minimum 4.5:1 kontras oranı gereklidir. Büyük metin (18pt+) için 3:1 yeterlidir.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b3_q05">
+          <div class="question-text">5. favicon.svg kullanmanın PNG'ye göre avantajı nedir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Daha küçük dosya boyutu her zaman</div>
+            <div class="quiz-option" data-answer="b">b) Her çözünürlükte keskin görünür, dark/light tema media query destekler</div>
+            <div class="quiz-option" data-answer="c">c) Tüm tarayıcılar SVG favicon'u destekler</div>
+            <div class="quiz-option" data-answer="d">d) Animasyon eklenebilir</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ B</strong> — SVG vektörel olduğundan her boyuta net skalenir. Ayrıca @media (prefers-color-scheme: dark) ile tema geçişi yapılabilir.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b3_q06">
+          <div class="question-text">6. Schema.org JSON-LD hangi amaca hizmet eder?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) JavaScript kütüphanesi yükler</div>
+            <div class="quiz-option" data-answer="b">b) Animasyon verisi sağlar</div>
+            <div class="quiz-option" data-answer="c">c) Arama motorlarının içeriği anlamsal olarak anlamasını sağlar (rich snippet)</div>
+            <div class="quiz-option" data-answer="d">d) CSS değişkenleri tanımlar</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ C</strong> — JSON-LD, Google'a içeriğin türünü (makale, ürün, kişi) makine-okunabilir formatta anlatır. Bu rich snippet (yıldız, fiyat, breadcrumb) oluşturur.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b3_q07">
+          <div class="question-text">7. Mobile-first CSS yaklaşımının anlamı nedir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Temel stiller mobil için yazılır, büyük ekranlar min-width media query ile eklenir</div>
+            <div class="quiz-option" data-answer="b">b) Mobil cihazlar için ayrı HTML dosyası yazılır</div>
+            <div class="quiz-option" data-answer="c">c) JavaScript ile ekran boyutu tespit edilir</div>
+            <div class="quiz-option" data-answer="d">d) max-width media query ile mobil için özel stiller yazılır</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ A</strong> — Mobile-first: CSS en küçük ekran için temel yazılır, @media (min-width: 768px) gibi min-width ile büyük ekranlar eklenir. Performans ve önceliklendirme açısından daha verimlidir.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b3_q08">
+          <div class="question-text">8. Skip link ne için kullanılır?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Sayfayı önceki URLye yönlendirir</div>
+            <div class="quiz-option" data-answer="b">b) Klavye kullanıcılarının tekrarlanan nav içeriğini atlayıp ana içeriğe geçmesini sağlar</div>
+            <div class="quiz-option" data-answer="c">c) Yavaş internet bağlantısında görselleri atlar</div>
+            <div class="quiz-option" data-answer="d">d) JavaScript yüklenmeden sayfayı geçerli kılar</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ B</strong> — Tab tuşu ile gezinen kullanıcılar her sayfada nav linklerini tek tek geçmek zorunda kalır. Skip link, ana içeriğe hızlı erişim sağlar.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b3_q09">
+          <div class="question-text">9. @media print'te a[href^="http"]::after { content: attr(href) } ne sağlar?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Linki tıklanabilir yapar</div>
+            <div class="quiz-option" data-answer="b">b) SEO için link metnini kopyalar</div>
+            <div class="quiz-option" data-answer="c">c) CSS animasyonu başlatır</div>
+            <div class="quiz-option" data-answer="d">d) Yazdırılan belgede link URL'lerini metin olarak gösterir</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ D</strong> — Kağıda yazdırıldığında kullanıcı linki tıklayamaz. Bu CSS tekniği, link URL'ini parantez içinde metnin yanına ekler.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b3_q10">
+          <div class="question-text">10. Lighthouse'un ölçtüğü kategoriler hangileridir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Performance, Accessibility, Best Practices, SEO, PWA</div>
+            <div class="quiz-option" data-answer="b">b) Speed, Design, Code Quality, Security</div>
+            <div class="quiz-option" data-answer="c">c) HTML, CSS, JavaScript, Fonts</div>
+            <div class="quiz-option" data-answer="d">d) Mobile, Desktop, Tablet, Print</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ A</strong> — Google Lighthouse 5 kategori ölçer: Performance (Core Web Vitals), Accessibility, Best Practices, SEO ve PWA.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b3_q11">
+          <div class="question-text">11. HTML boilerplate'de link rel="canonical" ne için eklenir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) CSS stillerini bağlamak için</div>
+            <div class="quiz-option" data-answer="b">b) Sayfa başlığını belirlemek için</div>
+            <div class="quiz-option" data-answer="c">c) Duplicate content sorununu önlemek için tercih edilen URL'yi belirtir</div>
+            <div class="quiz-option" data-answer="d">d) Favicon dosyasını bağlamak için</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ C</strong> — Aynı içerik farklı URL'lerde erişilebilirse (http vs https, www vs non-www), canonical Google'a "bu asıl URL" der ve SEO cezasını önler.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b3_q12">
+          <div class="question-text">12. PWA'da service worker'ın temel görevi nedir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Form doğrulaması yapmak</div>
+            <div class="quiz-option" data-answer="b">b) Ağ isteklerini önbelleğe alarak offline çalışma ve hız sağlamak</div>
+            <div class="quiz-option" data-answer="c">c) Kullanıcı verilerini şifrelemek</div>
+            <div class="quiz-option" data-answer="d">d) DOM manipülasyonu yapmak</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ B</strong> — Service Worker, tarayıcı ile ağ arasında bir proxy gibi çalışır. Kaynakları cache'ler, böylece internet olmadan da uygulama çalışabilir.</div>
+        </div>
+
+        <div class="quiz-actions">
+          <button class="btn btn-primary" id="quizSubmit">Sonucu Gör →</button>
+          <button class="btn btn-secondary" id="quizRetry" style="display:none">↺ Tekrar Dene</button>
+        </div>
+
+      </section>
+
+      <!-- Alt Navigasyon -->
+      <nav class="bolum-nav">
+        <a href="/bolum/02-html-etiketleri.html" class="btn btn-ghost">← Bölüm 2'ye Dön</a>
+        <button class="btn btn-primary" id="completeBtn">
+          🎓 Eğitimi Bitir
+        </button>
+      </nav>
+    </div>
+  </main>
+</div>
+
+<!-- Sertifika Modalı -->
+<div id="certificateModal" class="cert-modal hidden">
+  <div class="cert-overlay" id="certOverlay"></div>
+  <div class="cert-container">
+    <div class="cert-paper">
+      <div class="cert-border">
+        <div class="cert-logo-line">⬡ HackDev Academy</div>
+        <div class="cert-title">Başarı Sertifikası</div>
+        <div class="cert-subtitle">Bu belge aşağıdaki kişinin</div>
+        <div class="cert-name" id="certUserName">—</div>
+        <div class="cert-divider"></div>
+        <div class="cert-course">HTML Web Geliştirme Eğitimi</div>
+        <div class="cert-desc">programını başarıyla tamamladığını onaylar.</div>
+        <div class="cert-meta">
+          <div class="cert-meta-item">
+            <div class="cert-meta-label">Tarih</div>
+            <div class="cert-meta-value" id="certDate">—</div>
+          </div>
+          <div class="cert-seal">🏆</div>
+          <div class="cert-meta-item">
+            <div class="cert-meta-label">Sertifika No</div>
+            <div class="cert-meta-value" id="certId">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-actions">
+      <button id="certPrintBtn" class="btn btn-primary">🖨️ Yazdır / Kaydet</button>
+      <a href="/dashboard/index.html" class="btn btn-secondary">Dashboard'a Dön</a>
+      <button id="certCloseBtn" class="btn btn-ghost">Kapat</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/theme.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/bolum.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function showCertificate() {
+    var modal = document.getElementById('certificateModal');
+    if (!modal) return;
+
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    var now = new Date();
+    var months = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran',
+                  'Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+    document.getElementById('certDate').textContent =
+      now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+    document.getElementById('certId').textContent =
+      'HDA-' + now.getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
+
+    try {
+      API.auth.me().then(function(user) {
+        if (user) {
+          document.getElementById('certUserName').textContent =
+            user.full_name || user.name || user.username || '—';
+        }
+      }).catch(function() {});
+    } catch(e) {}
+  }
+
+  function closeCertificate() {
+    var modal = document.getElementById('certificateModal');
+    if (modal) modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  var completeBtn = document.getElementById('completeBtn');
+  if (completeBtn) completeBtn.addEventListener('click', showCertificate);
+
+  var certOverlay = document.getElementById('certOverlay');
+  if (certOverlay) certOverlay.addEventListener('click', closeCertificate);
+
+  var certCloseBtn = document.getElementById('certCloseBtn');
+  if (certCloseBtn) certCloseBtn.addEventListener('click', closeCertificate);
+
+  var certPrintBtn = document.getElementById('certPrintBtn');
+  if (certPrintBtn) certPrintBtn.addEventListener('click', function() { window.print(); });
+});
+</script>
+</body>
+</html>

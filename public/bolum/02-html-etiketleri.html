@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bölüm 2: HTML'deki Tüm Etiketler | HackDev Academy</title>
+  <meta name="author" content="Muhammed Ali">
+  <meta name="copyright" content="© 2025 Muhammed Ali. Tüm hakları saklıdır.">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/bolum.css">
+  <script>
+    (function(){var t=localStorage.getItem('hackdev_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+</head>
+<body data-bolum-id="2">
+
+<script>
+window.QUIZ_DATA = {
+  b2_q01:{correct:'b'}, b2_q02:{correct:'c'}, b2_q03:{correct:'a'},
+  b2_q04:{correct:'d'}, b2_q05:{correct:'b'}, b2_q06:{correct:'c'},
+  b2_q07:{correct:'a'}, b2_q08:{correct:'b'}, b2_q09:{correct:'c'},
+  b2_q10:{correct:'d'}, b2_q11:{correct:'a'}, b2_q12:{correct:'b'}
+};
+</script>
+
+<div class="bolum-layout">
+  <aside class="bolum-sidebar" id="bolumSidebar">
+    <div class="sidebar-header">
+      <a href="/dashboard/index.html" class="sidebar-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg>
+        HackDev
+      </a>
+      <button class="theme-toggle" data-theme-toggle title="Tema değiştir">🌙</button>
+    </div>
+    <div class="sidebar-user-mini">
+      <img data-user-avatar src="" alt="Avatar" class="user-avatar-mini" width="32" height="32">
+      <span data-user-name class="user-name-mini">...</span>
+    </div>
+    <div class="sidebar-bolum-info">
+      <div class="bolum-tag">BÖLÜM 02</div>
+      <div class="bolum-sidebar-title">HTML'deki Tüm Etiketler</div>
+    </div>
+    <nav class="konu-nav">
+      <a href="#s01" class="konu-nav-item" data-konu-marker="s01">▸01 Metadata Etiketleri</a>
+      <a href="#s02" class="konu-nav-item" data-konu-marker="s02">▸02 Semantik Yapı</a>
+      <a href="#s03" class="konu-nav-item" data-konu-marker="s03">▸03 Başlık Hiyerarşisi</a>
+      <a href="#s04" class="konu-nav-item" data-konu-marker="s04">▸04 Metin İçerik</a>
+      <a href="#s05" class="konu-nav-item" data-konu-marker="s05">▸05 Metin Biçimlendirme</a>
+      <a href="#s06" class="konu-nav-item" data-konu-marker="s06">▸06 Bağlantılar</a>
+      <a href="#s07" class="konu-nav-item" data-konu-marker="s07">▸07 Listeler</a>
+      <a href="#s08" class="konu-nav-item" data-konu-marker="s08">▸08 Görseller</a>
+      <a href="#s09" class="konu-nav-item" data-konu-marker="s09">▸09 Responsive Görseller</a>
+      <a href="#s10" class="konu-nav-item" data-konu-marker="s10">▸10 Tablolar</a>
+      <a href="#s11" class="konu-nav-item" data-konu-marker="s11">▸11 Form Etiketleri</a>
+      <a href="#s12" class="konu-nav-item" data-konu-marker="s12">▸12 Input Türleri</a>
+      <a href="#s13" class="konu-nav-item" data-konu-marker="s13">▸13 Diğer Form Elemanları</a>
+      <a href="#s14" class="konu-nav-item" data-konu-marker="s14">▸14 Form Validasyonu</a>
+      <a href="#s15" class="konu-nav-item" data-konu-marker="s15">▸15 Medya Etiketleri</a>
+      <a href="#s16" class="konu-nav-item" data-konu-marker="s16">▸16 Gömme Etiketleri</a>
+      <a href="#s17" class="konu-nav-item" data-konu-marker="s17">▸17 Canvas ve SVG</a>
+      <a href="#s18" class="konu-nav-item" data-konu-marker="s18">▸18 Etkileşimli Etiketler</a>
+      <a href="#s19" class="konu-nav-item" data-konu-marker="s19">▸19 Script ve Stil</a>
+      <a href="#s20" class="konu-nav-item" data-konu-marker="s20">▸20 Global Attributes</a>
+      <a href="#s21" class="konu-nav-item" data-konu-marker="s21">▸21 ARIA ve Erişilebilirlik</a>
+      <a href="#s22" class="konu-nav-item" data-konu-marker="s22">▸22 Meta SEO</a>
+      <a href="#s23" class="konu-nav-item" data-konu-marker="s23">▸23 Deprecated Etiketler</a>
+      <a href="#s24" class="konu-nav-item" data-konu-marker="s24">▸24 Güvenlik Açıklı Etiketler</a>
+      <a href="#s25" class="konu-nav-item" data-konu-marker="s25">▸25 HTML Referans</a>
+      <a href="#s26" class="konu-nav-item" data-konu-marker="s26">▸26 Pratik Görevler</a>
+      <a href="#quiz" class="konu-nav-item" style="color:var(--acid)">📝 Quiz</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="logout-btn" data-logout>🚪 Çıkış Yap</button>
+    </div>
+  </aside>
+
+  <main class="bolum-main">
+    <header class="bolum-topbar">
+      <button class="sidebar-toggle" data-sidebar-toggle aria-label="Menüyü aç">☰</button>
+      <div class="bolum-breadcrumb">
+        <a href="/dashboard/index.html">Dashboard</a><span>›</span><span>Bölüm 2</span>
+      </div>
+      <div class="topbar-progress">
+        <span class="topbar-progress-label" id="topbarProgressLabel">0/26</span>
+        <div class="progress-bar" style="width:120px"><div class="progress-fill" id="topbarProgressBar" style="width:0%"></div></div>
+      </div>
+    </header>
+
+    <div class="bolum-content">
+      <div class="bolum-hero">
+        <div class="bolum-hero-tag">BÖLÜM 02</div>
+        <h1 class="bolum-hero-title">HTML'deki Tüm Etiketler</h1>
+        <p class="bolum-hero-sub">Metadata'dan medyaya, formlardan ARIA'ya HTML spesifikasyonunun tam kapsamlı incelemesi. 26 konu, 12 quiz sorusu.</p>
+        <div class="bolum-hero-meta"><span>📖 26 Konu</span><span>📝 12 Quiz Sorusu</span><span>⏱ ~4-5 saat</span></div>
+      </div>
+
+      <!-- ▸01 Metadata -->
+      <section class="konu-section" id="s01" data-konu-id="s01">
+        <h2 class="konu-title"><span class="konu-num">▸01</span> Metadata Etiketleri — &lt;head&gt; içinde ne olur?</h2>
+        <p>Head bölümündeki meta etiketler, sayfanın tarayıcılar, arama motorları ve sosyal medya platformları tarafından nasıl işleneceğini belirler.</p>
+        <div class="code-block"><div class="code-header"><span>Head Metadata Tam Örneği</span></div>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta name="description" content="Sayfa açıklaması (150-160 karakter)"&gt;
+  &lt;meta name="keywords" content="html, web, geliştirme"&gt;
+  &lt;meta name="author" content="Ad Soyad"&gt;
+  &lt;meta name="robots" content="index, follow"&gt;
+
+  &lt;title&gt;Sayfa Başlığı — Site Adı&lt;/title&gt;
+
+  &lt;link rel="canonical" href="https://example.com/sayfa"&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+  &lt;link rel="icon" type="image/x-icon" href="/favicon.ico"&gt;
+  &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+
+  &lt;base href="https://example.com/"&gt; &lt;!-- Tüm linklerin base URL'si --&gt;
+
+  &lt;style&gt;/* Kritik CSS buraya */&lt;/style&gt;
+  &lt;script src="analytics.js" async&gt;&lt;/script&gt;
+&lt;/head&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸02 Semantik Yapı -->
+      <section class="konu-section" id="s02" data-konu-id="s02">
+        <h2 class="konu-title"><span class="konu-num">▸02</span> Semantik Yapı Etiketleri</h2>
+        <div class="code-block"><div class="code-header"><span>Semantik Yapı Elemanları</span></div>
+<pre><code class="language-html">&lt;header&gt;  → Sayfa veya bölüm başlığı, logo, nav içerir
+&lt;nav&gt;     → Navigasyon linkleri
+&lt;main&gt;    → Sayfanın ana içeriği (bir tane olmalı)
+&lt;section&gt; → Tematik içerik grubu (başlığı olmalı)
+&lt;article&gt; → Bağımsız, dağıtılabilir içerik (blog yazısı)
+&lt;aside&gt;   → Ana içerikle ilgili ama ayrı (sidebar)
+&lt;footer&gt;  → Sayfa veya bölüm alt bilgisi
+
+&lt;!-- Kullanım örneği --&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="/"&gt;Ana Sayfa&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;h1&gt;Makale Başlığı&lt;/h1&gt;
+      &lt;section&gt;&lt;h2&gt;Bölüm&lt;/h2&gt;&lt;p&gt;...&lt;/p&gt;&lt;/section&gt;
+    &lt;/article&gt;
+    &lt;aside&gt;&lt;p&gt;İlgili Linkler&lt;/p&gt;&lt;/aside&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;&lt;p&gt;© 2025&lt;/p&gt;&lt;/footer&gt;
+&lt;/body&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸03 -->
+      <section class="konu-section" id="s03" data-konu-id="s03">
+        <h2 class="konu-title"><span class="konu-num">▸03</span> Başlık Hiyerarşisi — SEO ve Erişilebilirlik</h2>
+        <p>Başlık hiyerarşisi hem SEO hem de screen reader kullanıcıları için sayfa yapısını tanımlar.</p>
+        <div class="code-block"><div class="code-header"><span>Doğru Başlık Hiyerarşisi</span></div>
+<pre><code class="language-html">&lt;!-- ✅ Doğru: Hiyerarşik --&gt;
+&lt;h1&gt;Site/Sayfa Ana Başlığı&lt;/h1&gt;
+  &lt;h2&gt;Bölüm 1&lt;/h2&gt;
+    &lt;h3&gt;Alt Bölüm 1.1&lt;/h3&gt;
+    &lt;h3&gt;Alt Bölüm 1.2&lt;/h3&gt;
+  &lt;h2&gt;Bölüm 2&lt;/h2&gt;
+    &lt;h3&gt;Alt Bölüm 2.1&lt;/h3&gt;
+
+&lt;!-- ❌ Yanlış: Seviye atlama --&gt;
+&lt;h1&gt;Başlık&lt;/h1&gt;
+&lt;h3&gt;Alt Başlık (h2 atlandı!)&lt;/h3&gt;</code></pre></div>
+        <div class="callout callout-info"><strong>💡 SEO Notu:</strong> Arama motorları h1-h6 hiyerarşisini kullanarak içerik önem sıralaması yapar. h1 en önemli anahtar kelimeyi içermeli.</div>
+      </section>
+
+      <!-- ▸04 -->
+      <section class="konu-section" id="s04" data-konu-id="s04">
+        <h2 class="konu-title"><span class="konu-num">▸04</span> Metin İçerik Etiketleri</h2>
+        <div class="code-block"><div class="code-header"><span>Metin Blok Elemanları</span></div>
+<pre><code class="language-html">&lt;p&gt;Normal paragraf&lt;/p&gt;
+
+&lt;blockquote cite="https://kaynak.com"&gt;
+  Uzun alıntı metni burada yer alır.
+&lt;/blockquote&gt;
+
+&lt;pre&gt;
+  Önceden biçimlendirilmiş metin
+  boşluklar korunur
+&lt;/pre&gt;
+
+&lt;code&gt;tek satır kod&lt;/code&gt;
+
+&lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt;   &lt;!-- Klavye tuşu --&gt;
+
+&lt;samp&gt;Program çıktısı&lt;/samp&gt;    &lt;!-- Örnek çıktı --&gt;
+
+&lt;var&gt;değişkenAdi&lt;/var&gt;           &lt;!-- Değişken --&gt;
+
+&lt;address&gt;İletişim bilgileri&lt;/address&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸05 -->
+      <section class="konu-section" id="s05" data-konu-id="s05">
+        <h2 class="konu-title"><span class="konu-num">▸05</span> Metin Biçimlendirme</h2>
+        <div class="code-block"><div class="code-header"><span>İnline Metin Etiketleri</span></div>
+<pre><code class="language-html">&lt;strong&gt;Önemli vurgu (kalın + anlam)&lt;/strong&gt;
+&lt;em&gt;Vurgu (italik + anlam)&lt;/em&gt;
+&lt;b&gt;Yalnızca kalın (anlamsız)&lt;/b&gt;
+&lt;i&gt;Yalnızca italik (teknik terim, yabancı kelime)&lt;/i&gt;
+&lt;u&gt;Altı çizili (yanlış yazım uyarısı gibi)&lt;/u&gt;
+&lt;s&gt;Üstü çizili (geçerliliğini yitirmiş)&lt;/s&gt;
+&lt;mark&gt;Sarı vurgu / arama sonucu&lt;/mark&gt;
+&lt;small&gt;Küçük metin (yasal not, telif)&lt;/small&gt;
+&lt;sub&gt;Alt simge: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/sub&gt;
+&lt;sup&gt;Üst simge: m&lt;sup&gt;2&lt;/sup&gt;&lt;/sup&gt;
+&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;
+&lt;cite&gt;Kitap Adı&lt;/cite&gt;
+&lt;q&gt;Kısa alıntı&lt;/q&gt;
+&lt;time datetime="2025-01-15"&gt;15 Ocak 2025&lt;/time&gt;
+&lt;wbr&gt; &lt;!-- İsteğe bağlı satır sonu --&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸06 -->
+      <section class="konu-section" id="s06" data-konu-id="s06">
+        <h2 class="konu-title"><span class="konu-num">▸06</span> Bağlantılar — &lt;a&gt; Etiketi Tam Rehber</h2>
+        <div class="code-block"><div class="code-header"><span>Tüm a Özellikleri</span></div>
+<pre><code class="language-html">&lt;!-- href türleri --&gt;
+&lt;a href="https://external.com" target="_blank" rel="noopener noreferrer"&gt;Dış Link&lt;/a&gt;
+&lt;a href="/iletisim.html"&gt;İç Sayfa&lt;/a&gt;
+&lt;a href="#bolum"&gt;Sayfa İçi&lt;/a&gt;
+&lt;a href="mailto:info@site.com"&gt;E-posta&lt;/a&gt;
+&lt;a href="tel:+905551234567"&gt;Telefon&lt;/a&gt;
+&lt;a href="dosya.pdf" download="rapor.pdf"&gt;İndir&lt;/a&gt;
+
+&lt;!-- rel değerleri --&gt;
+rel="noopener noreferrer"   → Güvenlik (target=_blank ile)
+rel="nofollow"              → Arama motoruna takip etme
+rel="canonical"             → Tercih edilen URL
+rel="alternate"             → Alternatif dil/format
+rel="author"                → Yazar sayfası
+rel="license"               → Lisans bilgisi</code></pre></div>
+        <div class="callout callout-security"><strong>🛡️ Güvenlik: Phishing Koruması</strong><p>Kötü niyetli siteler <code>window.opener.location</code> ile ana sayfanızı değiştirebilir. Çözüm: <code>rel="noopener noreferrer"</code></p></div>
+      </section>
+
+      <!-- ▸07 -->
+      <section class="konu-section" id="s07" data-konu-id="s07">
+        <h2 class="konu-title"><span class="konu-num">▸07</span> Listeler — ul, ol, dl</h2>
+        <div class="code-block"><div class="code-header"><span>Liste Türleri ve İç İçe Kullanım</span></div>
+<pre><code class="language-html">&lt;!-- Sırasız: ol, sıra önemli değil --&gt;
+&lt;ul&gt;
+  &lt;li&gt;Elma&lt;/li&gt;
+  &lt;li&gt;Armut&lt;/li&gt;
+  &lt;li&gt;İç içe:
+    &lt;ul&gt;&lt;li&gt;Alt öğe&lt;/li&gt;&lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Sıralı: sıra önemli --&gt;
+&lt;ol type="1" start="1" reversed&gt;
+  &lt;li&gt;Birinci&lt;/li&gt;
+  &lt;li value="5"&gt;Beşinci (sıra atla)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Açıklama listesi (terim-tanım) --&gt;
+&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;HyperText Markup Language&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Cascading Style Sheets&lt;/dd&gt;
+&lt;/dl&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸08 -->
+      <section class="konu-section" id="s08" data-konu-id="s08">
+        <h2 class="konu-title"><span class="konu-num">▸08</span> Görseller — &lt;img&gt; Tam Rehber</h2>
+        <div class="code-block"><div class="code-header"><span>img Tüm Özellikleri</span></div>
+<pre><code class="language-html">&lt;img
+  src="foto.webp"
+  alt="Açıklayıcı alternatif metin"
+  width="800"
+  height="600"
+  loading="lazy"          &lt;!-- native lazy loading --&gt;
+  decoding="async"        &lt;!-- async decode --&gt;
+  fetchpriority="high"    &lt;!-- LCP görseli için --&gt;
+  crossorigin="anonymous" &lt;!-- CORS görseli --&gt;
+&gt;
+
+&lt;!-- figure ve figcaption --&gt;
+&lt;figure&gt;
+  &lt;img src="grafik.png" alt="2025 Satış Grafiği"&gt;
+  &lt;figcaption&gt;Şekil 1: 2025 Yılı Satış Verileri&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸09 -->
+      <section class="konu-section" id="s09" data-konu-id="s09">
+        <h2 class="konu-title"><span class="konu-num">▸09</span> Responsive Görseller — picture, srcset</h2>
+        <div class="code-block"><div class="code-header"><span>Responsive Görsel Teknikleri</span></div>
+<pre><code class="language-html">&lt;!-- srcset ile dpi bazlı --&gt;
+&lt;img src="logo.png" srcset="logo@2x.png 2x, logo@3x.png 3x" alt="Logo"&gt;
+
+&lt;!-- srcset + sizes ile genişlik bazlı --&gt;
+&lt;img
+  src="foto-800.jpg"
+  srcset="foto-400.jpg 400w, foto-800.jpg 800w, foto-1200.jpg 1200w"
+  sizes="(max-width: 600px) 400px, (max-width: 1000px) 800px, 1200px"
+  alt="Responsive Fotoğraf"
+&gt;
+
+&lt;!-- picture: format ve art direction --&gt;
+&lt;picture&gt;
+  &lt;source srcset="foto.avif" type="image/avif"&gt;
+  &lt;source srcset="foto.webp" type="image/webp"&gt;
+  &lt;source media="(max-width: 768px)" srcset="foto-mobil.jpg"&gt;
+  &lt;img src="foto.jpg" alt="Fotoğraf"&gt; &lt;!-- Fallback --&gt;
+&lt;/picture&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸10 -->
+      <section class="konu-section" id="s10" data-konu-id="s10">
+        <h2 class="konu-title"><span class="konu-num">▸10</span> Tablo Etiketleri — Tam Yapı</h2>
+        <div class="code-block"><div class="code-header"><span>Tam Erişilebilir Tablo</span></div>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;caption&gt;Ülke Nüfus Verileri 2025&lt;/caption&gt;
+  &lt;colgroup&gt;
+    &lt;col style="width:30%"&gt;
+    &lt;col style="width:20%"&gt;
+    &lt;col&gt;
+  &lt;/colgroup&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Ülke&lt;/th&gt;
+      &lt;th scope="col"&gt;Nüfus&lt;/th&gt;
+      &lt;th scope="col"&gt;Büyüme&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;Türkiye&lt;/th&gt;
+      &lt;td&gt;85 milyon&lt;/td&gt;
+      &lt;td&gt;%1.2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td colspan="3"&gt;Kaynak: TÜİK 2025&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸11 -->
+      <section class="konu-section" id="s11" data-konu-id="s11">
+        <h2 class="konu-title"><span class="konu-num">▸11</span> Form Etiketleri — form, fieldset, legend, label</h2>
+        <div class="code-block"><div class="code-header"><span>Form Yapısı</span></div>
+<pre><code class="language-html">&lt;form
+  action="/submit"
+  method="POST"
+  enctype="multipart/form-data"  &lt;!-- dosya yükleme için --&gt;
+  novalidate                     &lt;!-- browser validasyonunu kapat --&gt;
+  autocomplete="off"
+&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Kişisel Bilgiler&lt;/legend&gt;
+
+    &lt;div&gt;
+      &lt;label for="ad"&gt;Ad:&lt;/label&gt;
+      &lt;input type="text" id="ad" name="ad" required&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+
+  &lt;fieldset&gt;
+    &lt;legend&gt;İletişim&lt;/legend&gt;
+    &lt;label for="email"&gt;E-posta:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email"&gt;
+  &lt;/fieldset&gt;
+
+  &lt;button type="submit"&gt;Gönder&lt;/button&gt;
+  &lt;button type="reset"&gt;Sıfırla&lt;/button&gt;
+&lt;/form&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸12 -->
+      <section class="konu-section" id="s12" data-konu-id="s12">
+        <h2 class="konu-title"><span class="konu-num">▸12</span> Input Türleri</h2>
+        <div class="code-block"><div class="code-header"><span>HTML5 Input Type'ları</span></div>
+<pre><code class="language-html">&lt;input type="text"&gt;           → Metin
+&lt;input type="email"&gt;          → E-posta (doğrulama)
+&lt;input type="password"&gt;       → Şifre (maskelenmiş)
+&lt;input type="number" min="0" max="100" step="1"&gt;
+&lt;input type="date"&gt;           → Tarih seçici
+&lt;input type="datetime-local"&gt; → Tarih + saat
+&lt;input type="time"&gt;
+&lt;input type="month"&gt;
+&lt;input type="week"&gt;
+&lt;input type="range" min="0" max="100"&gt; → Kaydırıcı
+&lt;input type="color"&gt;          → Renk seçici
+&lt;input type="file" accept="image/*" multiple&gt;
+&lt;input type="checkbox"&gt;       → Onay kutusu
+&lt;input type="radio" name="grup"&gt; → Radyo butonu
+&lt;input type="search"&gt;         → Arama
+&lt;input type="url"&gt;            → URL doğrulama
+&lt;input type="tel"&gt;            → Telefon (numpad)
+&lt;input type="hidden" value="gizli-veri"&gt;
+&lt;input type="submit"&gt;
+&lt;input type="reset"&gt;
+&lt;input type="image" src="btn.png"&gt;</code></pre></div>
+        <div class="callout callout-security"><strong>🛡️ Güvenlik: type="hidden"</strong><p>Hidden inputlar kullanıcıdan gizlidir ama <strong>kaynak kodda görünür</strong>. Gizli tokenleri burada tutmak sınırlı güvenlik sağlar — asıl doğrulamayı sunucu tarafında yap.</p></div>
+      </section>
+
+      <!-- ▸13 -->
+      <section class="konu-section" id="s13" data-konu-id="s13">
+        <h2 class="konu-title"><span class="konu-num">▸13</span> Diğer Form Elemanları</h2>
+        <div class="code-block"><div class="code-header"><span>textarea, select, datalist</span></div>
+<pre><code class="language-html">&lt;!-- Textarea --&gt;
+&lt;textarea name="mesaj" rows="5" cols="40" placeholder="Mesajınız"
+  maxlength="500" minlength="10"&gt;&lt;/textarea&gt;
+
+&lt;!-- Select --&gt;
+&lt;select name="sehir" multiple size="4"&gt;
+  &lt;optgroup label="Marmara"&gt;
+    &lt;option value="ist"&gt;İstanbul&lt;/option&gt;
+    &lt;option value="brs"&gt;Bursa&lt;/option&gt;
+  &lt;/optgroup&gt;
+  &lt;optgroup label="Ege"&gt;
+    &lt;option value="izm" selected&gt;İzmir&lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;
+
+&lt;!-- Datalist (öneri listesi) --&gt;
+&lt;input list="tarayicilar" name="tarayici"&gt;
+&lt;datalist id="tarayicilar"&gt;
+  &lt;option value="Chrome"&gt;
+  &lt;option value="Firefox"&gt;
+  &lt;option value="Safari"&gt;
+&lt;/datalist&gt;
+
+&lt;!-- Button türleri --&gt;
+&lt;button type="submit"&gt;Gönder&lt;/button&gt;
+&lt;button type="button" onclick="birSey()"&gt;Tıkla&lt;/button&gt;
+&lt;button type="reset"&gt;Temizle&lt;/button&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸14 -->
+      <section class="konu-section" id="s14" data-konu-id="s14">
+        <h2 class="konu-title"><span class="konu-num">▸14</span> Form Validasyonu — HTML5 Özellikleri</h2>
+        <div class="code-block"><div class="code-header"><span>Native Form Doğrulama</span></div>
+<pre><code class="language-html">&lt;input
+  type="email"
+  required                           → Boş bırakılamaz
+  minlength="5"                      → Min karakter
+  maxlength="100"                    → Max karakter
+  min="18"                           → Sayısal minimum
+  max="99"                           → Sayısal maksimum
+  pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"  → Regex
+  title="Geçerli e-posta girin"      → Hata mesajı hint
+  placeholder="ornek@mail.com"       → Yer tutucu
+  autocomplete="email"               → Tarayıcı otofill
+  inputmode="email"                  → Mobil klavye tipi
+&gt;</code></pre></div>
+        <div class="do-dont">
+          <div class="do-box"><strong>✅ Yap:</strong> HTML5 validasyonu + JavaScript + sunucu tarafı üçlü doğrulama</div>
+          <div class="dont-box"><strong>❌ Yapma:</strong> Yalnızca client-side validasyona güvenme. Kolayca atlanır!</div>
+        </div>
+      </section>
+
+      <!-- ▸15 -->
+      <section class="konu-section" id="s15" data-konu-id="s15">
+        <h2 class="konu-title"><span class="konu-num">▸15</span> Medya Etiketleri — video, audio</h2>
+        <div class="code-block"><div class="code-header"><span>Video ve Audio</span></div>
+<pre><code class="language-html">&lt;!-- Video --&gt;
+&lt;video
+  width="800" height="450"
+  controls autoplay muted loop
+  poster="thumbnail.jpg"
+  preload="metadata"
+&gt;
+  &lt;source src="video.webm" type="video/webm"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  &lt;track src="altyazi.vtt" kind="subtitles" srclang="tr" label="Türkçe" default&gt;
+  Tarayıcınız video etiketini desteklemiyor.
+&lt;/video&gt;
+
+&lt;!-- Audio --&gt;
+&lt;audio controls preload="none"&gt;
+  &lt;source src="muzik.ogg" type="audio/ogg"&gt;
+  &lt;source src="muzik.mp3" type="audio/mpeg"&gt;
+  Tarayıcınız audio etiketini desteklemiyor.
+&lt;/audio&gt;</code></pre></div>
+        <div class="callout callout-warn"><strong>⚠️ Dikkat:</strong> <code>autoplay</code> ile ses çıkarma çoğu tarayıcıda engellenir. Sessiz autoplay (<code>muted</code>) çalışır.</div>
+      </section>
+
+      <!-- ▸16 -->
+      <section class="konu-section" id="s16" data-konu-id="s16">
+        <h2 class="konu-title"><span class="konu-num">▸16</span> Gömme Etiketleri — iframe, embed, object</h2>
+        <div class="code-block"><div class="code-header"><span>iframe Güvenli Kullanımı</span></div>
+<pre><code class="language-html">&lt;!-- ✅ Güvenli iframe --&gt;
+&lt;iframe
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  width="560"
+  height="315"
+  title="Video Açıklaması"
+  loading="lazy"
+  sandbox="allow-scripts allow-same-origin allow-presentation"
+  allow="fullscreen"
+  referrerpolicy="no-referrer"
+&gt;&lt;/iframe&gt;
+
+&lt;!-- sandbox değerleri: --&gt;
+allow-scripts          → JavaScript çalışabilir
+allow-same-origin      → Same-origin politikası
+allow-forms            → Form submit
+allow-popups           → Pop-up açabilir
+allow-downloads        → İndirme</code></pre></div>
+        <div class="callout callout-security"><strong>🛡️ Güvenlik: Clickjacking</strong><p>Kendi sayfanızın iframe içine gömülmesini engellemek için CSP'de <code>frame-ancestors 'none'</code> veya <code>X-Frame-Options: DENY</code> kullanın. <code>sandbox</code> olmayan iframe'ler çeşitli saldırılara kapı açar.</p></div>
+      </section>
+
+      <!-- ▸17 -->
+      <section class="konu-section" id="s17" data-konu-id="s17">
+        <h2 class="konu-title"><span class="konu-num">▸17</span> Canvas ve SVG — Temel Kullanım</h2>
+        <div class="code-block"><div class="code-header"><span>Canvas ve SVG Karşılaştırması</span></div>
+<pre><code class="language-html">&lt;!-- Canvas: piksel tabanlı, JavaScript ile çizim --&gt;
+&lt;canvas id="myCanvas" width="400" height="300" aria-label="Grafik"&gt;
+  Tarayıcınız canvas'ı desteklemiyor.
+&lt;/canvas&gt;
+&lt;script&gt;
+  const ctx = document.getElementById('myCanvas').getContext('2d');
+  ctx.fillStyle = '#b8f535';
+  ctx.fillRect(10, 10, 100, 50);
+&lt;/script&gt;
+
+&lt;!-- SVG: vektör tabanlı, XML ile --&gt;
+&lt;svg width="200" height="100" viewBox="0 0 200 100"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-label="Dikdörtgen"
+  role="img"&gt;
+  &lt;rect x="10" y="10" width="180" height="80"
+    fill="#b8f535" stroke="#080c12" stroke-width="2"/&gt;
+  &lt;text x="100" y="55" text-anchor="middle" fill="#080c12"&gt;SVG&lt;/text&gt;
+&lt;/svg&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸18 -->
+      <section class="konu-section" id="s18" data-konu-id="s18">
+        <h2 class="konu-title"><span class="konu-num">▸18</span> Etkileşimli Etiketler — details, dialog, popover</h2>
+        <div class="code-block"><div class="code-header"><span>Modern Etkileşimli Elemanlar</span></div>
+<pre><code class="language-html">&lt;!-- details/summary: akordeon --&gt;
+&lt;details open&gt;
+  &lt;summary&gt;Sık Sorulan Sorular&lt;/summary&gt;
+  &lt;p&gt;Cevap içeriği burada...&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;!-- dialog: modal --&gt;
+&lt;dialog id="myDialog"&gt;
+  &lt;form method="dialog"&gt;
+    &lt;h2&gt;Modal Başlığı&lt;/h2&gt;
+    &lt;p&gt;İçerik&lt;/p&gt;
+    &lt;button value="tamam"&gt;Tamam&lt;/button&gt;
+    &lt;button value="iptal"&gt;İptal&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;
+&lt;button onclick="document.getElementById('myDialog').showModal()"&gt;
+  Modalı Aç
+&lt;/button&gt;
+
+&lt;!-- Popover API (modern tarayıcılar) --&gt;
+&lt;button popovertarget="myPopover"&gt;İpucu Göster&lt;/button&gt;
+&lt;div id="myPopover" popover&gt;
+  Bu bir popover içeriğidir!
+&lt;/div&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸19 -->
+      <section class="konu-section" id="s19" data-konu-id="s19">
+        <h2 class="konu-title"><span class="konu-num">▸19</span> Script ve Stil Yönetimi</h2>
+        <div class="code-block"><div class="code-header"><span>Script Yükleme Stratejileri</span></div>
+<pre><code class="language-html">&lt;!-- Normal: HTML parse durdurur, bekler --&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;
+
+&lt;!-- defer: HTML parse bitmeden indirir, sonra çalışır --&gt;
+&lt;script src="script.js" defer&gt;&lt;/script&gt;
+
+&lt;!-- async: paralel indirir, hazır olunca çalışır (sıra garantisi yok) --&gt;
+&lt;script src="analytics.js" async&gt;&lt;/script&gt;
+
+&lt;!-- type="module": ES6 modülü, otomatik defer --&gt;
+&lt;script type="module" src="app.js"&gt;&lt;/script&gt;
+
+&lt;!-- Inline script --&gt;
+&lt;script&gt;console.log('Çalışıyor');&lt;/script&gt;
+
+&lt;!-- Stil --&gt;
+&lt;link rel="stylesheet" href="style.css" media="print"&gt;
+&lt;style media="screen"&gt;body { margin: 0; }&lt;/style&gt;</code></pre></div>
+        <div class="callout callout-info"><strong>💡 Performans İpucu:</strong> JavaScript dosyalarını <code>&lt;/body&gt;</code> öncesine veya <code>defer</code> ile head'e koy. Bu sayede tarayıcı HTML'i önce parse eder.</div>
+      </section>
+
+      <!-- ▸20 -->
+      <section class="konu-section" id="s20" data-konu-id="s20">
+        <h2 class="konu-title"><span class="konu-num">▸20</span> Global Attributes</h2>
+        <div class="code-block"><div class="code-header"><span>Tüm Elemanlarda Kullanılabilen Özellikler</span></div>
+<pre><code class="language-html">id="benzersiz-id"          → Sayfa içinde tekil tanımlayıcı
+class="css-sinifi"         → CSS ve JS seçicisi
+style="color:red"          → Satır içi stil (kaçın!)
+title="İpucu metni"        → Hover tooltip
+lang="en"                  → İçerik dili
+dir="ltr|rtl|auto"         → Metin yönü
+hidden                     → Görünmez (display:none)
+tabindex="0"               → Klavye navigasyon sırası
+contenteditable="true"     → Kullanıcı düzenleyebilir
+draggable="true"           → Sürüklenebilir
+spellcheck="true"          → Yazım denetimi
+data-kullanici-id="42"     → Özel veri (JS'ten erişilebilir)
+data-renk="kirmizi"        → Özel veri
+aria-label="Açıklama"      → Erişilebilirlik etiketi
+aria-hidden="true"         → Ekran okuyuculardan gizle
+role="button"              → ARIA rolü</code></pre></div>
+      </section>
+
+      <!-- ▸21 -->
+      <section class="konu-section" id="s21" data-konu-id="s21">
+        <h2 class="konu-title"><span class="konu-num">▸21</span> ARIA ve Erişilebilirlik</h2>
+        <div class="code-block"><div class="code-header"><span>ARIA Kullanımı</span></div>
+<pre><code class="language-html">&lt;!-- role --&gt;
+&lt;div role="button" tabindex="0" aria-pressed="false"&gt;Buton&lt;/div&gt;
+&lt;nav role="navigation" aria-label="Ana Menü"&gt;...&lt;/nav&gt;
+&lt;div role="alert" aria-live="polite"&gt;Hata mesajı&lt;/div&gt;
+
+&lt;!-- aria-label vs aria-labelledby --&gt;
+&lt;button aria-label="Menüyü kapat"&gt;✕&lt;/button&gt;
+&lt;section aria-labelledby="baslik"&gt;
+  &lt;h2 id="baslik"&gt;Bölüm Başlığı&lt;/h2&gt;
+&lt;/section&gt;
+
+&lt;!-- aria-describedby --&gt;
+&lt;input aria-describedby="sifre-hint"&gt;
+&lt;p id="sifre-hint"&gt;En az 8 karakter, büyük harf, rakam içermeli&lt;/p&gt;
+
+&lt;!-- aria-expanded, aria-controls --&gt;
+&lt;button aria-expanded="false" aria-controls="menu"&gt;Menü&lt;/button&gt;
+&lt;ul id="menu" hidden&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;
+
+&lt;!-- aria-hidden --&gt;
+&lt;span aria-hidden="true"&gt;🔍&lt;/span&gt; &lt;!-- Dekoratif ikon --&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸22 -->
+      <section class="konu-section" id="s22" data-konu-id="s22">
+        <h2 class="konu-title"><span class="konu-num">▸22</span> Meta SEO — Open Graph, Twitter Card, JSON-LD</h2>
+        <div class="code-block"><div class="code-header"><span>Kapsamlı SEO Meta Etiketleri</span></div>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;!-- Temel SEO --&gt;
+  &lt;title&gt;Sayfa Başlığı | Site Adı&lt;/title&gt;
+  &lt;meta name="description" content="150-160 karakter açıklama"&gt;
+  &lt;link rel="canonical" href="https://example.com/sayfa"&gt;
+  &lt;meta name="robots" content="index, follow"&gt;
+
+  &lt;!-- Open Graph (Facebook, LinkedIn, WhatsApp) --&gt;
+  &lt;meta property="og:type" content="article"&gt;
+  &lt;meta property="og:title" content="Paylaşım Başlığı"&gt;
+  &lt;meta property="og:description" content="Paylaşım açıklaması"&gt;
+  &lt;meta property="og:image" content="https://example.com/og.jpg"&gt;
+  &lt;meta property="og:url" content="https://example.com/sayfa"&gt;
+  &lt;meta property="og:site_name" content="Site Adı"&gt;
+
+  &lt;!-- Twitter/X Card --&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
+  &lt;meta name="twitter:title" content="Başlık"&gt;
+  &lt;meta name="twitter:description" content="Açıklama"&gt;
+  &lt;meta name="twitter:image" content="https://example.com/twitter.jpg"&gt;
+
+  &lt;!-- JSON-LD Structured Data --&gt;
+  &lt;script type="application/ld+json"&gt;
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Makale Başlığı",
+    "author": {"@type": "Person", "name": "Yazar Adı"},
+    "datePublished": "2025-01-15"
+  }
+  &lt;/script&gt;
+&lt;/head&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸23 -->
+      <section class="konu-section" id="s23" data-konu-id="s23">
+        <h2 class="konu-title"><span class="konu-num">▸23</span> Deprecated Etiketler — Artık Kullanılmayanlar</h2>
+        <div class="code-block"><div class="code-header"><span>Kaldırılan HTML Etiketleri</span></div>
+<pre><code class="language-html">&lt;!-- ❌ KULLANMA — Tümü HTML5'te kaldırıldı --&gt;
+
+&lt;font face="Arial" color="red" size="3"&gt;          → CSS kullan
+&lt;center&gt;Ortalanmış içerik&lt;/center&gt;               → CSS kullan
+&lt;b&gt;kalın&lt;/b&gt;, &lt;i&gt;italik&lt;/i&gt;                     → &lt;strong&gt;, &lt;em&gt; kullan
+&lt;marquee&gt;Kayan metin&lt;/marquee&gt;                   → CSS animation kullan
+&lt;blink&gt;Yanıp sönen&lt;/blink&gt;                       → CSS kullan
+&lt;frame&gt;, &lt;frameset&gt;, &lt;noframes&gt;                  → &lt;iframe&gt; + CSS kullan
+&lt;applet&gt;                                          → Tamamen kaldırıldı
+&lt;acronym&gt;                                         → &lt;abbr&gt; kullan
+&lt;strike&gt;                                          → &lt;del&gt; veya &lt;s&gt; kullan
+&lt;tt&gt;                                              → &lt;code&gt; kullan
+&lt;big&gt;                                             → CSS font-size kullan</code></pre></div>
+      </section>
+
+      <!-- ▸24 -->
+      <section class="konu-section" id="s24" data-konu-id="s24">
+        <h2 class="konu-title"><span class="konu-num">▸24</span> Güvenlik Açıklı Etiketler</h2>
+        <div class="callout callout-security"><strong>🛡️ XSS: Cross-Site Scripting</strong><p>Kullanıcı girdisini doğrudan HTML'e ekleme! Her zaman encode et veya DOMPurify kullan.</p></div>
+        <div class="code-block"><div class="code-header"><span>Güvenlik Açıkları ve Çözümleri</span></div>
+<pre><code class="language-html">&lt;!-- ❌ XSS açığı --&gt;
+&lt;p id="msg"&gt;&lt;/p&gt;
+&lt;script&gt;
+  const userInput = location.search; // ?name=&lt;script&gt;alert(1)&lt;/script&gt;
+  document.getElementById('msg').innerHTML = userInput; // TEHLİKELİ!
+&lt;/script&gt;
+
+&lt;!-- ✅ Güvenli --&gt;
+&lt;script&gt;
+  document.getElementById('msg').textContent = userInput; // textContent kullan
+&lt;/script&gt;
+
+&lt;!-- ❌ Tehlikeli iframe (sandbox yok) --&gt;
+&lt;iframe src="https://guvenilmez.com"&gt;&lt;/iframe&gt;
+
+&lt;!-- ✅ Sandbox ile iframe --&gt;
+&lt;iframe src="https://guvenilmez.com"
+  sandbox="allow-scripts"
+  referrerpolicy="no-referrer"&gt;&lt;/iframe&gt;
+
+&lt;!-- CSP header ile script injection engelle --&gt;
+&lt;meta http-equiv="Content-Security-Policy"
+  content="default-src 'self'; script-src 'self'"&gt;</code></pre></div>
+      </section>
+
+      <!-- ▸25 -->
+      <section class="konu-section" id="s25" data-konu-id="s25">
+        <h2 class="konu-title"><span class="konu-num">▸25</span> HTML Referans Özeti</h2>
+        <div class="code-block"><div class="code-header"><span>Kategorilere Göre HTML Etiketleri</span></div>
+<pre><code>BELGE YAPISI:    html, head, body, title, base, link, meta, style, script
+SEMANTİK:        header, nav, main, section, article, aside, footer, address
+BAŞLIKLAR:       h1, h2, h3, h4, h5, h6
+METİN BLOKLARı: p, blockquote, pre, hr, div
+INLINE METİN:    span, a, strong, em, b, i, u, s, mark, small, del, ins
+                 sub, sup, abbr, cite, code, kbd, samp, var, time, q, wbr
+LİSTELER:       ul, ol, li, dl, dt, dd, menu
+TABLOLAR:       table, caption, colgroup, col, thead, tbody, tfoot, tr, th, td
+FORMLAR:        form, fieldset, legend, label, input, textarea, select, option
+                optgroup, button, datalist, output, meter, progress
+GÖRSELLER:      img, figure, figcaption, picture, source
+MEDYA:          video, audio, track
+GÖMME:          iframe, embed, object, param
+GRAFİK:         canvas, svg, (içindekiler: rect, circle, path, text, g...)
+ETKİLEŞİM:     details, summary, dialog
+SCRİPT:         script, noscript, template, slot</code></pre></div>
+      </section>
+
+      <!-- ▸26 Pratik Görevler -->
+      <section class="konu-section" id="s26" data-konu-id="s26">
+        <h2 class="konu-title"><span class="konu-num">▸26</span> Pratik Görevler</h2>
+        <p>Bu bölümde öğrendiklerini pekiştirmek için aşağıdaki görevleri tamamla:</p>
+
+        <div class="task-list">
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b2_t01" class="task-checkbox">
+              <span class="task-text">Bir ürün sayfası için semantik yapı kur: <code class="inline-code">header</code>, <code class="inline-code">main</code>, <code class="inline-code">article</code>, <code class="inline-code">aside</code>, <code class="inline-code">footer</code></span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b2_t02" class="task-checkbox">
+              <span class="task-text"><code class="inline-code">&lt;figure&gt;</code> ve <code class="inline-code">&lt;figcaption&gt;</code> kullanarak altyazılı bir galeri oluştur</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b2_t03" class="task-checkbox">
+              <span class="task-text">Kayıt formu yaz: <code class="inline-code">fieldset</code>, <code class="inline-code">legend</code>, farklı input tipleri ve <code class="inline-code">label</code> ile doğru erişilebilirlik</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b2_t04" class="task-checkbox">
+              <span class="task-text">Karşılaştırma tablosu oluştur: <code class="inline-code">thead</code>, <code class="inline-code">tbody</code>, <code class="inline-code">tfoot</code>, <code class="inline-code">scope</code> ve <code class="inline-code">caption</code> kullan</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b2_t05" class="task-checkbox">
+              <span class="task-text"><code class="inline-code">&lt;details&gt;</code> ve <code class="inline-code">&lt;summary&gt;</code> ile bir SSS (FAQ) bölümü hazırla</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b2_t06" class="task-checkbox">
+              <span class="task-text">ARIA rolleri ve <code class="inline-code">aria-label</code> ekleyerek bir navigasyon menüsünü erişilebilir hale getir</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUIZ -->
+      <section class="quiz-section" id="quiz">
+        <div class="quiz-header">
+          <h2 class="quiz-title">📝 Bölüm 2 Quizi</h2>
+          <p class="quiz-sub">12 soru · %70 geçme eşiği</p>
+        </div>
+
+        <div class="quiz-question" data-question-id="b2_q01">
+          <div class="question-text">1. &lt;section&gt; ile &lt;div&gt; arasındaki temel fark nedir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) div daha hızlıdır</div>
+            <div class="quiz-option" data-answer="b">b) section anlamsal anlam taşır, konuyla ilgili içerik gruplar</div>
+            <div class="quiz-option" data-answer="c">c) section CSS stili uygulanamaz</div>
+            <div class="quiz-option" data-answer="d">d) Fark yoktur, biri HTML4 diğeri HTML5</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ B</strong> — section tematik içerik gruplamak için semantik anlam taşır; genellikle bir başlık içerir. div ise sadece stil/layout amaçlı genel konteynerdir.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b2_q02">
+          <div class="question-text">2. input type="hidden" hakkında hangi ifade doğrudur?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Şifreler için idealdir</div>
+            <div class="quiz-option" data-answer="b">b) Tamamen güvenlidir, kimse göremez</div>
+            <div class="quiz-option" data-answer="c">c) Kaynak kodda görünür, gizli değildir</div>
+            <div class="quiz-option" data-answer="d">d) JavaScript ile erişilemez</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ C</strong> — type="hidden" alanlar ekranda görünmez ama kaynak kodda herkese açıktır. Asıl doğrulama sunucu tarafında yapılmalı.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b2_q03">
+          <div class="question-text">3. &lt;label for="email"&gt; kullanımının önemi nedir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Etikete tıklanınca ilgili input'a odaklanılır; erişilebilirliği artırır</div>
+            <div class="quiz-option" data-answer="b">b) Yalnızca görsel düzen içindir</div>
+            <div class="quiz-option" data-answer="c">c) E-posta validasyonu sağlar</div>
+            <div class="quiz-option" data-answer="d">d) for özelliği gereksizdir, yakın label otomatik bağlanır</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ A</strong> — for="id" ile etiket input'a bağlanır. Bu erişilebilirlik (screen reader) ve kullanılabilirlik için kritiktir.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b2_q04">
+          <div class="question-text">4. Hangi script yükleme stratejisi en iyi performansı verir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) &lt;script src="..." &gt; (head'de)</div>
+            <div class="quiz-option" data-answer="b">b) &lt;script src="..." async&gt;</div>
+            <div class="quiz-option" data-answer="c">c) &lt;script src="..." &gt; (body sonunda)</div>
+            <div class="quiz-option" data-answer="d">d) &lt;script src="..." defer&gt; (head'de)</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ D</strong> — defer, HTML parse'ı durdurmaz, dosyayı arka planda indirir, HTML bittikten sonra sıralı çalıştırır. Çoğu durum için idealdir.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b2_q05">
+          <div class="question-text">5. srcset özelliği ne için kullanılır?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Birden fazla görsel aynı anda yüklenir</div>
+            <div class="quiz-option" data-answer="b">b) Tarayıcıya farklı çözünürlükler/boyutlar için alternatif görsel sunar</div>
+            <div class="quiz-option" data-answer="c">c) CSS sprite sistemi oluşturur</div>
+            <div class="quiz-option" data-answer="d">d) SVG dosyalarını optimize eder</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ B</strong> — srcset, tarayıcının ekran boyutu ve DPI'a göre en uygun görseli seçmesini sağlar. Bant genişliği tasarrufu ve performans sağlar.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b2_q06">
+          <div class="question-text">6. innerHTML kullanımının tehlikesi nedir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Daha yavaş çalışır</div>
+            <div class="quiz-option" data-answer="b">b) Yalnızca metin destekler</div>
+            <div class="quiz-option" data-answer="c">c) Kullanıcı girdisi içeriyorsa XSS saldırısına yol açabilir</div>
+            <div class="quiz-option" data-answer="d">d) Safari'de çalışmaz</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ C</strong> — Kullanıcıdan gelen veri innerHTML ile eklenmişse, saldırgan &lt;script&gt; etiketleri enjekte edebilir. textContent veya DOMPurify kullanın.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b2_q07">
+          <div class="question-text">7. &lt;dialog&gt; elementinin avantajı nedir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Native erişilebilirlik, focus yönetimi ve Escape tuşu desteği sağlar</div>
+            <div class="quiz-option" data-answer="b">b) Otomatik animasyon ekler</div>
+            <div class="quiz-option" data-answer="c">c) CSS gerektirmez</div>
+            <div class="quiz-option" data-answer="d">d) Backend iletişimi otomatikleştirir</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ A</strong> — &lt;dialog&gt; native focus tuzağı, Escape ile kapatma ve ARIA role="dialog" desteği gibi erişilebilirlik özelliklerini otomatik sağlar.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b2_q08">
+          <div class="question-text">8. data-* özelliği ne için kullanılır?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Veri tabanı bağlantısı için</div>
+            <div class="quiz-option" data-answer="b">b) HTML elemanlara özel veri saklamak için</div>
+            <div class="quiz-option" data-answer="c">c) CSS animasyon tetiklemek için</div>
+            <div class="quiz-option" data-answer="d">d) Form doğrulama için</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ B</strong> — data-* özelliği, standart HTML özelliği olmayan özel verileri elemana eklemek için kullanılır. JavaScript'te dataset ile erişilir.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b2_q09">
+          <div class="question-text">9. iframe'de sandbox özelliği ne sağlar?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) İçeriği hızlandırır</div>
+            <div class="quiz-option" data-answer="b">b) İçeriği gizler</div>
+            <div class="quiz-option" data-answer="c">c) İçeriğin yeteneklerini kısıtlayarak güvenliği artırır</div>
+            <div class="quiz-option" data-answer="d">d) Çapraz origin isteği açar</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ C</strong> — sandbox, iframe içeriğinin JavaScript çalıştırma, form submit, cookie erişimi gibi yeteneklerini açıkça izin verilenlerle sınırlar.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b2_q10">
+          <div class="question-text">10. Open Graph meta etiketleri hangi platformları etkiler?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Yalnızca Google</div>
+            <div class="quiz-option" data-answer="b">b) Yalnızca Twitter</div>
+            <div class="quiz-option" data-answer="c">c) Yalnızca Facebook</div>
+            <div class="quiz-option" data-answer="d">d) Facebook, LinkedIn, WhatsApp ve diğer sosyal medya platformları</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ D</strong> — og: meta etiketleri, sosyal medya platformlarının link önizlemesi oluştururken kullandığı standarttır. Facebook, LinkedIn, WhatsApp, Discord gibi platformlar destekler.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b2_q11">
+          <div class="question-text">11. Canvas ve SVG arasındaki temel fark nedir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Canvas piksel tabanlıdır (raster), SVG vektör tabanlıdır (scalable)</div>
+            <div class="quiz-option" data-answer="b">b) SVG yalnızca IE'de çalışır</div>
+            <div class="quiz-option" data-answer="c">c) Canvas animasyon desteklemez</div>
+            <div class="quiz-option" data-answer="d">d) SVG daha az dosya boyutu alır her zaman</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ A</strong> — Canvas piksel bazlı (büyütünce pikseller bozulur), SVG XML tabanlı vektördür (her boyuta skalenir). Canvas oyun/grafik, SVG ikon/logo için idealdir.</div>
+        </div>
+
+        <div class="quiz-question" data-question-id="b2_q12">
+          <div class="question-text">12. &lt;video&gt; etiketinde birden fazla &lt;source&gt; kullanmanın amacı nedir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Aynı anda birden fazla video oynatmak</div>
+            <div class="quiz-option" data-answer="b">b) Tarayıcı desteklemediği formatı atlayıp desteklediğini seçebilir (fallback)</div>
+            <div class="quiz-option" data-answer="c">c) Video hızını artırmak</div>
+            <div class="quiz-option" data-answer="d">d) Altyazı eklemek</div>
+          </div>
+          <div class="answer-explanation hidden"><strong>✓ B</strong> — Farklı tarayıcılar farklı video formatlarını destekler (webm, mp4, ogg). Birden fazla source, tarayıcının desteklediği ilk formatı seçmesini sağlar.</div>
+        </div>
+
+        <div class="quiz-actions">
+          <button class="btn btn-primary" id="quizSubmit">Sonucu Gör →</button>
+          <button class="btn btn-secondary" id="quizRetry" style="display:none">↺ Tekrar Dene</button>
+        </div>
+      </section>
+
+      <!-- Alt Navigasyon -->
+      <nav class="bolum-nav">
+        <a href="/bolum/01-web-html-temelleri.html" class="btn btn-ghost">← Bölüm 1'e Dön</a>
+        <a href="/bolum/03-profesyonel-html.html" class="btn btn-primary" data-next-bolum disabled title="Quiz'i tamamla">Bölüm 3 →</a>
+      </nav>
+    </div>
+  </main>
+</div>
+
+<script src="/js/theme.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/bolum.js"></script>
+</body>
+</html>

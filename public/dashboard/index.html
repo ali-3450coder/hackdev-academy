@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | HackDev Academy</title>
+  <meta name="author" content="Muhammed Ali">
+  <meta name="copyright" content="© 2025 Muhammed Ali. Tüm hakları saklıdır.">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <script>
+    (function(){var t=localStorage.getItem('hackdev_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+</head>
+<body>
+
+<div class="dashboard-layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Ana navigasyon">
+    <div class="sidebar-logo">
+      <div class="logo-text">
+        <div class="logo-dot"></div>
+        <span>HackDev</span>
+      </div>
+    </div>
+
+    <div class="sidebar-user">
+      <img class="user-avatar" data-user-avatar src="" alt="Kullanıcı avatarı" width="44" height="44">
+      <div class="user-info-text">
+        <div class="user-name" data-user-name>Yükleniyor...</div>
+        <div class="user-role" id="userRole">Öğrenci</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-section-label">Genel</span>
+      <a href="#" class="nav-item active" aria-current="page">
+        <span class="nav-icon" aria-hidden="true">🏠</span>
+        Dashboard
+      </a>
+      <a href="/bolum/01-web-html-temelleri.html" class="nav-item">
+        <span class="nav-icon" aria-hidden="true">📖</span>
+        Bölüm 1
+      </a>
+      <a href="/bolum/02-html-etiketleri.html" class="nav-item">
+        <span class="nav-icon" aria-hidden="true">📖</span>
+        Bölüm 2
+      </a>
+      <a href="/bolum/03-profesyonel-html.html" class="nav-item">
+        <span class="nav-icon" aria-hidden="true">📖</span>
+        Bölüm 3
+      </a>
+
+      <span class="nav-section-label">Hesap</span>
+      <a href="#profile" class="nav-item">
+        <span class="nav-icon" aria-hidden="true">👤</span>
+        Profil
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" data-logout aria-label="Çıkış yap">
+        <span aria-hidden="true">🚪</span> Çıkış Yap
+      </button>
+    </div>
+  </aside>
+
+  <!-- ANA İÇERİK -->
+  <div class="main-content">
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="sidebar">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="topbar-title">Dashboard</div>
+      <div class="topbar-actions">
+        <button class="theme-toggle" data-theme-toggle title="Temayı değiştir" aria-label="Temayı değiştir">🌙</button>
+      </div>
+    </header>
+
+    <!-- İçerik Alanı -->
+    <main class="content-area" id="main">
+
+      <!-- Hoş Geldin Kartı -->
+      <div class="welcome-card card fade-in">
+        <div class="welcome-left">
+          <div class="welcome-greeting">Hoş geldin,</div>
+          <div class="welcome-name">
+            <span>Merhaba, </span><span id="greetingName">...</span><span>! 👋</span>
+          </div>
+          <div id="currentDate" class="welcome-date"></div>
+        </div>
+        <div class="welcome-right">
+          <div class="overall-progress">
+            <div class="overall-percent" id="overallPercent">0%</div>
+            <div class="overall-label">genel ilerleme</div>
+            <div class="progress-bar" style="width:180px; margin-top:8px">
+              <div class="progress-fill" id="overallBar" style="width:0%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- İstatistik Kartları -->
+      <div class="stat-cards">
+        <div class="stat-card card">
+          <div class="stat-value" id="completedTopics">0</div>
+          <div class="stat-label">Tamamlanan Konu</div>
+        </div>
+        <div class="stat-card card">
+          <div class="stat-value" id="totalTime">0dk</div>
+          <div class="stat-label">Öğrenme Süresi</div>
+        </div>
+        <div class="stat-card card">
+          <div class="stat-value" id="quizAvg">0%</div>
+          <div class="stat-label">Quiz Başarısı</div>
+        </div>
+      </div>
+
+      <!-- Bölüm Kartları -->
+      <div class="section-header">
+        <h2 class="section-title">Bölümler</h2>
+      </div>
+
+      <div class="bolum-cards">
+        <!-- Bölüm 1 -->
+        <div class="bolum-card card card-hover" id="bolumCard1">
+          <div class="lock-overlay" style="display:none" aria-hidden="true">🔒</div>
+          <div class="bolum-number">BÖLÜM 01</div>
+          <div class="bolum-title">Web &amp; HTML Temelleri</div>
+          <div class="bolum-desc">İnternetin nasıl çalıştığı, HTTP protokolü, HTML yapısı ve temel etiketler.</div>
+          <div class="bolum-progress-info">
+            <span><span class="done-count">0</span>/21 konu</span>
+            <span class="bolum-pct">0%</span>
+          </div>
+          <div class="progress-bar" style="margin: 8px 0">
+            <div class="progress-fill" style="width:0%"></div>
+          </div>
+          <div class="bolum-quiz-info">
+            <span class="bolum-quiz-score">Quiz bekleniyor</span>
+          </div>
+          <div class="bolum-card-action">
+            <button class="btn btn-primary btn-sm bolum-action-btn">→ Başla</button>
+          </div>
+        </div>
+
+        <!-- Bölüm 2 -->
+        <div class="bolum-card card card-hover" id="bolumCard2">
+          <div class="lock-overlay" style="display:none" aria-hidden="true">🔒</div>
+          <div class="bolum-number">BÖLÜM 02</div>
+          <div class="bolum-title">HTML'deki Tüm Etiketler</div>
+          <div class="bolum-desc">Metadata'dan medyaya, formlardan ARIA'ya tüm HTML etiketleri derinlemesine.</div>
+          <div class="bolum-progress-info">
+            <span><span class="done-count">0</span>/26 konu</span>
+            <span class="bolum-pct">0%</span>
+          </div>
+          <div class="progress-bar" style="margin: 8px 0">
+            <div class="progress-fill" style="width:0%"></div>
+          </div>
+          <div class="bolum-quiz-info">
+            <span class="bolum-quiz-score">Quiz bekleniyor</span>
+          </div>
+          <div class="bolum-card-action">
+            <button class="btn btn-primary btn-sm bolum-action-btn">→ Başla</button>
+          </div>
+        </div>
+
+        <!-- Bölüm 3 -->
+        <div class="bolum-card card card-hover" id="bolumCard3">
+          <div class="lock-overlay" style="display:none" aria-hidden="true">🔒</div>
+          <div class="bolum-number">BÖLÜM 03</div>
+          <div class="bolum-title">Profesyonel HTML</div>
+          <div class="bolum-desc">SEO, Open Graph, erişilebilirlik, performans optimizasyonu ve portfolyo projesi.</div>
+          <div class="bolum-progress-info">
+            <span><span class="done-count">0</span>/21 konu</span>
+            <span class="bolum-pct">0%</span>
+          </div>
+          <div class="progress-bar" style="margin: 8px 0">
+            <div class="progress-fill" style="width:0%"></div>
+          </div>
+          <div class="bolum-quiz-info">
+            <span class="bolum-quiz-score">Quiz bekleniyor</span>
+          </div>
+          <div class="bolum-card-action">
+            <button class="btn btn-primary btn-sm bolum-action-btn">→ Başla</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Son Aktiviteler -->
+      <div class="section-header" style="margin-top:40px">
+        <h2 class="section-title">Son Aktiviteler</h2>
+        <span class="badge badge-neutral">Son 10</span>
+      </div>
+      <div class="activity-list card" id="activityList" aria-live="polite">
+        <div class="activity-empty" aria-label="Yükleniyor">Yükleniyor...</div>
+      </div>
+
+      <!-- Profil Bölümü -->
+      <div id="profile" style="margin-top:56px; scroll-margin-top:80px;">
+        <div class="section-header">
+          <h2 class="section-title">Profil Ayarları</h2>
+        </div>
+
+        <div class="profile-section card">
+          <h3 class="profile-section-title">Ad Soyad Güncelle</h3>
+          <div id="profileFeedback" class="alert hidden" role="alert" aria-live="polite"></div>
+          <form id="fullNameForm" novalidate>
+            <div class="profile-fields">
+              <div class="form-group">
+                <label class="form-label" for="profileFullName">Ad Soyad</label>
+                <input type="text" id="profileFullName" class="form-input" placeholder="Adınız Soyadınız" minlength="2" maxlength="100">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top:12px">Güncelle</button>
+          </form>
+        </div>
+
+        <div class="profile-section card" style="margin-top:20px">
+          <h3 class="profile-section-title">Şifre Değiştir</h3>
+          <div id="passwordFeedback" class="alert hidden" role="alert" aria-live="polite"></div>
+          <form id="passwordForm" novalidate>
+            <div class="profile-fields">
+              <div class="form-group">
+                <label class="form-label" for="currentPassword">Mevcut Şifre</label>
+                <input type="password" id="currentPassword" class="form-input" autocomplete="current-password">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="newPassword">Yeni Şifre</label>
+                <input type="password" id="newPassword" class="form-input" autocomplete="new-password">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="newPassword2">Yeni Şifre Tekrar</label>
+                <input type="password" id="newPassword2" class="form-input" autocomplete="new-password">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top:12px">Şifreyi Değiştir</button>
+          </form>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="/js/theme.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>

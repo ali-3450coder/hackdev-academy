@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HackDev Academy — Web'i Hacker Gibi Öğren</title>
+  <meta name="description" content="Güvenlik perspektifli, profesyonel Full Stack Developer eğitimi. HTML, CSS ve JavaScript'i derinlemesine öğren.">
+  <meta name="author" content="Muhammed Ali">
+  <meta name="copyright" content="© 2025 Muhammed Ali. Tüm hakları saklıdır.">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/landing.css">
+  <script>
+    // Tema flash önleme
+    (function(){var t=localStorage.getItem('hackdev_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+  <style>
+  /* Landing page ek stiller */
+  .landing-nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(8,12,18,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  [data-theme="light"] .landing-nav {
+    background: rgba(244,247,252,0.85);
+  }
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--acid);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .nav-logo svg { width: 24px; height: 24px; }
+  .nav-actions { display: flex; align-items: center; gap: 12px; }
+
+  /* Hero */
+  .hero {
+    min-height: calc(100vh - 64px);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, var(--acid-dim), transparent);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; max-width: 760px; }
+  .hero-badge {
+    display: inline-block;
+    padding: 5px 16px;
+    background: var(--acid-dim);
+    border: 1px solid var(--acid);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--acid);
+    margin-bottom: 28px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--acid);
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text2);
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto 40px;
+  }
+  .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
+  .hero-stats {
+    display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+    padding-top: 40px; border-top: 1px solid var(--border);
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-num { font-family: var(--font-mono); font-size: 1.8rem; font-weight: 700; color: var(--acid); }
+  .hero-stat-label { font-size: 0.85rem; color: var(--text2); }
+
+  /* Terminal decoration */
+  .hero-terminal {
+    display: inline-block;
+    margin-top: 40px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px 28px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    text-align: left;
+    position: relative;
+  }
+  .terminal-bar {
+    display: flex; gap: 6px; margin-bottom: 12px;
+  }
+  .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .terminal-dot:nth-child(1) { background: #ff5f57; }
+  .terminal-dot:nth-child(2) { background: #ffbd2e; }
+  .terminal-dot:nth-child(3) { background: #28c840; }
+  .terminal-line { line-height: 1.8; }
+  .t-tag { color: var(--glow); }
+  .t-attr { color: var(--warn); }
+  .t-val { color: var(--success); }
+  .t-cmt { color: var(--text3); }
+  .t-cursor { display: inline-block; width: 8px; height: 14px; background: var(--acid); animation: blink 1s step-end infinite; vertical-align: middle; }
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+
+  /* Section ortak */
+  .section { padding: 100px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-label { font-family: var(--font-mono); font-size: 0.78rem; color: var(--acid); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+  .section-title { font-family: var(--font-serif); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 400; color: var(--text); margin-bottom: 16px; }
+  .section-sub { font-size: 1rem; color: var(--text2); line-height: 1.7; max-width: 560px; }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* Features */
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 60px; }
+  .feature-card {
+    background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px;
+    transition: all var(--transition);
+  }
+  .feature-card:hover { border-color: var(--acid); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .feature-icon { font-size: 2rem; margin-bottom: 16px; }
+  .feature-title { font-family: var(--font-mono); font-size: 1rem; color: var(--text); margin-bottom: 10px; font-weight: 500; }
+  .feature-desc { font-size: 0.9rem; color: var(--text2); line-height: 1.6; }
+
+  /* Curriculum */
+  .curriculum-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 60px; }
+  .curriculum-card {
+    background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px;
+    position: relative; overflow: hidden; transition: all var(--transition);
+  }
+  .curriculum-card:hover { border-color: var(--acid); transform: translateY(-4px); }
+  .curriculum-card::before {
+    content: attr(data-num);
+    position: absolute; top: -10px; right: 20px;
+    font-family: var(--font-serif); font-size: 5rem; font-weight: 700;
+    color: var(--border); line-height: 1; pointer-events: none;
+  }
+  .curriculum-num { font-family: var(--font-mono); font-size: 0.75rem; color: var(--acid); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .curriculum-title { font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: 12px; }
+  .curriculum-desc { font-size: 0.88rem; color: var(--text2); line-height: 1.6; margin-bottom: 16px; }
+  .curriculum-meta { display: flex; gap: 16px; }
+  .curriculum-meta span { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text3); }
+
+  /* CTA */
+  .cta-section {
+    background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    text-align: center; padding: 100px 40px;
+  }
+  .cta-section h2 { font-family: var(--font-serif); font-size: 2rem; color: var(--text); margin-bottom: 16px; }
+  .cta-section p { color: var(--text2); margin-bottom: 40px; }
+
+  /* Footer */
+  footer {
+    background: var(--bg2); border-top: 1px solid var(--border);
+    padding: 40px; text-align: center;
+    font-size: 0.85rem; color: var(--text3); font-family: var(--font-mono);
+  }
+  footer a { color: var(--acid); }
+
+  @media (max-width: 768px) {
+    .landing-nav { padding: 0 20px; }
+    .hero { padding: 60px 20px; }
+    .hero-terminal { display: none; }
+    .section { padding: 60px 20px; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- NAVİGASYON -->
+<nav class="landing-nav">
+  <div class="nav-logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z"/>
+    </svg>
+    HackDev Academy
+  </div>
+  <div class="nav-actions">
+    <button class="theme-toggle" data-theme-toggle title="Temayı değiştir">🌙</button>
+    <a href="/auth/login.html" class="btn btn-ghost btn-sm">Giriş Yap</a>
+    <a href="/auth/register.html" class="btn btn-primary btn-sm">Ücretsiz Başla</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🔐 Güvenlik Perspektifli Eğitim</div>
+    <h1>Web'i ve HTML'i<br><em>Hacker Gibi</em> Öğren</h1>
+    <p class="hero-sub">
+      Sektördeki en kapsamlı HTML ve web temelleri eğitimi.
+      3 bölüm, 66+ konu, interaktif quizler ve güvenlik perspektifi ile
+      profesyonel geliştirici ol.
+    </p>
+    <div class="hero-cta">
+      <a href="/auth/register.html" class="btn btn-primary btn-lg">🚀 Ücretsiz Başla</a>
+      <a href="#features" class="btn btn-secondary btn-lg">Müfredatı Gör</a>
+    </div>
+
+    <!-- Terminal -->
+    <div class="hero-terminal">
+      <div class="terminal-bar">
+        <div class="terminal-dot"></div>
+        <div class="terminal-dot"></div>
+        <div class="terminal-dot"></div>
+      </div>
+      <div class="terminal-line"><span class="t-tag">&lt;!DOCTYPE</span> <span class="t-attr">html</span><span class="t-tag">&gt;</span></div>
+      <div class="terminal-line"><span class="t-tag">&lt;html</span> <span class="t-attr">lang</span>=<span class="t-val">"tr"</span><span class="t-tag">&gt;</span></div>
+      <div class="terminal-line">&nbsp;&nbsp;<span class="t-tag">&lt;head&gt;</span></div>
+      <div class="terminal-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-tag">&lt;meta</span> <span class="t-attr">charset</span>=<span class="t-val">"UTF-8"</span><span class="t-tag">&gt;</span></div>
+      <div class="terminal-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-cmt">&lt;!-- Öğrenmeye hazır mısın? --&gt;</span></div>
+      <div class="terminal-line">&nbsp;&nbsp;<span class="t-tag">&lt;/head&gt;</span></div>
+      <div class="terminal-line"><span class="t-cursor"></span></div>
+    </div>
+
+    <div class="hero-stats" style="margin-top:60px;">
+      <div class="hero-stat"><div class="hero-stat-num">66+</div><div class="hero-stat-label">Konu</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Bölüm</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">30+</div><div class="hero-stat-label">Quiz Sorusu</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">%100</div><div class="hero-stat-label">Ücretsiz</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ÖZELLİKLER -->
+<section id="features">
+  <div class="section">
+    <div class="section-label">Neden HackDev?</div>
+    <h2 class="section-title">Güvenlik Perspektifli<br>Modern Web Eğitimi</h2>
+    <p class="section-sub">Her konuyu sadece "nasıl kullanılır" değil, "nasıl kötüye kullanılır ve nasıl korunulur" sorusuyla işliyoruz.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <div class="feature-title">Güvenlik Perspektifi</div>
+        <div class="feature-desc">XSS, CSRF, iframe injection gibi gerçek saldırı vektörlerini öğrenerek savunmayı anlayın. Her HTML konusunda güvenlik notları.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <div class="feature-title">Akıllı İlerleme Takibi</div>
+        <div class="feature-desc">Konu bazlı ilerleme, süre takibi ve quiz skorları ile tam olarak nerede olduğunuzu bilin. Dashboard ile her şey görünür.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">İnteraktif Quizler</div>
+        <div class="feature-desc">Her bölümde gerçek senaryo sorularıyla kendinizi test edin. %70 başarı eşiği ile bir sonraki bölüme geçin.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💻</div>
+        <div class="feature-title">Gerçek Kod Örnekleri</div>
+        <div class="feature-desc">Syntax-highlighted, çalışan kod örnekleri. Do/Don't karşılaştırmaları ile doğru alışkanlıkları kazanın.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Pratik Görevler</div>
+        <div class="feature-desc">Her bölümde uygulamalı görevler. Öğrendiklerinizi hemen pratiğe dökün ve checklist ile takip edin.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌙</div>
+        <div class="feature-title">Dark / Light Tema</div>
+        <div class="feature-desc">Uzun okuma seansları için göz dostu dark tema, güneşli saatler için light tema. Tercihinizi seçin.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- MÜFREDAT -->
+<section id="curriculum">
+  <div class="section">
+    <div class="section-label">Müfredat</div>
+    <h2 class="section-title">3 Bölüm,<br>Sıfırdan Uzmana</h2>
+    <p class="section-sub">Temellerden başlayıp profesyonel uygulamalara ilerleyen, kapsamlı bir öğrenme yolculuğu.</p>
+
+    <div class="curriculum-grid">
+      <div class="curriculum-card" data-num="01">
+        <div class="curriculum-num">Bölüm 01</div>
+        <div class="curriculum-title">Web &amp; HTML Temelleri</div>
+        <div class="curriculum-desc">İnternetin nasıl çalıştığı, HTTP protokolü, URL yapısı, HTML belgesi anatomisi ve temel etiketler. Web geliştirmenin sağlam temelleri.</div>
+        <div class="curriculum-meta">
+          <span>📖 21 Konu</span>
+          <span>📝 10 Quiz Sorusu</span>
+        </div>
+      </div>
+      <div class="curriculum-card" data-num="02">
+        <div class="curriculum-num">Bölüm 02</div>
+        <div class="curriculum-title">HTML'deki Tüm Etiketler</div>
+        <div class="curriculum-desc">Metadata'dan medyaya, formlardan tablolamaya, ARIA'dan deprecated etiketlere. HTML spesifikasyonunun tam kapsamlı incelemesi.</div>
+        <div class="curriculum-meta">
+          <span>📖 26 Konu</span>
+          <span>📝 12 Quiz Sorusu</span>
+        </div>
+      </div>
+      <div class="curriculum-card" data-num="03">
+        <div class="curriculum-num">Bölüm 03</div>
+        <div class="curriculum-title">Profesyonel HTML</div>
+        <div class="curriculum-desc">SEO, Open Graph, erişilebilirlik, performans, CSP güvenliği. Gerçek bir portfolyo projesiyle tüm öğrendiklerinizi bir araya getirin.</div>
+        <div class="curriculum-meta">
+          <span>📖 21 Konu</span>
+          <span>📝 12 Quiz Sorusu</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Hemen Başla — Ücretsiz</h2>
+  <p>Hesap oluştur, dakikalar içinde ilk dersini al. Kredi kartı gerekmez.</p>
+  <a href="/auth/register.html" class="btn btn-primary btn-lg">🚀 Hesap Oluştur</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <strong style="color:var(--text2)">Muhammed Ali</strong> — HackDev Academy. Tüm hakları saklıdır.</p>
+  <p style="margin-top:8px"><a href="/auth/login.html">Giriş Yap</a> · <a href="/auth/register.html">Kayıt Ol</a></p>
+</footer>
+
+<script src="/js/theme.js"></script>
+<script src="/js/api.js"></script>
+<script>
+// Oturum açıksa dashboard'a yönlendir
+(async function() {
+  try {
+    const res = await fetch('/api/auth/refresh', { method: 'POST', credentials: 'include' });
+    if (res.ok) window.location.href = '/dashboard/index.html';
+  } catch {}
+})();
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('fade-in'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.feature-card, .curriculum-card').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

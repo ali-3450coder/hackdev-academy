@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bölüm 1: Web & HTML Temelleri | HackDev Academy</title>
+  <meta name="author" content="Muhammed Ali">
+  <meta name="copyright" content="© 2025 Muhammed Ali. Tüm hakları saklıdır.">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/bolum.css">
+  <script>
+    (function(){var t=localStorage.getItem('hackdev_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+</head>
+<body data-bolum-id="1">
+
+<!-- Quiz verileri -->
+<script>
+window.QUIZ_DATA = {
+  b1_q01: { correct: 'b' },
+  b1_q02: { correct: 'c' },
+  b1_q03: { correct: 'a' },
+  b1_q04: { correct: 'd' },
+  b1_q05: { correct: 'b' },
+  b1_q06: { correct: 'c' },
+  b1_q07: { correct: 'a' },
+  b1_q08: { correct: 'b' },
+  b1_q09: { correct: 'd' },
+  b1_q10: { correct: 'a' }
+};
+</script>
+
+<div class="bolum-layout">
+  <!-- Sol Sidebar -->
+  <aside class="bolum-sidebar" id="bolumSidebar">
+    <div class="sidebar-header">
+      <a href="/dashboard/index.html" class="sidebar-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z"/>
+        </svg>
+        HackDev
+      </a>
+      <button class="theme-toggle" data-theme-toggle title="Tema değiştir" aria-label="Tema değiştir">🌙</button>
+    </div>
+
+    <div class="sidebar-user-mini">
+      <img data-user-avatar src="" alt="Avatar" class="user-avatar-mini" width="32" height="32">
+      <span data-user-name class="user-name-mini">...</span>
+    </div>
+
+    <div class="sidebar-bolum-info">
+      <div class="bolum-tag">BÖLÜM 01</div>
+      <div class="bolum-sidebar-title">Web &amp; HTML Temelleri</div>
+    </div>
+
+    <nav class="konu-nav" aria-label="Konular">
+      <a href="#s01" class="konu-nav-item" data-konu-marker="s01">▸01 İnternet Nasıl Çalışır?</a>
+      <a href="#s02" class="konu-nav-item" data-konu-marker="s02">▸02 HTTP Protokolü</a>
+      <a href="#s03" class="konu-nav-item" data-konu-marker="s03">▸03 URL Anatomisi</a>
+      <a href="#s04" class="konu-nav-item" data-konu-marker="s04">▸04 Tarayıcı Nasıl Çalışır?</a>
+      <a href="#s05" class="konu-nav-item" data-konu-marker="s05">▸05 HTML Nedir?</a>
+      <a href="#s06" class="konu-nav-item" data-konu-marker="s06">▸06 İlk HTML Dosyası</a>
+      <a href="#s07" class="konu-nav-item" data-konu-marker="s07">▸07 Temel Etiketler</a>
+      <a href="#s08" class="konu-nav-item" data-konu-marker="s08">▸08 Head Bölümü</a>
+      <a href="#s09" class="konu-nav-item" data-konu-marker="s09">▸09 Body Bölümü</a>
+      <a href="#s10" class="konu-nav-item" data-konu-marker="s10">▸10 Başlık Etiketleri</a>
+      <a href="#s11" class="konu-nav-item" data-konu-marker="s11">▸11 Paragraflar</a>
+      <a href="#s12" class="konu-nav-item" data-konu-marker="s12">▸12 Bağlantılar</a>
+      <a href="#s13" class="konu-nav-item" data-konu-marker="s13">▸13 Görseller</a>
+      <a href="#s14" class="konu-nav-item" data-konu-marker="s14">▸14 Listeler</a>
+      <a href="#s15" class="konu-nav-item" data-konu-marker="s15">▸15 Tablolar</a>
+      <a href="#s16" class="konu-nav-item" data-konu-marker="s16">▸16 Formlar</a>
+      <a href="#s17" class="konu-nav-item" data-konu-marker="s17">▸17 Semantik HTML</a>
+      <a href="#s18" class="konu-nav-item" data-konu-marker="s18">▸18 Yorum Satırları</a>
+      <a href="#s19" class="konu-nav-item" data-konu-marker="s19">▸19 Karakterler &amp; Varlıklar</a>
+      <a href="#s20" class="konu-nav-item" data-konu-marker="s20">▸20 HTML Doğrulama</a>
+      <a href="#s21" class="konu-nav-item" data-konu-marker="s21">▸21 Pratik Görevler</a>
+      <a href="#quiz" class="konu-nav-item" style="color:var(--acid)">📝 Quiz</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" data-logout>🚪 Çıkış Yap</button>
+    </div>
+  </aside>
+
+  <!-- Ana İçerik -->
+  <main class="bolum-main">
+    <!-- Topbar -->
+    <header class="bolum-topbar">
+      <button class="sidebar-toggle" data-sidebar-toggle aria-label="Menüyü aç">☰</button>
+      <div class="bolum-breadcrumb">
+        <a href="/dashboard/index.html">Dashboard</a>
+        <span>›</span>
+        <span>Bölüm 1</span>
+      </div>
+      <div class="topbar-progress">
+        <span class="topbar-progress-label" id="topbarProgressLabel">0/21</span>
+        <div class="progress-bar" style="width:120px">
+          <div class="progress-fill" id="topbarProgressBar" style="width:0%"></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="bolum-content">
+      <!-- Bölüm Başlığı -->
+      <div class="bolum-hero">
+        <div class="bolum-hero-tag">BÖLÜM 01</div>
+        <h1 class="bolum-hero-title">Web &amp; HTML Temelleri</h1>
+        <p class="bolum-hero-sub">İnternetin nasıl çalıştığını, HTTP protokolünü, URL yapısını ve HTML'in temellerini öğren. 21 konu, 10 quiz sorusu.</p>
+        <div class="bolum-hero-meta">
+          <span>📖 21 Konu</span>
+          <span>📝 10 Quiz Sorusu</span>
+          <span>⏱ ~3-4 saat</span>
+        </div>
+      </div>
+
+      <!-- ▸01 -->
+      <section class="konu-section" id="s01" data-konu-id="s01">
+        <h2 class="konu-title"><span class="konu-num">▸01</span> İnternet Nasıl Çalışır?</h2>
+        <p>İnternet, milyarlarca cihazı birbirine bağlayan küresel bir ağ altyapısıdır. Web (World Wide Web) ise bu altyapı üzerinde çalışan bir hizmettir — interneti bir otoyol sistemi, web'i bu otoyoldaki bir servis olarak düşünebilirsiniz.</p>
+
+        <div class="callout callout-info">
+          <strong>📡 İnternet vs Web</strong>
+          <p>İnternet = Fiziksel ağ altyapısı (kablolar, sunucular, yönlendiriciler). Web = Bu altyapı üzerindeki bir uygulama katmanı.</p>
+        </div>
+
+        <p>Bir web sayfasını açtığınızda arka planda şunlar olur:</p>
+        <ol style="padding-left:1.5rem; line-height:2; color:var(--text2)">
+          <li><strong style="color:var(--text)">DNS Çözümlemesi</strong> — Alan adı, IP adresine çevrilir.</li>
+          <li><strong style="color:var(--text)">TCP Bağlantısı</strong> — Tarayıcı ile sunucu arasında güvenli kanal kurulur.</li>
+          <li><strong style="color:var(--text)">HTTP İsteği</strong> — Tarayıcı sayfayı ister.</li>
+          <li><strong style="color:var(--text)">HTTP Yanıtı</strong> — Sunucu HTML, CSS, JS gönderir.</li>
+          <li><strong style="color:var(--text)">Render</strong> — Tarayıcı içeriği görüntüler.</li>
+        </ol>
+
+        <div class="callout callout-security">
+          <strong>🛡️ Güvenlik Notu</strong>
+          <p>DNS zehirlenmesi (DNS poisoning) saldırısında saldırgan, alan adını kötü niyetli bir IP'ye yönlendirebilir. Bu yüzden HTTPS ve HSTS kritik önem taşır.</p>
+        </div>
+      </section>
+
+      <!-- ▸02 -->
+      <section class="konu-section" id="s02" data-konu-id="s02">
+        <h2 class="konu-title"><span class="konu-num">▸02</span> HTTP Protokolü</h2>
+        <p>HTTP (HyperText Transfer Protocol), istemci ve sunucu arasındaki iletişimi yöneten kurallar bütünüdür. HTTPS, bu protokolün TLS/SSL ile şifrelenmiş versiyonudur.</p>
+
+        <h3 class="sub-title">HTTP Metodları</h3>
+        <div class="code-block">
+          <div class="code-header"><span>HTTP Metodları</span></div>
+<pre><code>GET    /sayfa.html        → Veri al (güvenli, idempotent)
+POST   /api/login         → Veri gönder (form, JSON)
+PUT    /api/user/1        → Kaynağı güncelle (tam)
+PATCH  /api/user/1        → Kısmen güncelle
+DELETE /api/user/1        → Kaynağı sil</code></pre>
+        </div>
+
+        <h3 class="sub-title">HTTP Durum Kodları</h3>
+        <div class="code-block">
+          <div class="code-header"><span>Önemli Durum Kodları</span></div>
+<pre><code>200 OK              → Başarılı
+201 Created         → Oluşturuldu
+301 Moved           → Kalıcı yönlendirme
+302 Found           → Geçici yönlendirme
+400 Bad Request     → Geçersiz istek
+401 Unauthorized    → Kimlik doğrulanmamış
+403 Forbidden       → Erişim reddedildi
+404 Not Found       → Bulunamadı
+500 Server Error    → Sunucu hatası</code></pre>
+        </div>
+
+        <div class="do-dont">
+          <div class="do-box"><strong>✅ Yap:</strong> Hassas veriler için daima HTTPS kullan</div>
+          <div class="dont-box"><strong>❌ Yapma:</strong> HTTP üzerinden şifre veya token gönderme</div>
+        </div>
+      </section>
+
+      <!-- ▸03 -->
+      <section class="konu-section" id="s03" data-konu-id="s03">
+        <h2 class="konu-title"><span class="konu-num">▸03</span> URL Anatomisi</h2>
+        <p>URL (Uniform Resource Locator), bir kaynağın internet üzerindeki tam adresidir.</p>
+        <div class="code-block">
+          <div class="code-header"><span>URL Bileşenleri</span></div>
+<pre><code>https://www.example.com:443/sayfa?q=html&lang=tr#bolum1
+│       │                │  │     │               │
+│       │                │  │     │               └─ Fragment (hash)
+│       │                │  │     └─ Query string (sorgu parametreleri)
+│       │                │  └─ Path (yol)
+│       │                └─ Port (443 HTTPS varsayılan)
+│       └─ Domain (alan adı)
+└─ Şema (protocol)</code></pre>
+        </div>
+        <div class="callout callout-warn">
+          <strong>⚠️ Dikkat:</strong> URL'de parola, kredi kartı veya token gönderme! URL'ler server loglarına kaydedilir ve başkalarına görünür olabilir.
+        </div>
+      </section>
+
+      <!-- ▸04 -->
+      <section class="konu-section" id="s04" data-konu-id="s04">
+        <h2 class="konu-title"><span class="konu-num">▸04</span> Tarayıcı Nasıl Çalışır?</h2>
+        <p>Tarayıcı bir HTML belgesini alıp ekranda görüntülemek için birkaç adımdan geçer:</p>
+        <ol style="padding-left:1.5rem; line-height:2.2; color:var(--text2)">
+          <li><strong style="color:var(--text)">HTML Parse</strong> — HTML okunarak DOM ağacı oluşturulur.</li>
+          <li><strong style="color:var(--text)">CSS Parse</strong> — CSS okunarak CSSOM ağacı oluşturulur.</li>
+          <li><strong style="color:var(--text)">Render Tree</strong> — DOM + CSSOM birleştirilir.</li>
+          <li><strong style="color:var(--text)">Layout</strong> — Her elementin boyutu ve konumu hesaplanır.</li>
+          <li><strong style="color:var(--text)">Paint</strong> — Ekrana çizilir.</li>
+        </ol>
+        <div class="callout callout-info">
+          <strong>💡 Neden Önemli?</strong> Performans optimizasyonu için tarayıcının ne zaman "reflow" ve "repaint" yaptığını bilmek kritiktir.
+        </div>
+      </section>
+
+      <!-- ▸05 -->
+      <section class="konu-section" id="s05" data-konu-id="s05">
+        <h2 class="konu-title"><span class="konu-num">▸05</span> HTML Nedir?</h2>
+        <p>HTML (HyperText Markup Language), web sayfalarının yapısını tanımlayan bir işaretleme dilidir. Programlama dili değildir — içeriğin anlamını ve yapısını tanımlar.</p>
+        <div class="callout callout-info">
+          <strong>📌 HTML'in 3 Rolü</strong>
+          <ul style="padding-left:1.2rem;line-height:2;margin-top:8px;color:var(--text2)">
+            <li><strong style="color:var(--text)">Yapı</strong> — Sayfanın iskeletini oluşturur (HTML)</li>
+            <li><strong style="color:var(--text)">Görünüm</strong> — Nasıl görüneceğini belirler (CSS)</li>
+            <li><strong style="color:var(--text)">Davranış</strong> — Nasıl davranacağını belirler (JavaScript)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ▸06 -->
+      <section class="konu-section" id="s06" data-konu-id="s06">
+        <h2 class="konu-title"><span class="konu-num">▸06</span> İlk HTML Dosyası</h2>
+        <p>Her HTML belgesi belirli bir yapıya sahip olmalıdır. İşte minimal ama geçerli bir HTML belgesi:</p>
+        <div class="code-block">
+          <div class="code-header"><span>index.html — Minimal HTML Şablonu</span></div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Sayfa Başlığı&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Merhaba Dünya!&lt;/h1&gt;
+  &lt;p&gt;Bu benim ilk HTML sayfam.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        <p><code class="inline-code">&lt;!DOCTYPE html&gt;</code> — Tarayıcıya bu belgenin HTML5 olduğunu söyler. <code class="inline-code">lang="tr"</code> — Dil bilgisi SEO ve erişilebilirlik için zorunludur.</p>
+      </section>
+
+      <!-- ▸07 -->
+      <section class="konu-section" id="s07" data-konu-id="s07">
+        <h2 class="konu-title"><span class="konu-num">▸07</span> Temel Etiket Yapısı</h2>
+        <p>HTML etiketler (tags) ile çalışır. Çoğu etiket açılış ve kapanış tagından oluşur:</p>
+        <div class="code-block">
+          <div class="code-header"><span>Etiket Anatomisi</span></div>
+<pre><code>&lt;etiket özellik="değer"&gt;İçerik&lt;/etiket&gt;
+│       │                │       │
+│       │                │       └─ Kapanış etiketi
+│       │                └─ İçerik
+│       └─ Özellik (attribute)
+└─ Açılış etiketi
+
+&lt;!-- Kendi kendini kapatan etiketler --&gt;
+&lt;img src="foto.jpg" alt="Açıklama"&gt;
+&lt;br&gt;
+&lt;input type="text"&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ▸08 -->
+      <section class="konu-section" id="s08" data-konu-id="s08">
+        <h2 class="konu-title"><span class="konu-num">▸08</span> &lt;head&gt; Bölümü</h2>
+        <p><code class="inline-code">&lt;head&gt;</code> görünür içerik barındırmaz; sayfayla ilgili meta bilgileri tutar.</p>
+        <div class="code-block">
+          <div class="code-header"><span>head Bölümü Örneği</span></div>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;                     &lt;!-- Karakter kodlaması --&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta name="description" content="Sayfa açıklaması"&gt;
+  &lt;title&gt;Başlık — Site Adı&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;   &lt;!-- CSS bağlantısı --&gt;
+  &lt;link rel="icon" href="favicon.ico"&gt;        &lt;!-- Favicon --&gt;
+&lt;/head&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ▸09 -->
+      <section class="konu-section" id="s09" data-konu-id="s09">
+        <h2 class="konu-title"><span class="konu-num">▸09</span> &lt;body&gt; Bölümü</h2>
+        <p>Kullanıcının gördüğü tüm içerik <code class="inline-code">&lt;body&gt;</code> içinde yer alır.</p>
+        <div class="code-block">
+          <div class="code-header"><span>body Yapısı</span></div>
+<pre><code class="language-html">&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav&gt;Navigasyon&lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;article&gt;Ana İçerik&lt;/article&gt;
+    &lt;aside&gt;Yan İçerik&lt;/aside&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;Alt Bilgi&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ▸10 -->
+      <section class="konu-section" id="s10" data-konu-id="s10">
+        <h2 class="konu-title"><span class="konu-num">▸10</span> Başlık Etiketleri (h1-h6)</h2>
+        <p>HTML'de 6 seviye başlık etiketi vardır. Hiyerarşik kullanım SEO ve erişilebilirlik için kritiktir.</p>
+        <div class="code-block">
+          <div class="code-header"><span>Başlık Hiyerarşisi</span></div>
+<pre><code class="language-html">&lt;h1&gt;Ana Başlık — Sayfada sadece BİR tane&lt;/h1&gt;
+&lt;h2&gt;Bölüm Başlığı&lt;/h2&gt;
+&lt;h3&gt;Alt Bölüm&lt;/h3&gt;
+&lt;h4&gt;Alt-alt Bölüm&lt;/h4&gt;
+&lt;h5&gt;Nadir kullanılır&lt;/h5&gt;
+&lt;h6&gt;En nadir kullanılır&lt;/h6&gt;</code></pre>
+        </div>
+        <div class="do-dont">
+          <div class="do-box"><strong>✅ Yap:</strong> h1'den h2'ye, h2'den h3'e sıralı ilerle</div>
+          <div class="dont-box"><strong>❌ Yapma:</strong> Görünüm için h etiketleri seçme (bunun için CSS kullan)</div>
+        </div>
+      </section>
+
+      <!-- ▸11 -->
+      <section class="konu-section" id="s11" data-konu-id="s11">
+        <h2 class="konu-title"><span class="konu-num">▸11</span> Paragraflar ve Metin</h2>
+        <div class="code-block">
+          <div class="code-header"><span>Metin Etiketleri</span></div>
+<pre><code class="language-html">&lt;p&gt;Normal paragraf metni&lt;/p&gt;
+
+&lt;strong&gt;Güçlü vurgu (kalın + anlam)&lt;/strong&gt;
+&lt;em&gt;Vurgu (italik + anlam)&lt;/em&gt;
+&lt;b&gt;Yalnızca kalın (anlam yok)&lt;/b&gt;
+&lt;i&gt;Yalnızca italik (anlam yok)&lt;/i&gt;
+
+&lt;mark&gt;Vurgulanan metin&lt;/mark&gt;
+&lt;small&gt;Küçük metin&lt;/small&gt;
+&lt;del&gt;Silinmiş metin&lt;/del&gt;
+&lt;ins&gt;Eklenen metin&lt;/ins&gt;
+&lt;sub&gt;Alt simge: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/sub&gt;
+&lt;sup&gt;Üst simge: x&lt;sup&gt;2&lt;/sup&gt;&lt;/sup&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ▸12 -->
+      <section class="konu-section" id="s12" data-konu-id="s12">
+        <h2 class="konu-title"><span class="konu-num">▸12</span> Bağlantılar — &lt;a&gt;</h2>
+        <div class="code-block">
+          <div class="code-header"><span>Bağlantı Örnekleri</span></div>
+<pre><code class="language-html">&lt;!-- Dış bağlantı --&gt;
+&lt;a href="https://example.com" target="_blank" rel="noopener noreferrer"&gt;
+  Dış Site
+&lt;/a&gt;
+
+&lt;!-- İç bağlantı --&gt;
+&lt;a href="/hakkimizda.html"&gt;Hakkımızda&lt;/a&gt;
+
+&lt;!-- Sayfa içi --&gt;
+&lt;a href="#bolum1"&gt;Bölüm 1'e git&lt;/a&gt;
+
+&lt;!-- Email --&gt;
+&lt;a href="mailto:info@example.com"&gt;E-posta gönder&lt;/a&gt;
+
+&lt;!-- Telefon --&gt;
+&lt;a href="tel:+905551234567"&gt;Ara&lt;/a&gt;</code></pre>
+        </div>
+        <div class="callout callout-security">
+          <strong>🛡️ Güvenlik: rel="noopener noreferrer"</strong>
+          <p><code class="inline-code">target="_blank"</code> kullanırken <strong>her zaman</strong> <code class="inline-code">rel="noopener noreferrer"</code> ekle. Aksi halde açılan sayfa <code class="inline-code">window.opener</code> ile ana sayfana erişebilir (Reverse Tabnabbing saldırısı).</p>
+        </div>
+      </section>
+
+      <!-- ▸13 -->
+      <section class="konu-section" id="s13" data-konu-id="s13">
+        <h2 class="konu-title"><span class="konu-num">▸13</span> Görseller — &lt;img&gt;</h2>
+        <div class="code-block">
+          <div class="code-header"><span>Görsel Kullanımı</span></div>
+<pre><code class="language-html">&lt;!-- Temel kullanım --&gt;
+&lt;img
+  src="foto.jpg"
+  alt="Açıklayıcı metin — ekran okuyucular için"
+  width="800"
+  height="600"
+  loading="lazy"
+&gt;
+
+&lt;!-- Dekoratif görsel (ekran okuyucu atlar) --&gt;
+&lt;img src="dekor.png" alt="" aria-hidden="true"&gt;</code></pre>
+        </div>
+        <div class="do-dont">
+          <div class="do-box"><strong>✅ Yap:</strong> Her img için anlamlı alt metni yaz</div>
+          <div class="dont-box"><strong>❌ Yapma:</strong> alt=""i boş bırakma (dekoratif değilse)</div>
+        </div>
+      </section>
+
+      <!-- ▸14 -->
+      <section class="konu-section" id="s14" data-konu-id="s14">
+        <h2 class="konu-title"><span class="konu-num">▸14</span> Listeler</h2>
+        <div class="code-block">
+          <div class="code-header"><span>Liste Türleri</span></div>
+<pre><code class="language-html">&lt;!-- Sırasız liste --&gt;
+&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Sıralı liste --&gt;
+&lt;ol&gt;
+  &lt;li&gt;Önce HTML öğren&lt;/li&gt;
+  &lt;li&gt;Sonra CSS ekle&lt;/li&gt;
+  &lt;li&gt;Ardından JS ekle&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Açıklama listesi --&gt;
+&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;HyperText Markup Language&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Cascading Style Sheets&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ▸15 -->
+      <section class="konu-section" id="s15" data-konu-id="s15">
+        <h2 class="konu-title"><span class="konu-num">▸15</span> Tablolar</h2>
+        <div class="code-block">
+          <div class="code-header"><span>Tablo Yapısı</span></div>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;caption&gt;Öğrenci Notları&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Ad&lt;/th&gt;
+      &lt;th scope="col"&gt;Not&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ahmet&lt;/td&gt;
+      &lt;td&gt;95&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2"&gt;Ortalama: 95&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+        </div>
+        <div class="callout callout-warn">
+          <strong>⚠️ Dikkat:</strong> Tablo layout için kullanılmaz! Sadece tablo verisi için kullanın.
+        </div>
+      </section>
+
+      <!-- ▸16 -->
+      <section class="konu-section" id="s16" data-konu-id="s16">
+        <h2 class="konu-title"><span class="konu-num">▸16</span> Formlar</h2>
+        <div class="code-block">
+          <div class="code-header"><span>Temel Form Yapısı</span></div>
+<pre><code class="language-html">&lt;form action="/submit" method="POST"&gt;
+  &lt;label for="email"&gt;E-posta:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+
+  &lt;label for="password"&gt;Şifre:&lt;/label&gt;
+  &lt;input type="password" id="password" name="password" required minlength="8"&gt;
+
+  &lt;button type="submit"&gt;Giriş Yap&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+        <div class="callout callout-security">
+          <strong>🛡️ Güvenlik: Form method="POST"</strong>
+          <p>Hassas veri içeren formlar için <strong>her zaman</strong> <code class="inline-code">method="POST"</code> kullanın. GET metodu verileri URL'e ekler ve loglanır.</p>
+        </div>
+      </section>
+
+      <!-- ▸17 -->
+      <section class="konu-section" id="s17" data-konu-id="s17">
+        <h2 class="konu-title"><span class="konu-num">▸17</span> Semantik HTML</h2>
+        <p>Semantik HTML, etiketlerin içeriğin <em>anlamını</em> da taşımasıdır. Bu SEO, erişilebilirlik ve bakım kolaylığı sağlar.</p>
+        <div class="code-block">
+          <div class="code-header"><span>Semantik vs Non-semantik</span></div>
+<pre><code class="language-html">&lt;!-- ❌ Anlamsız --&gt;
+&lt;div class="header"&gt;&lt;div class="nav"&gt;...&lt;/div&gt;&lt;/div&gt;
+&lt;div class="main"&gt;&lt;div class="article"&gt;...&lt;/div&gt;&lt;/div&gt;
+&lt;div class="footer"&gt;...&lt;/div&gt;
+
+&lt;!-- ✅ Anlamlı --&gt;
+&lt;header&gt;&lt;nav&gt;...&lt;/nav&gt;&lt;/header&gt;
+&lt;main&gt;&lt;article&gt;...&lt;/article&gt;&lt;/main&gt;
+&lt;footer&gt;...&lt;/footer&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ▸18 -->
+      <section class="konu-section" id="s18" data-konu-id="s18">
+        <h2 class="konu-title"><span class="konu-num">▸18</span> Yorum Satırları</h2>
+        <div class="code-block">
+          <div class="code-header"><span>HTML Yorumları</span></div>
+<pre><code class="language-html">&lt;!-- Bu bir yorum satırıdır. Tarayıcıda görünmez --&gt;
+
+&lt;!-- TODO: Bu bölümü güncelle --&gt;
+&lt;section&gt;...&lt;/section&gt;
+
+&lt;!-- Geçici olarak devre dışı bırakma:
+&lt;div class="eski-tasarim"&gt;
+  ...
+&lt;/div&gt;
+--&gt;</code></pre>
+        </div>
+        <div class="callout callout-security">
+          <strong>🛡️ Güvenlik:</strong> HTML yorumlara gizli bilgi (şifre, API anahtarı, iç sistem bilgisi) yazma! Kaynak kodda herkes görebilir.
+        </div>
+      </section>
+
+      <!-- ▸19 -->
+      <section class="konu-section" id="s19" data-konu-id="s19">
+        <h2 class="konu-title"><span class="konu-num">▸19</span> HTML Karakter Varlıkları</h2>
+        <div class="code-block">
+          <div class="code-header"><span>Sık Kullanılan Varlıklar</span></div>
+<pre><code>&amp;lt;     →  &lt;   (küçüktür)
+&amp;gt;     →  &gt;   (büyüktür)
+&amp;amp;    →  &amp;   (ampersand)
+&amp;quot;   →  "   (çift tırnak)
+&amp;apos;   →  '   (tek tırnak)
+&amp;nbsp;   →     (bölünemez boşluk)
+&amp;copy;   →  ©   (telif hakkı)
+&amp;mdash;  →  —   (em dash)
+&amp;euro;   →  €   (euro)</code></pre>
+        </div>
+        <div class="callout callout-info">
+          <strong>💡 İpucu:</strong> HTML içinde &lt; ve &gt; karakterlerini kullanırken mutlaka varlık kodlarını kullanın. Aksi halde tarayıcı bunları etiket olarak yorumlar.
+        </div>
+      </section>
+
+      <!-- ▸20 -->
+      <section class="konu-section" id="s20" data-konu-id="s20">
+        <h2 class="konu-title"><span class="konu-num">▸20</span> HTML Doğrulama</h2>
+        <p>HTML kodunuzu W3C Validator ile test edebilirsiniz. Geçerli HTML, tarayıcılar arası tutarlılık sağlar.</p>
+        <div class="callout callout-info">
+          <strong>🔧 Araçlar:</strong>
+          <ul style="padding-left:1.2rem;line-height:2;margin-top:8px;color:var(--text2)">
+            <li><strong style="color:var(--text)">validator.w3.org</strong> — Resmi W3C HTML doğrulayıcı</li>
+            <li><strong style="color:var(--text)">VS Code + HTMLHint</strong> — Editör içi doğrulama</li>
+            <li><strong style="color:var(--text)">Chrome DevTools</strong> — Gerçek zamanlı hata görme</li>
+            <li><strong style="color:var(--text)">Lighthouse</strong> — Performans, SEO, a11y raporu</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ▸21 Pratik Görevler -->
+      <section class="konu-section" id="s21" data-konu-id="s21">
+        <h2 class="konu-title"><span class="konu-num">▸21</span> Pratik Görevler</h2>
+        <p>Bu bölümde öğrendiklerini pekiştirmek için aşağıdaki görevleri tamamla:</p>
+
+        <div class="task-list">
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b1_t01" class="task-checkbox">
+              <span class="task-text">Minimal HTML şablonunu (<code class="inline-code">&lt;!DOCTYPE html&gt;</code>, head, body) sıfırdan yaz</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b1_t02" class="task-checkbox">
+              <span class="task-text">Bir biyografi sayfası oluştur: h1, h2, p, ul, a etiketleri kullan</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b1_t03" class="task-checkbox">
+              <span class="task-text">Dış bağlantıya <code class="inline-code">rel="noopener noreferrer"</code> ekle</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b1_t04" class="task-checkbox">
+              <span class="task-text">Bir iletişim formu yaz: ad, email, mesaj alanları ve submit butonu</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b1_t05" class="task-checkbox">
+              <span class="task-text">HTML'i W3C Validator'dan geçir ve hataları düzelt</span>
+            </label>
+          </div>
+          <div class="task-item">
+            <label class="task-label">
+              <input type="checkbox" data-task-id="b1_t06" class="task-checkbox">
+              <span class="task-text">Semantik HTML kullanarak bir blog sayfası yaz (header, main, article, footer)</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUIZ -->
+      <section class="quiz-section" id="quiz">
+        <div class="quiz-header">
+          <h2 class="quiz-title">📝 Bölüm 1 Quizi</h2>
+          <p class="quiz-sub">10 soru · %70 geçme eşiği · Tüm soruları cevapla</p>
+        </div>
+
+        <!-- S1 -->
+        <div class="quiz-question" data-question-id="b1_q01">
+          <div class="question-text">1. HTTP ve HTTPS arasındaki temel fark nedir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) HTTPS daha hızlıdır</div>
+            <div class="quiz-option" data-answer="b">b) HTTPS verileri TLS ile şifreler</div>
+            <div class="quiz-option" data-answer="c">c) HTTP yalnızca resimler için kullanılır</div>
+            <div class="quiz-option" data-answer="d">d) HTTPS yalnızca mobil için çalışır</div>
+          </div>
+          <div class="answer-explanation hidden">
+            <strong>✓ Doğru Cevap: B</strong> — HTTPS, HTTP'nin TLS/SSL katmanıyla şifrelenmiş versiyonudur. Veriler transit sırasında okunmaktan korunur.
+          </div>
+        </div>
+
+        <!-- S2 -->
+        <div class="quiz-question" data-question-id="b1_q02">
+          <div class="question-text">2. <code>&lt;!DOCTYPE html&gt;</code> ne işe yarar?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) HTML4 belirtir</div>
+            <div class="quiz-option" data-answer="b">b) Dil ayarını belirler</div>
+            <div class="quiz-option" data-answer="c">c) Tarayıcıya HTML5 kullanıldığını söyler</div>
+            <div class="quiz-option" data-answer="d">d) Sayfa başlığını tanımlar</div>
+          </div>
+          <div class="answer-explanation hidden">
+            <strong>✓ Doğru Cevap: C</strong> — DOCTYPE bildirimi tarayıcıya standart modu aktifleştirmesini söyler ve HTML5 belgesi olduğunu belirtir.
+          </div>
+        </div>
+
+        <!-- S3 -->
+        <div class="quiz-question" data-question-id="b1_q03">
+          <div class="question-text">3. target="_blank" kullanırken hangi rel değeri zorunludur?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) rel="noopener noreferrer"</div>
+            <div class="quiz-option" data-answer="b">b) rel="external"</div>
+            <div class="quiz-option" data-answer="c">c) rel="blank"</div>
+            <div class="quiz-option" data-answer="d">d) Hiçbiri gerekmez</div>
+          </div>
+          <div class="answer-explanation hidden">
+            <strong>✓ Doğru Cevap: A</strong> — rel="noopener noreferrer" olmadan açılan sayfa window.opener ile ana sayfaya erişebilir (Reverse Tabnabbing).
+          </div>
+        </div>
+
+        <!-- S4 -->
+        <div class="quiz-question" data-question-id="b1_q04">
+          <div class="question-text">4. Hangi HTTP durum kodu "Kaynak bulunamadı" anlamına gelir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) 200</div>
+            <div class="quiz-option" data-answer="b">b) 403</div>
+            <div class="quiz-option" data-answer="c">c) 500</div>
+            <div class="quiz-option" data-answer="d">d) 404</div>
+          </div>
+          <div class="answer-explanation hidden">
+            <strong>✓ Doğru Cevap: D</strong> — 404 Not Found, istenen kaynağın sunucuda bulunamadığını belirtir.
+          </div>
+        </div>
+
+        <!-- S5 -->
+        <div class="quiz-question" data-question-id="b1_q05">
+          <div class="question-text">5. Bir sayfada kaç tane &lt;h1&gt; etiketi olmalıdır?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Sınır yok</div>
+            <div class="quiz-option" data-answer="b">b) Yalnızca bir tane (SEO ve a11y için)</div>
+            <div class="quiz-option" data-answer="c">c) En az iki tane</div>
+            <div class="quiz-option" data-answer="d">d) h1 kullanılmamalıdır</div>
+          </div>
+          <div class="answer-explanation hidden">
+            <strong>✓ Doğru Cevap: B</strong> — SEO ve ekran okuyucular için bir sayfada yalnızca bir h1 olmalıdır.
+          </div>
+        </div>
+
+        <!-- S6 -->
+        <div class="quiz-question" data-question-id="b1_q06">
+          <div class="question-text">6. &lt;strong&gt; ve &lt;b&gt; arasındaki fark nedir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Fark yoktur, ikisi de aynıdır</div>
+            <div class="quiz-option" data-answer="b">b) &lt;b&gt; HTML5'te kaldırılmıştır</div>
+            <div class="quiz-option" data-answer="c">c) &lt;strong&gt; anlamsal önem taşır, &lt;b&gt; sadece görsel</div>
+            <div class="quiz-option" data-answer="d">d) &lt;strong&gt; sadece CSS ile çalışır</div>
+          </div>
+          <div class="answer-explanation hidden">
+            <strong>✓ Doğru Cevap: C</strong> — &lt;strong&gt; "önemli" anlamı taşır (ekran okuyucular vurgular), &lt;b&gt; sadece görsel kalın efekti verir.
+          </div>
+        </div>
+
+        <!-- S7 -->
+        <div class="quiz-question" data-question-id="b1_q07">
+          <div class="question-text">7. Hassas veri içeren form için doğru method hangisidir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) method="POST"</div>
+            <div class="quiz-option" data-answer="b">b) method="GET"</div>
+            <div class="quiz-option" data-answer="c">c) method="PUT"</div>
+            <div class="quiz-option" data-answer="d">d) method="SEND"</div>
+          </div>
+          <div class="answer-explanation hidden">
+            <strong>✓ Doğru Cevap: A</strong> — POST verileri request body'de taşır. GET ise URL'e ekler ve loglanır.
+          </div>
+        </div>
+
+        <!-- S8 -->
+        <div class="quiz-question" data-question-id="b1_q08">
+          <div class="question-text">8. &lt;img&gt; etiketinde alt özelliğinin önemi nedir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Görselin boyutunu belirler</div>
+            <div class="quiz-option" data-answer="b">b) Erişilebilirlik ve SEO için açıklamalı metin sağlar</div>
+            <div class="quiz-option" data-answer="c">c) Görselin alternatif URL'sidir</div>
+            <div class="quiz-option" data-answer="d">d) Yalnızca dekorasyon içindir</div>
+          </div>
+          <div class="answer-explanation hidden">
+            <strong>✓ Doğru Cevap: B</strong> — alt metni, görüntüleyemeyen kullanıcılar (görme engelliler, yavaş bağlantı) için açıklama sağlar.
+          </div>
+        </div>
+
+        <!-- S9 -->
+        <div class="quiz-question" data-question-id="b1_q09">
+          <div class="question-text">9. HTML yorumlarına neden gizli bilgi yazılmamalıdır?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) Yorumlar veritabanına kaydedilir</div>
+            <div class="quiz-option" data-answer="b">b) Yorumlar HTTPS ile şifrelenmez</div>
+            <div class="quiz-option" data-answer="c">c) Yorumlar tarayıcıda çalışır</div>
+            <div class="quiz-option" data-answer="d">d) Yorumlar kaynak kodda herkese görünür</div>
+          </div>
+          <div class="answer-explanation hidden">
+            <strong>✓ Doğru Cevap: D</strong> — HTML yorumlar kaynak kodda görünür. "Kaynağı görüntüle" ile herhangi bir kullanıcı okuyabilir.
+          </div>
+        </div>
+
+        <!-- S10 -->
+        <div class="quiz-question" data-question-id="b1_q10">
+          <div class="question-text">10. Semantik HTML kullanmanın en önemli avantajı hangisidir?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-answer="a">a) SEO, erişilebilirlik ve kod okunabilirliği</div>
+            <div class="quiz-option" data-answer="b">b) Sayfa daha hızlı yüklenir</div>
+            <div class="quiz-option" data-answer="c">c) CSS daha az kod gerektirir</div>
+            <div class="quiz-option" data-answer="d">d) JavaScript otomatik çalışır</div>
+          </div>
+          <div class="answer-explanation hidden">
+            <strong>✓ Doğru Cevap: A</strong> — Semantik HTML, arama motorlarına, ekran okuyuculara ve diğer geliştiricilere içeriğin anlamını iletir.
+          </div>
+        </div>
+
+        <div class="quiz-actions">
+          <button class="btn btn-primary" id="quizSubmit">Sonucu Gör →</button>
+          <button class="btn btn-secondary" id="quizRetry" style="display:none">↺ Tekrar Dene</button>
+        </div>
+      </section>
+
+      <!-- Alt Navigasyon -->
+      <nav class="bolum-nav" aria-label="Bölüm navigasyonu">
+        <button class="btn btn-ghost" data-logout>← Çıkış Yap</button>
+        <a href="/bolum/02-html-etiketleri.html" class="btn btn-primary" data-next-bolum disabled title="Quizi tamamla">Bölüm 2 →</a>
+      </nav>
+
+    </div><!-- /bolum-content -->
+  </main>
+</div>
+
+<script src="/js/theme.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/bolum.js"></script>
+</body>
+</html>

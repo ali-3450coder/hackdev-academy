@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giriş Yap | HackDev Academy</title>
+  <meta name="author" content="Muhammed Ali">
+  <meta name="copyright" content="© 2025 Muhammed Ali. Tüm hakları saklıdır.">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/auth.css">
+  <script>
+    (function(){var t=localStorage.getItem('hackdev_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+</head>
+<body data-page="login">
+
+<div class="auth-page">
+  <!-- Sol: Dekoratif Panel -->
+  <div class="auth-deco">
+    <canvas id="matrixCanvas" class="matrix-canvas" aria-hidden="true"></canvas>
+    <div class="auth-deco-content">
+      <div class="auth-deco-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z"/>
+        </svg>
+        HackDev Academy
+      </div>
+      <h2 class="auth-deco-tagline">Web'i <em>Hacker</em><br>Gibi Öğren</h2>
+      <p class="auth-deco-sub">Güvenlik perspektifli, profesyonel HTML ve Web geliştirme eğitimi.</p>
+      <div class="auth-deco-features">
+        <div class="auth-deco-feature">
+          <span class="deco-feature-icon">🛡️</span>
+          <div>
+            <div class="deco-feature-title">Güvenlik Odaklı</div>
+            <div class="deco-feature-sub">Her konuda güvenlik perspektifi</div>
+          </div>
+        </div>
+        <div class="auth-deco-feature">
+          <span class="deco-feature-icon">📊</span>
+          <div>
+            <div class="deco-feature-title">İlerleme Takibi</div>
+            <div class="deco-feature-sub">Konu ve quiz bazlı ilerleme</div>
+          </div>
+        </div>
+        <div class="auth-deco-feature">
+          <span class="deco-feature-icon">⚡</span>
+          <div>
+            <div class="deco-feature-title">Pratik Quizler</div>
+            <div class="deco-feature-sub">Her bölümde interaktif testler</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sağ: Form Paneli -->
+  <div class="auth-form-panel">
+    <div class="auth-form-box">
+      <!-- Tema Toggle -->
+      <div class="auth-theme-row">
+        <button class="theme-toggle" data-theme-toggle title="Temayı değiştir" aria-label="Temayı değiştir">🌙</button>
+      </div>
+
+      <div class="auth-form-header">
+        <h1 class="auth-form-title">Tekrar hoş geldin</h1>
+        <p class="auth-form-sub">Hesabına giriş yap. <a href="register.html" class="text-acid">Hesabın yok mu?</a></p>
+      </div>
+
+      <!-- Hata banner -->
+      <div class="error-banner hidden" id="errorBanner" role="alert" aria-live="polite">
+        <span aria-hidden="true">⚠</span>
+        <span data-error-text></span>
+      </div>
+
+      <form id="loginForm" class="auth-form" novalidate>
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label" for="email">E-posta</label>
+          <input
+            type="email"
+            id="email"
+            class="form-input"
+            placeholder="ornek@email.com"
+            autocomplete="email"
+            autofocus
+            required
+            aria-describedby="emailError"
+          >
+        </div>
+
+        <!-- Şifre -->
+        <div class="form-group">
+          <label class="form-label" for="password">Şifre</label>
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="password"
+              class="form-input"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              required
+              aria-describedby="passwordError"
+            >
+            <button type="button" id="passwordToggle" class="pw-toggle" title="Şifreyi göster/gizle" aria-label="Şifreyi göster veya gizle">👁</button>
+          </div>
+        </div>
+
+        <!-- Beni hatırla + Şifremi unuttum -->
+        <div class="auth-form-options">
+          <label class="checkbox-group">
+            <input type="checkbox" id="rememberMe">
+            <span>Beni hatırla</span>
+          </label>
+          <button type="button" id="forgotPassword" class="link-btn">Şifremi unuttum</button>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" id="submitBtn" class="btn btn-primary btn-submit">
+          Giriş Yap
+        </button>
+      </form>
+
+      <div class="auth-links">
+        Henüz hesabın yok mu? <a href="register.html" class="text-acid">Kayıt ol</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Şifremi Unuttum Modal -->
+<div id="forgotModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="forgotTitle">
+  <div class="modal-box">
+    <div class="modal-icon">🔑</div>
+    <h2 id="forgotTitle" class="modal-title">Şifre Sıfırlama</h2>
+    <p class="modal-text">Bu özellik yakında eklenecek. Şimdilik yönetici ile iletişime geçin.</p>
+    <button id="closeForgotModal" class="btn btn-primary">Tamam</button>
+  </div>
+</div>
+
+<script src="/js/theme.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/auth.js"></script>
+<script>
+// Matrix animasyonu (sadece dark temada görünür)
+(function() {
+  const canvas = document.getElementById('matrixCanvas');
+  if (!canvas) return;
+
+  function initMatrix() {
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth || 400;
+    canvas.height = canvas.offsetHeight || 600;
+
+    const cols = Math.floor(canvas.width / 16);
+    const drops = Array.from({ length: cols }, () => Math.random() * -20);
+    const chars = '01アイウエオカキクHTMLCSSXSS</>{}[]#$!';
+
+    function draw() {
+      ctx.fillStyle = 'rgba(8,12,18,0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#b8f535';
+      ctx.font = '13px DM Mono, monospace';
+
+      drops.forEach((y, i) => {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        ctx.globalAlpha = Math.random() * 0.7 + 0.3;
+        ctx.fillText(char, i * 16, y * 16);
+        ctx.globalAlpha = 1;
+        if (y * 16 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      });
+    }
+
+    return setInterval(draw, 55);
+  }
+
+  let interval = null;
+  function handleTheme() {
+    const theme = document.documentElement.getAttribute('data-theme');
+    canvas.style.opacity = theme === 'light' ? '0' : '0.5';
+    if (!interval) interval = initMatrix();
+  }
+
+  handleTheme();
+  const observer = new MutationObserver(handleTheme);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  window.addEventListener('resize', function() {
+    clearInterval(interval);
+    interval = null;
+    handleTheme();
+  });
+})();
+
+// Şifremi unuttum modal
+document.getElementById('forgotPassword')?.addEventListener('click', function() {
+  document.getElementById('forgotModal').classList.remove('hidden');
+});
+document.getElementById('closeForgotModal')?.addEventListener('click', function() {
+  document.getElementById('forgotModal').classList.add('hidden');
+});
+document.getElementById('forgotModal')?.addEventListener('click', function(e) {
+  if (e.target === this) this.classList.add('hidden');
+});
+</script>
+</body>
+</html>

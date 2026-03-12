@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kayıt Ol | HackDev Academy</title>
+  <meta name="author" content="Muhammed Ali">
+  <meta name="copyright" content="© 2025 Muhammed Ali. Tüm hakları saklıdır.">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/auth.css">
+  <script>
+    (function(){var t=localStorage.getItem('hackdev_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+</head>
+<body data-page="register">
+
+<div class="auth-page">
+  <!-- Sol: Dekoratif Panel -->
+  <div class="auth-deco">
+    <canvas id="matrixCanvas" class="matrix-canvas" aria-hidden="true"></canvas>
+    <div class="auth-deco-content">
+      <div class="auth-deco-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z"/>
+        </svg>
+        HackDev Academy
+      </div>
+      <h2 class="auth-deco-tagline">Yolculuğuna<br><em>Bugün Başla</em></h2>
+      <p class="auth-deco-sub">Hesap oluştur ve 66+ konu ile web geliştirmeyi profesyonelce öğren.</p>
+      <div class="auth-deco-features">
+        <div class="auth-deco-feature">
+          <span class="deco-feature-icon">🎓</span>
+          <div>
+            <div class="deco-feature-title">3 Kapsamlı Bölüm</div>
+            <div class="deco-feature-sub">Temellerden uzmanlığa</div>
+          </div>
+        </div>
+        <div class="auth-deco-feature">
+          <span class="deco-feature-icon">🔓</span>
+          <div>
+            <div class="deco-feature-title">Tamamen Ücretsiz</div>
+            <div class="deco-feature-sub">Kredi kartı gerekmez</div>
+          </div>
+        </div>
+        <div class="auth-deco-feature">
+          <span class="deco-feature-icon">🏆</span>
+          <div>
+            <div class="deco-feature-title">Tamamlama Sertifikası</div>
+            <div class="deco-feature-sub">Başarını belgele</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sağ: Form Paneli -->
+  <div class="auth-form-panel">
+    <div class="auth-form-box">
+      <div class="auth-theme-row">
+        <button class="theme-toggle" data-theme-toggle title="Temayı değiştir" aria-label="Temayı değiştir">🌙</button>
+      </div>
+
+      <div class="auth-form-header">
+        <h1 class="auth-form-title">Hesap Oluştur</h1>
+        <p class="auth-form-sub">Zaten hesabın var mı? <a href="login.html" class="text-acid">Giriş yap</a></p>
+      </div>
+
+      <!-- Hata banner -->
+      <div class="error-banner hidden" id="errorBanner" role="alert" aria-live="polite">
+        <span aria-hidden="true">⚠</span>
+        <span data-error-text></span>
+      </div>
+
+      <form id="registerForm" class="auth-form" novalidate>
+        <!-- Ad Soyad -->
+        <div class="form-group">
+          <label class="form-label" for="fullName">Ad Soyad</label>
+          <input
+            type="text"
+            id="fullName"
+            class="form-input"
+            placeholder="Adınız Soyadınız"
+            autocomplete="name"
+            autofocus
+            required
+            minlength="2"
+            maxlength="100"
+          >
+        </div>
+
+        <!-- Kullanıcı Adı -->
+        <div class="form-group">
+          <label class="form-label" for="username">Kullanıcı Adı</label>
+          <input
+            type="text"
+            id="username"
+            class="form-input"
+            placeholder="kullanici_adi"
+            autocomplete="username"
+            required
+            minlength="3"
+            maxlength="30"
+            pattern="[a-zA-Z0-9_\-]+"
+            aria-describedby="usernameStatus"
+          >
+          <span id="usernameStatus" class="username-status form-hint" aria-live="polite"></span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label" for="email">E-posta</label>
+          <input
+            type="email"
+            id="email"
+            class="form-input"
+            placeholder="ornek@email.com"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <!-- Şifre + Güç göstergesi -->
+        <div class="form-group">
+          <label class="form-label" for="password">Şifre</label>
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="password"
+              class="form-input"
+              placeholder="En az 8 karakter"
+              autocomplete="new-password"
+              required
+              aria-describedby="strengthInfo"
+            >
+            <button type="button" data-pw-toggle="password" class="pw-toggle" title="Şifreyi göster/gizle" aria-label="Şifreyi göster veya gizle">👁</button>
+          </div>
+
+          <!-- Güç göstergesi -->
+          <div class="password-strength" id="strengthInfo">
+            <div class="strength-bar">
+              <div id="strengthFill" class="strength-fill" style="width:0%"></div>
+            </div>
+            <div class="strength-criteria">
+              <span id="crit_length" class="criterion">
+                <span class="crit-icon">○</span> 8+ karakter
+              </span>
+              <span id="crit_upper" class="criterion">
+                <span class="crit-icon">○</span> Büyük harf
+              </span>
+              <span id="crit_number" class="criterion">
+                <span class="crit-icon">○</span> Rakam
+              </span>
+              <span id="crit_special" class="criterion">
+                <span class="crit-icon">○</span> Özel karakter
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Şifre Tekrar -->
+        <div class="form-group">
+          <label class="form-label" for="password2">Şifre Tekrar</label>
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="password2"
+              class="form-input"
+              placeholder="Şifreyi tekrar girin"
+              autocomplete="new-password"
+              required
+            >
+            <button type="button" data-pw-toggle="password2" class="pw-toggle" title="Şifreyi göster/gizle" aria-label="Şifreyi göster veya gizle">👁</button>
+          </div>
+        </div>
+
+        <!-- Kullanım Şartları -->
+        <label class="checkbox-group">
+          <input type="checkbox" id="terms" required>
+          <span>Kullanım şartlarını ve gizlilik politikasını kabul ediyorum</span>
+        </label>
+
+        <!-- Submit -->
+        <button type="submit" id="submitBtn" class="btn btn-primary btn-submit">
+          Hesap Oluştur
+        </button>
+      </form>
+
+      <div class="auth-links">
+        Zaten hesabın var mı? <a href="login.html" class="text-acid">Giriş yap</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/theme.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/auth.js"></script>
+<script>
+// Matrix animasyonu
+(function() {
+  const canvas = document.getElementById('matrixCanvas');
+  if (!canvas) return;
+  let interval = null;
+
+  function initMatrix() {
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth || 400;
+    canvas.height = canvas.offsetHeight || 600;
+    const cols = Math.floor(canvas.width / 16);
+    const drops = Array.from({ length: cols }, () => Math.random() * -20);
+    const chars = '01アイウエオHTMLCSS</>{}register#!';
+
+    function draw() {
+      ctx.fillStyle = 'rgba(8,12,18,0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#1effd4';
+      ctx.font = '13px DM Mono, monospace';
+      drops.forEach((y, i) => {
+        ctx.globalAlpha = Math.random() * 0.6 + 0.2;
+        ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * 16, y * 16);
+        ctx.globalAlpha = 1;
+        if (y * 16 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      });
+    }
+    return setInterval(draw, 55);
+  }
+
+  function handleTheme() {
+    const theme = document.documentElement.getAttribute('data-theme');
+    canvas.style.opacity = theme === 'light' ? '0' : '0.4';
+    if (!interval) interval = initMatrix();
+  }
+
+  handleTheme();
+  new MutationObserver(handleTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+
+// Şifre güç göstergesi — criterion güncelleme
+document.addEventListener('DOMContentLoaded', function() {
+  const pw = document.getElementById('password');
+  if (!pw) return;
+
+  pw.addEventListener('input', function() {
+    const v = pw.value;
+    const checks = {
+      crit_length: v.length >= 8,
+      crit_upper: /[A-Z]/.test(v),
+      crit_number: /[0-9]/.test(v),
+      crit_special: /[^A-Za-z0-9]/.test(v)
+    };
+
+    Object.entries(checks).forEach(([id, met]) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle('met', met);
+      const icon = el.querySelector('.crit-icon');
+      if (icon) icon.textContent = met ? '●' : '○';
+    });
+  });
+});
+</script>
+</body>
+</html>

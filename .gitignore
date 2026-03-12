@@ -1,0 +1,46 @@
+# Bağımlılıklar
+node_modules/
+
+# Ortam değişkenleri — ASLA commit etme
+.env
+.env.local
+.env.*.local
+
+# Veritabanı dosyaları
+*.sqlite3
+*.sqlite
+*.db
+
+# Build çıktıları
+dist/
+build/
+
+# İşletim sistemi
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Log dosyaları
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+logs/
+
+# Editör / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code dahili dosyaları
+.claude/
+
+# Coverage raporları
+coverage/
+.nyc_output/
+
+# Geçici dosyalar
+tmp/
+temp/
