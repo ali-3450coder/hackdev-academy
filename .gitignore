@@ -44,3 +44,14 @@ coverage/
 # Geçici dosyalar
 tmp/
 temp/
+
+# Geliştirme araçları (projeye dahil değil)
+test.py
+*.py
+
+# Production veritabanı
+prod.sqlite3
+
+# Yükleme/paket arşivleri
+*.tgz
+*.zip

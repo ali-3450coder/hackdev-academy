@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — HackDev Academy</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<div class="admin-layout">
+
+  <!-- ── Sidebar ─────────────────────────────────── -->
+  <aside class="admin-sidebar">
+    <div class="admin-logo">
+      <div class="admin-logo-mark">⬡ HackDev</div>
+      <div class="admin-logo-title">Yönetim Paneli</div>
+      <div class="admin-logo-badge">ADMIN</div>
+    </div>
+
+    <nav class="admin-nav">
+      <div class="admin-nav-label">Genel</div>
+      <button class="admin-nav-item active" data-panel="dashboard">
+        <span class="nav-icon">📊</span> Dashboard
+      </button>
+
+      <div class="admin-nav-label">Yönetim</div>
+      <button class="admin-nav-item" data-panel="users">
+        <span class="nav-icon">👥</span> Kullanıcılar
+      </button>
+      <button class="admin-nav-item" data-panel="certificates">
+        <span class="nav-icon">🏅</span> Sertifikalar
+      </button>
+      <button class="admin-nav-item" data-panel="logs">
+        <span class="nav-icon">📋</span> Sistem Logları
+      </button>
+      <button class="admin-nav-item" data-panel="database">
+        <span class="nav-icon">🗄️</span> Veritabanı
+      </button>
+
+      <div class="admin-nav-label">Site</div>
+      <a class="admin-nav-item" href="/dashboard/index.html">
+        <span class="nav-icon">🏠</span> Dashboard'a Dön
+      </a>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <div class="admin-user-info">
+        <img class="admin-user-avatar" data-admin-avatar src="" alt="avatar">
+        <div>
+          <div class="admin-user-name" data-admin-name>—</div>
+          <div class="admin-user-role">YÖNETİCİ</div>
+        </div>
+      </div>
+      <button class="btn btn-ghost btn-sm" data-logout style="width:100%">Çıkış Yap</button>
+    </div>
+  </aside>
+
+  <!-- ── Ana İçerik ───────────────────────────────── -->
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div class="admin-topbar-title" id="topbarTitle">Dashboard</div>
+      <div class="admin-topbar-right">
+        <button class="btn btn-primary btn-sm" id="refreshBtn">↻ Yenile</button>
+      </div>
+    </div>
+
+    <div class="admin-content">
+
+      <!-- ═══ PANEL: Dashboard ═════════════════════ -->
+      <section class="admin-panel active" id="panel-dashboard">
+        <div class="stat-grid" id="statGrid">
+          <div class="admin-loading"><div class="spinner"></div> Yükleniyor…</div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div>
+            <div class="admin-section-header">
+              <div class="admin-section-title">Son Kayıt Olanlar</div>
+            </div>
+            <div class="admin-table-wrapper">
+              <table class="admin-table">
+                <thead><tr><th>Kullanıcı</th><th>Kayıt Tarihi</th><th>Durum</th></tr></thead>
+                <tbody id="recentUsersBody">
+                  <tr><td colspan="3" class="admin-loading"><div class="spinner"></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div class="admin-section-header">
+              <div class="admin-section-title">Son Aktiviteler</div>
+            </div>
+            <div class="admin-table-wrapper">
+              <table class="admin-table">
+                <thead><tr><th>Olay</th><th>Kullanıcı</th><th>Zaman</th></tr></thead>
+                <tbody id="recentLogsBody">
+                  <tr><td colspan="3" class="admin-loading"><div class="spinner"></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: Kullanıcılar ══════════════════ -->
+      <section class="admin-panel" id="panel-users">
+        <div class="admin-section-header">
+          <div class="admin-section-title">Kullanıcı Yönetimi</div>
+          <div class="admin-filters">
+            <div class="admin-search">
+              <span class="admin-search-icon">🔍</span>
+              <input type="text" id="userSearch" placeholder="Ad, email veya kullanıcı adı…">
+            </div>
+            <select class="admin-filter-select" id="roleFilter">
+              <option value="">Tüm Roller</option>
+              <option value="student">Öğrenci</option>
+              <option value="admin">Admin</option>
+            </select>
+            <select class="admin-filter-select" id="statusFilter">
+              <option value="">Tüm Durumlar</option>
+              <option value="true">Aktif</option>
+              <option value="false">Pasif</option>
+            </select>
+            <a href="/api/admin/export/users.csv" class="btn btn-ghost btn-sm" id="exportCsvBtn">⬇ CSV İndir</a>
+          </div>
+        </div>
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Kullanıcı</th><th>Rol</th><th>Durum</th>
+                <th>Tamamlanan</th><th>Quiz</th><th>Sertifika</th>
+                <th>Son Giriş</th><th>İşlemler</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody">
+              <tr><td colspan="8" class="admin-loading"><div class="spinner"></div> Yükleniyor…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: Sertifikalar ══════════════════ -->
+      <section class="admin-panel" id="panel-certificates">
+        <div class="admin-section-header">
+          <div class="admin-section-title">Sertifika Yönetimi</div>
+          <div class="admin-filters">
+            <select class="admin-filter-select" id="certBolumFilter">
+              <option value="">Tüm Bölümler</option>
+              <option value="1">Bölüm 1</option>
+              <option value="2">Bölüm 2</option>
+              <option value="3">Bölüm 3</option>
+            </select>
+          </div>
+        </div>
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Sertifika No</th><th>Kullanıcı</th><th>Bölüm</th>
+                <th>Verilme Tarihi</th><th>İşlem</th>
+              </tr>
+            </thead>
+            <tbody id="certsTableBody">
+              <tr><td colspan="5" class="admin-loading"><div class="spinner"></div> Yükleniyor…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: Loglar ═════════════════════════ -->
+      <section class="admin-panel" id="panel-logs">
+        <div class="admin-section-header">
+          <div class="admin-section-title">Sistem Logları</div>
+          <div class="admin-filters">
+            <select class="admin-filter-select" id="logEventFilter">
+              <option value="">Tüm Olaylar</option>
+              <option value="login">Giriş</option>
+              <option value="logout">Çıkış</option>
+              <option value="register">Kayıt</option>
+              <option value="quiz_submit">Quiz</option>
+              <option value="admin_password_reset">Şifre Sıfırlama</option>
+              <option value="admin_delete_user">Kullanıcı Silme</option>
+              <option value="admin_reset_progress">İlerleme Sıfırlama</option>
+              <option value="admin_reset_quiz">Quiz Sıfırlama</option>
+              <option value="admin_issue_certificate">Sertifika Verme</option>
+              <option value="admin_revoke_certificate">Sertifika İptali</option>
+              <option value="admin_edit_profile">Profil Düzenleme</option>
+            </select>
+            <button class="btn btn-ghost btn-sm" id="clearLogsBtn" style="color:var(--danger)">🗑 Eski Logları Temizle</button>
+          </div>
+        </div>
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead><tr><th>#</th><th>Olay</th><th>Kullanıcı</th><th>IP</th><th>Tarih</th></tr></thead>
+            <tbody id="logsTableBody">
+              <tr><td colspan="5" class="admin-loading"><div class="spinner"></div> Yükleniyor…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:12px; text-align:right;">
+          <button class="btn btn-ghost btn-sm" id="loadMoreLogs">Daha Fazla Yükle</button>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: Veritabanı ═════════════════════ -->
+      <section class="admin-panel" id="panel-database">
+        <div class="admin-section-header">
+          <div class="admin-section-title">Veritabanı Durumu</div>
+        </div>
+        <div class="stat-grid" id="dbStatGrid">
+          <div class="admin-loading"><div class="spinner"></div> Yükleniyor…</div>
+        </div>
+
+        <div style="margin-top:28px;">
+          <div class="admin-section-title" style="margin-bottom:16px;">🧹 Bakım İşlemleri</div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px;">
+
+            <div class="admin-maintenance-card">
+              <div class="maintenance-title">🗑 Log Temizleme</div>
+              <div class="maintenance-desc">Belirli günden eski activity log kayıtlarını sil.</div>
+              <div style="display:flex;gap:8px;align-items:center;margin-top:10px;">
+                <select class="admin-filter-select" id="clearDaysSelect" style="flex:1">
+                  <option value="7">7 günden eski</option>
+                  <option value="30" selected>30 günden eski</option>
+                  <option value="60">60 günden eski</option>
+                  <option value="90">90 günden eski</option>
+                </select>
+                <button class="btn btn-ghost btn-sm" id="dbClearLogsBtn" style="color:var(--danger)">Temizle</button>
+              </div>
+            </div>
+
+            <div class="admin-maintenance-card">
+              <div class="maintenance-title">🔑 Oturum Tokenları</div>
+              <div class="maintenance-desc">Süresi dolmuş refresh token kayıtlarını veritabanından temizle.</div>
+              <div style="margin-top:10px;">
+                <button class="btn btn-ghost btn-sm" id="clearExpiredTokensBtn" style="color:var(--warn)">Süresi Dolanları Temizle</button>
+              </div>
+            </div>
+
+            <div class="admin-maintenance-card">
+              <div class="maintenance-title">📤 Veri Dışa Aktarma</div>
+              <div class="maintenance-desc">Tüm kullanıcıları Excel uyumlu CSV formatında indir.</div>
+              <div style="margin-top:10px;">
+                <a href="/api/admin/export/users.csv" class="btn btn-ghost btn-sm">⬇ users.csv İndir</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /admin-content -->
+  </main>
+</div>
+
+<!-- ═══ Modal: Kullanıcı Detayı + Düzenleme ═══════ -->
+<div class="admin-modal-overlay hidden" id="userModal">
+  <div class="admin-modal" style="max-width:640px">
+    <div class="admin-modal-header">
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="admin-modal-tab active" data-tab="detail">Detay</button>
+        <button class="admin-modal-tab" data-tab="edit">✏️ Düzenle</button>
+        <button class="admin-modal-tab" data-tab="data">🗄 Veri</button>
+      </div>
+      <button class="admin-modal-close" id="closeUserModal">✕</button>
+    </div>
+
+    <!-- Tab: Detay -->
+    <div id="tabDetail" class="modal-tab-content active">
+      <div id="userModalBody">
+        <div class="admin-loading"><div class="spinner"></div></div>
+      </div>
+    </div>
+
+    <!-- Tab: Profil Düzenle -->
+    <div id="tabEdit" class="modal-tab-content" style="display:none">
+      <form id="editProfileForm" style="display:flex;flex-direction:column;gap:14px;">
+        <input type="hidden" id="editUserId">
+        <div class="form-group">
+          <label class="form-label">Ad Soyad</label>
+          <input class="form-input" type="text" id="editFullName" placeholder="Ad Soyad" maxlength="100">
+        </div>
+        <div class="form-group">
+          <label class="form-label">E-posta</label>
+          <input class="form-input" type="email" id="editEmail" placeholder="email@örnek.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Telefon</label>
+          <input class="form-input" type="text" id="editPhone" placeholder="+90 555 000 0000" maxlength="20">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Bio</label>
+          <textarea class="form-input" id="editBio" rows="3" placeholder="Kısa tanıtım…" maxlength="500" style="resize:vertical"></textarea>
+        </div>
+        <div style="display:flex;gap:8px;justify-content:flex-end;">
+          <button type="button" class="btn btn-ghost btn-sm" id="cancelEdit">Vazgeç</button>
+          <button type="submit" class="btn btn-primary btn-sm">💾 Kaydet</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Tab: Veri Yönetimi -->
+    <div id="tabData" class="modal-tab-content" style="display:none">
+      <div id="dataManageBody">
+        <div class="admin-loading"><div class="spinner"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Modal: Şifre Sıfırla Onay ══════════════════ -->
+<div class="admin-modal-overlay hidden" id="resetModal">
+  <div class="admin-modal">
+    <div class="admin-modal-header">
+      <div class="admin-modal-title">🔑 Şifre Sıfırla</div>
+      <button class="admin-modal-close" id="closeResetModal">✕</button>
+    </div>
+    <p style="color:var(--text2); font-size:0.875rem; margin-bottom:16px;">
+      Bu işlem kullanıcının şifresini sıfırlayacak ve tüm aktif oturumlarını kapatacak.
+    </p>
+    <p id="resetTargetInfo" style="font-weight:600; margin-bottom:20px;"></p>
+    <div style="display:flex; gap:10px; justify-content:flex-end;">
+      <button class="btn btn-ghost" id="cancelReset">Vazgeç</button>
+      <button class="btn btn-primary" id="confirmReset">Evet, Sıfırla</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Modal: Şifre Sonucu ════════════════════════ -->
+<div class="admin-modal-overlay hidden" id="passwordResultModal">
+  <div class="admin-modal">
+    <div class="admin-modal-header">
+      <div class="admin-modal-title">✅ Şifre Sıfırlandı</div>
+      <button class="admin-modal-close" id="closePasswordResult">✕</button>
+    </div>
+    <p style="color:var(--text2); font-size:0.875rem; margin-bottom:8px;">
+      Kullanıcıya aşağıdaki geçici şifreyi iletin:
+    </p>
+    <div class="temp-pass-box">
+      <div class="label">GEÇİCİ ŞİFRE</div>
+      <div class="password" id="resultPassword">—</div>
+      <div class="note">48 saat geçerli · Giriş sonrası değiştirmesini önerin</div>
+    </div>
+    <button class="btn btn-primary" id="copyPassword" style="width:100%">📋 Kopyala</button>
+  </div>
+</div>
+
+<!-- ═══ Modal: Log Temizle Onay ════════════════════ -->
+<div class="admin-modal-overlay hidden" id="clearLogsModal">
+  <div class="admin-modal">
+    <div class="admin-modal-header">
+      <div class="admin-modal-title">🗑 Log Temizle</div>
+      <button class="admin-modal-close" id="closeClearLogsModal">✕</button>
+    </div>
+    <p style="color:var(--text2); font-size:0.875rem; margin-bottom:16px;" id="clearLogsInfo">
+      Eski loglar silinecek. Bu işlem geri alınamaz.
+    </p>
+    <div style="display:flex; gap:10px; justify-content:flex-end;">
+      <button class="btn btn-ghost" id="cancelClearLogs">Vazgeç</button>
+      <button class="btn btn-primary" id="confirmClearLogs" style="background:var(--danger);color:#fff">Evet, Temizle</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Modal: Sertifika Ver ════════════════════════ -->
+<div class="admin-modal-overlay hidden" id="issueCertModal">
+  <div class="admin-modal">
+    <div class="admin-modal-header">
+      <div class="admin-modal-title">🏅 Sertifika Ver</div>
+      <button class="admin-modal-close" id="closeIssueCertModal">✕</button>
+    </div>
+    <p style="color:var(--text2); font-size:0.875rem; margin-bottom:16px;" id="issueCertInfo"></p>
+    <div class="form-group" style="margin-bottom:16px;">
+      <label class="form-label">Bölüm Seç</label>
+      <select class="form-input admin-filter-select" id="issueCertBolum" style="width:100%">
+        <option value="1">Bölüm 1 — Web & HTML Temelleri</option>
+        <option value="2">Bölüm 2 — HTML'deki Tüm Etiketler</option>
+        <option value="3">Bölüm 3 — Profesyonel HTML</option>
+      </select>
+    </div>
+    <div style="display:flex; gap:10px; justify-content:flex-end;">
+      <button class="btn btn-ghost" id="cancelIssueCert">Vazgeç</button>
+      <button class="btn btn-primary" id="confirmIssueCert">🏅 Sertifikayı Ver</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Toast ═══════════════════════════════════════ -->
+<div class="admin-toast" id="adminToast"></div>
+
+<script src="/js/theme.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

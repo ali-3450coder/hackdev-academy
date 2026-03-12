@@ -77,6 +77,9 @@ app.get('/auth/login', (req, res) => {
 app.get('/auth/register', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/auth/register.html'));
 });
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/admin/index.html'));
+});
 
 // 404 handler
 app.use((req, res) => {
@@ -94,9 +97,26 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Sunucu hatası' });
 });
 
-app.listen(PORT, () => {
-  console.log(`HackDev Academy sunucusu http://localhost:${PORT} adresinde çalışıyor`);
-  console.log(`Ortam: ${process.env.NODE_ENV || 'development'}`);
-});
+async function startServer() {
+  // Production'da migration'ları otomatik uygula
+  if (process.env.NODE_ENV === 'production') {
+    try {
+      const knex = require('../knexfile');
+      const db = require('knex')(knex.production);
+      await db.migrate.latest();
+      console.log('✅ Migration tamamlandı');
+      await db.destroy();
+    } catch (err) {
+      console.error('❌ Migration hatası:', err.message);
+    }
+  }
+
+  app.listen(PORT, () => {
+    console.log(`HackDev Academy sunucusu http://localhost:${PORT} adresinde çalışıyor`);
+    console.log(`Ortam: ${process.env.NODE_ENV || 'development'}`);
+  });
+}
+
+startServer();
 
 module.exports = app;

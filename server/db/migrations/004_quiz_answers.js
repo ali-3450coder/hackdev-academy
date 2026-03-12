@@ -17,7 +17,10 @@ exports.up = function(knex) {
       table.integer('score').notNullable();
       table.integer('total').notNullable();
       table.integer('passed').notNullable();
-      table.datetime('attempt_at').notNullable().defaultTo(knex.fn.now());
+      table.integer('best_score').notNullable().defaultTo(0);
+      table.integer('attempt_count').notNullable().defaultTo(1);
+      table.datetime('first_attempt_at').notNullable().defaultTo(knex.fn.now());
+      table.datetime('last_attempt_at').notNullable().defaultTo(knex.fn.now());
       table.unique(['user_id', 'bolum_id']);
     });
 };

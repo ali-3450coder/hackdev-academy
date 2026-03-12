@@ -254,7 +254,7 @@ const API = (function() {
     }
   };
 
-  return { getToken, setToken, clearToken, checkAuth, auth, progress, quiz, user };
+  return { getToken, setToken, clearToken, checkAuth, request, auth, progress, quiz, user };
 })();
 
 window.API = API;

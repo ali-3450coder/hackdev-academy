@@ -95,6 +95,10 @@
     const roleEl = $('userRole');
     if (roleEl) roleEl.textContent = user.role === 'admin' ? 'Yönetici' : 'Öğrenci';
 
+    // Admin ise panele link göster
+    const adminLinkEl = $('adminPanelLink');
+    if (adminLinkEl) adminLinkEl.style.display = user.role === 'admin' ? 'flex' : 'none';
+
     // Profil formu
     const profileInput = $('profileFullName');
     if (profileInput) profileInput.value = user.full_name || '';
