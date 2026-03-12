@@ -18,6 +18,9 @@ const adminRoutes = require('./routes/admin');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Reverse proxy desteği (Railway, Render, Heroku)
+app.set('trust proxy', 1);
+
 // Güvenlik middleware
 app.use(helmet({
   contentSecurityPolicy: {
