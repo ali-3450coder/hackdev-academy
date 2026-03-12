@@ -97,18 +97,49 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Sunucu hatası' });
 });
 
-async function startServer() {
-  // Production'da migration'ları otomatik uygula
-  if (process.env.NODE_ENV === 'production') {
-    try {
-      const knex = require('../knexfile');
-      const db = require('knex')(knex.production);
-      await db.migrate.latest();
-      console.log('✅ Migration tamamlandı');
-      await db.destroy();
-    } catch (err) {
-      console.error('❌ Migration hatası:', err.message);
+async function setupDatabase() {
+  const knexConfig = require('../knexfile');
+  const env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+  const db = require('knex')(knexConfig[env]);
+
+  // Migration'ları uygula
+  await db.migrate.latest();
+  console.log('✅ Migration tamamlandı');
+
+  // İlk kurulum: hiç kullanıcı yoksa admin oluştur
+  const userCount = await db('users').count('id as cnt').first();
+  if (parseInt(userCount.cnt) === 0) {
+    const bcrypt = require('bcryptjs');
+    const adminEmail    = process.env.SEED_ADMIN_EMAIL    || 'admin@hackdev.academy';
+    const adminUsername = process.env.SEED_ADMIN_USERNAME || 'admin';
+    const adminName     = process.env.SEED_ADMIN_FULLNAME || 'HackDev Admin';
+    const adminPassword = process.env.SEED_ADMIN_PASSWORD;
+
+    if (!adminPassword) {
+      console.warn('⚠️  SEED_ADMIN_PASSWORD tanımlı değil — admin hesabı oluşturulamadı!');
+    } else {
+      await db('users').insert({
+        username:      adminUsername,
+        email:         adminEmail,
+        password_hash: await bcrypt.hash(adminPassword, 12),
+        full_name:     adminName,
+        role:          'admin',
+        is_active:     1,
+        avatar_seed:   adminUsername
+      });
+      console.log(`✅ Admin hesabı oluşturuldu → ${adminEmail}`);
     }
+  }
+
+  await db.destroy();
+}
+
+async function startServer() {
+  try {
+    await setupDatabase();
+  } catch (err) {
+    console.error('❌ Veritabanı kurulum hatası:', err.message);
+    // Hata olsa bile sunucuyu başlat
   }
 
   app.listen(PORT, () => {
