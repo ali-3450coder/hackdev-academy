@@ -75,10 +75,24 @@ async function submitAll(req, res) {
     if (existingResult) {
       await db('bolum_quiz_results')
         .where({ user_id: userId, bolum_id })
-        .update({ score, total, passed, attempt_at: now });
+        .update({ 
+          score, 
+          total, 
+          passed, 
+          last_attempt_at: now,
+          best_score: db.raw('CASE WHEN ? > best_score THEN ? ELSE best_score END', [score, score]),
+          attempt_count: db.raw('attempt_count + 1')
+        });
     } else {
       await db('bolum_quiz_results').insert({
-        user_id: userId, bolum_id, score, total, passed, attempt_at: now
+        user_id: userId, 
+        bolum_id, 
+        score, 
+        total, 
+        passed, 
+        best_score: score,
+        attempt_count: 1,
+        last_attempt_at: now
       });
     }
 
