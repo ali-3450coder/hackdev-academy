@@ -1,281 +1,387 @@
-# HackDev Academy
+# 🎓 HackDev Academy
 
-> Güvenlik perspektifli, profesyonel Full Stack Developer eğitim platformu.
+<div align="center">
 
-![Node.js](https://img.shields.io/badge/Node.js-18%2B-green?logo=node.js)
-![Express](https://img.shields.io/badge/Express-4.x-lightgrey?logo=express)
-![SQLite](https://img.shields.io/badge/SQLite-3-blue?logo=sqlite)
-![License](https://img.shields.io/badge/Lisans-Kapalı%20Kaynak-red)
+**Güvenlik perspektifli, profesyonel Full Stack Developer eğitim platformu.**
 
----
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org)
+[![Express](https://img.shields.io/badge/Express-4.x-000000?logo=express&logoColor=white)](https://expressjs.com)
+[![SQLite](https://img.shields.io/badge/SQLite-3-003b57?logo=sqlite&logoColor=white)](https://www.sqlite.org)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-f7df1e?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![License](https://img.shields.io/badge/License-Open%20Source-blue)](./LICENSE)
 
-## Proje Hakkında
+[🌐 Canlı Demo](#) • [📚 Dokümantasyon](#api-dokümantasyonu) • [🚀 Hızlı Başla](#-hızlı-başlangıç) • [🔐 Güvenlik](#-güvenlik-özellikleri)
 
-HackDev Academy, HTML, CSS ve JavaScript'i güvenlik perspektifiyle öğreten web tabanlı bir eğitim platformudur. Kullanıcı kayıt/giriş sistemi, bölüm bazlı ilerleme takibi, interaktif quizler, sertifika sistemi ve yönetici paneli ile eksiksiz bir öğrenme deneyimi sunar.
-
-## Özellikler
-
-- **3 Kapsamlı Bölüm** — Web Temelleri, HTML Etiketleri, Profesyonel HTML (66+ konu)
-- **Güvenlik Perspektifi** — Her konuda XSS, CSRF, injection gibi güvenlik açıkları ele alınır
-- **JWT Auth Sistemi** — Access token (15dk) + Refresh token rotation (7gün / 30gün)
-- **İlerleme Takibi** — Konu, quiz ve görev bazlı detaylı takip
-- **Sertifika Sistemi** — Kurs bitiminde kişiselleştirilmiş sertifika
-- **Admin Paneli** — Kullanıcı yönetimi, profil düzenleme, ilerleme/quiz sıfırlama, sertifika yönetimi, sistem logları, veritabanı istatistikleri, CSV dışa aktarma
-- **Dark / Light Tema** — CSS custom properties ile tam tema desteği
-- **Responsive Tasarım** — Mobil öncelikli, tüm cihazlarda çalışır
+</div>
 
 ---
 
-## Kurulum (Sıfırdan Başlangıç)
+## 📖 Proje Hakkında
+
+**HackDev Academy**, modern web geliştirme becerilerini **güvenlik perspektifiyle** öğreten kapsamlı bir eğitim platformudur. Platform, başlangıç seviyesinden ileri seviyeye kadar HTML, CSS ve JavaScript'i öğreten 66+ konuyu içerir.
+
+Her konu, gerçek dünyada karşılaşılan **XSS, CSRF, injection** gibi güvenlik açıklarını ele alarak, güvenli kod yazma alışkanlıklarını yerleştirir.
+
+---
+
+## ✨ Temel Özellikler
+
+<table>
+<tr>
+<td width="50%">
+
+### 📚 Eğitim Sistemi
+- **3 Kapsamlı Bölüm**: Web Temelleri, HTML Etiketleri, Profesyonel HTML
+- **66+ İnteraktif Konu** ile ilerleme takibi
+- **Quiz Sistemi**: Her bölüm sonunda değerlendirme
+- **Pratik Görevler**: Gerçek projelere dayalı ödevler
+- **Güvenlik Perspektifi**: Her konuda güvenlik açıkları
+
+</td>
+<td width="50%">
+
+### 🔐 Güvenlik & Yönetim
+- **JWT Auth Sistemi** (Access + Refresh token)
+- **Admin Paneli**: Kullanıcı ve sertifika yönetimi
+- **Sertifika Sistemi**: Kurs bitiminde otomatik
+- **Aktivite Logları**: Tüm işlemlerin kaydı
+- **Rol Bazlı Erişim**: Admin ve Kullanıcı rolleri
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🎨 Tasarım & UX
+- **Dark/Light Tema**: CSS custom properties ile
+- **Responsive Tasarım**: Mobil-first yaklaşım
+- **Modern UI**: Clean ve intuitif arayüz
+- **Sade Navigasyon**: Kolay kullanıcı deneyimi
+
+</td>
+<td width="50%">
+
+### 📊 İlerleme Takibi
+- **Detaylı Dashboard**: Genel ilerleme özeti
+- **Konu Bazlı Takip**: Her konunun durumu
+- **İstatistikler**: Zaman ve başarı oranları
+- **CSV Export**: Verilerinizi indirebilirsiniz
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🚀 Hızlı Başlangıç
 
 ### Gereksinimler
-- Node.js 18+
-- npm 9+
+```
+✓ Node.js 18+ 
+✓ npm 9+
+```
 
-### Adımlar
-
+### 1️⃣ Depoyu Klonla
 ```bash
-# 1. Repoyu klonla
-git clone https://github.com/KULLANICI_ADIN/hackdev-academy.git
+git clone https://github.com/ali-3450coder/hackdev-academy.git
 cd hackdev-academy
+```
 
-# 2. Bağımlılıkları kur
+### 2️⃣ Bağımlılıkları Yükle
+```bash
 npm install
+```
 
-# 3. Ortam değişkenlerini oluştur
+### 3️⃣ Ortam Değişkenlerini Kur
+```bash
 cp .env.example .env
 ```
 
-### .env Dosyasını Düzenle
-
-`.env` dosyasını aç ve şu alanları doldur:
-
+### 4️⃣ `.env` Dosyasını Düzenle
 ```env
-JWT_SECRET=      # En az 64 karakterlik rastgele string (aşağıdaki komutla üret)
-COOKIE_SECRET=   # En az 32 karakterlik rastgele string
-SEED_ADMIN_PASSWORD=   # Admin hesabı için seçeceğin şifre
-SEED_TEST_PASSWORD=    # Test kullanıcısı için şifre (isteğe bağlı)
+JWT_SECRET=<64-karakter-hex>           # Aşağıdaki komutla üret
+COOKIE_SECRET=<32-karakter-hex>        # Aşağıdaki komutla üret
+SEED_ADMIN_PASSWORD=SeninkiForteSifre  # Güçlü bir şifre
+SEED_TEST_PASSWORD=TestSifre
 ```
 
-**Güçlü secret üretmek için:**
+**Güçlü Secret Üret:**
 ```bash
 node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 ```
 
-### Veritabanı ve İlk Kullanıcılar
-
+### 5️⃣ Veritabanını Oluştur
 ```bash
-# Veritabanı tablolarını oluştur ve admin hesabını ekle
 npm run db:reset
 ```
 
-Bu komut:
-1. Tüm tabloları oluşturur
-2. `.env` dosyasındaki `SEED_ADMIN_PASSWORD` ile admin hesabı oluşturur
-3. Test kullanıcısı ekler (isteğe bağlı geliştirme için)
+**Oluşturulan Hesaplar:**
+| Rol | E-posta | Şifre |
+|-----|---------|-------|
+| **Admin** | `admin@hackdev.academy` | `.env` → `SEED_ADMIN_PASSWORD` |
+| **Test User** | `test@hackdev.academy` | `.env` → `SEED_TEST_PASSWORD` |
 
-**Oluşturulan hesaplar:**
-| Hesap | E-posta | Şifre |
-|-------|---------|-------|
-| Admin | `admin@hackdev.academy` | `.env` → `SEED_ADMIN_PASSWORD` |
-| Test  | `test@hackdev.academy`  | `.env` → `SEED_TEST_PASSWORD` |
-
-> ⚠️ `npm run db:seed` production ortamında **kesinlikle çalıştırılmamalıdır**.
-
-### Sunucuyu Başlat
-
+### 6️⃣ Sunucuyu Başlat
 ```bash
-npm run dev    # Geliştirme (hot reload)
-npm start      # Production
+# 📝 Geliştirme (hot reload)
+npm run dev
+
+# 🚀 Production
+npm start
 ```
 
-Tarayıcıda: `http://localhost:3000`
+**Tarayıcıyı Aç:** `http://localhost:3000`
 
 ---
 
-## Proje Yapısı
+## 📁 Proje Yapısı
 
 ```
 hackdev-academy/
 ├── server/
-│   ├── index.js              ← Express uygulama giriş noktası
-│   ├── config/               ← Veritabanı ve JWT konfigürasyonu
-│   ├── middleware/           ← Auth, rate limit, logger, validation
-│   ├── routes/               ← API route tanımları
-│   ├── controllers/          ← İş mantığı ve DB işlemleri
+│   ├── index.js                    # Express uygulaması giriş noktası
+│   ├── config/
+│   │   ├── database.js             # Veritabanı konfigürasyonu (Knex)
+│   │   └── jwt.js                  # JWT ayarları
+│   ├── middleware/
+│   │   ├── auth.js                 # Token doğrulama
+│   │   ├── rateLimit.js            # Rate limiting (DDoS koruması)
+│   │   └── validation.js           # Input validation
+│   ├── routes/                     # API endpoint tanımları
+│   ├── controllers/                # İş mantığı ve DB işlemleri
 │   └── db/
-│       ├── migrations/       ← Knex migration dosyaları (7 tablo)
-│       └── seeds/            ← Geliştirme test verileri
+│       ├── migrations/             # Tablo yapısı tanımlamaları
+│       └── seeds/                  # Test verisi (geliştirme)
+│
 ├── public/
-│   ├── index.html            ← Landing sayfası
-│   ├── auth/                 ← Login / Register sayfaları
-│   ├── dashboard/            ← Kullanıcı paneli
-│   ├── admin/                ← Yönetici paneli
-│   ├── bolum/                ← Eğitim sayfaları (3 bölüm)
-│   ├── css/                  ← Stil dosyaları
-│   └── js/                   ← İstemci JavaScript
-├── .env.example              ← Ortam değişkeni şablonu
-├── knexfile.js               ← Veritabanı konfigürasyonu
-├── package.json
-└── README.md
+│   ├── index.html                  # Landing sayfası
+│   ├── auth/
+│   │   ├── login.html              # Giriş sayfası
+│   │   └── register.html           # Kayıt sayfası
+│   ├── dashboard/
+│   │   ├── dashboard.html          # Kullanıcı paneli
+│   │   └── profile.html            # Profil yönetimi
+│   ├── admin/
+│   │   ├── admin.html              # Admin paneli
+│   │   ├── users.html              # Kullanıcı yönetimi
+│   │   ├── certificates.html       # Sertifika yönetimi
+│   │   └── analytics.html          # İstatistikler
+│   ├── bolum/                      # Eğitim sayfaları
+│   │   ├── bolum1.html             # Bölüm 1: Web Temelleri
+│   │   ├── bolum2.html             # Bölüm 2: HTML Etiketleri
+│   │   └── bolum3.html             # Bölüm 3: Profesyonel HTML
+│   ├── css/                        # Stil dosyaları
+│   │   ├── style.css               # Ana stil
+│   │   ├── theme.css               # Dark/Light tema
+│   │   └── responsive.css          # Responsive tasarım
+│   └── js/                         # İstemci tarafı JavaScript
+│       ├── auth.js                 # Kimlik doğrulama
+│       ├── api.js                  # API çağrıları
+│       └── utils.js                # Yardımcı fonksiyonlar
+│
+├── .env.example                    # Ortam değişkeni şablonu
+├── .gitignore                      # Git'ten dışlanacak dosyalar
+├── knexfile.js                     # Knex veritabanı konfigürasyonu
+├── package.json                    # Proje bağımlılıkları
+├── Procfile                        # Railway deployment tanımı
+├── LICENSE                         # Lisans dosyası
+└── README.md                       # Bu dosya
 ```
 
 ---
 
-## Veritabanı Şeması
+## 🗄️ Veritabanı Şeması
 
-| Tablo | Açıklama |
-|-------|----------|
-| `users` | Kullanıcı hesapları (username, email, role, login_count…) |
-| `refresh_tokens` | JWT refresh token'ları ve revokasyon kaydı |
-| `user_progress` | Konu bazlı ilerleme (status, time_spent_sec…) |
-| `task_completions` | Pratik görev tamamlama kayıtları |
-| `quiz_answers` | Bireysel quiz cevapları |
-| `bolum_quiz_results` | Quiz genel sonuçları (score, passed, attempt_count…) |
-| `certificates` | Verilen sertifikalar (certificate_no, issued_at) |
-| `password_reset_tokens` | Admin şifre sıfırlama kayıtları |
-| `activity_logs` | Sistem geneli aktivite logları |
-
----
-
-## API Dokümantasyonu
-
-### Auth (`/api/auth`)
-| Method | Endpoint | Açıklama |
-|--------|----------|----------|
-| POST | `/register` | Yeni kullanıcı kaydı |
-| POST | `/login` | Giriş yap |
-| POST | `/logout` | Çıkış yap |
-| POST | `/refresh` | Token yenile |
-| GET | `/me` | Mevcut kullanıcı bilgisi |
-| GET | `/check-username` | Kullanıcı adı uygunluk kontrolü |
-
-### İlerleme (`/api/progress`)
-| Method | Endpoint | Açıklama |
-|--------|----------|----------|
-| GET | `/dashboard` | Genel ilerleme özeti |
-| POST | `/konu` | Konu ilerlemesi güncelle |
-| GET | `/bolum/:id` | Bölüm detay ilerleme |
-| POST | `/task` | Görev tamamlama kaydı |
-
-### Quiz (`/api/quiz`)
-| Method | Endpoint | Açıklama |
-|--------|----------|----------|
-| POST | `/answer` | Tek cevap gönder |
-| POST | `/submit` | Quizi tamamla |
-| GET | `/results/:id` | Quiz sonuçları |
-
-### Kullanıcı (`/api/user`)
-| Method | Endpoint | Açıklama |
-|--------|----------|----------|
-| GET | `/profile` | Profil ve istatistikler |
-| PUT | `/profile` | Profil güncelle |
-| PUT | `/password` | Şifre değiştir |
-| GET | `/activity` | Aktivite logları |
-
-### Admin (`/api/admin`) — Admin yetkisi gerekli
-| Method | Endpoint | Açıklama |
-|--------|----------|----------|
-| GET | `/stats` | Genel sistem istatistikleri |
-| GET | `/db-stats` | Veritabanı tablo istatistikleri |
-| GET | `/users` | Tüm kullanıcılar (arama/filtre destekli) |
-| GET | `/users/:id` | Kullanıcı detayı ve aktivite geçmişi |
-| PUT | `/users/:id/status` | Kullanıcı aktif/pasif yap |
-| PUT | `/users/:id/role` | Kullanıcı rolü değiştir |
-| PUT | `/users/:id/profile` | Kullanıcı profilini düzenle |
-| POST | `/users/:id/reset-password` | Şifre sıfırla (geçici şifre üretir) |
-| DELETE | `/users/:id/progress` | İlerleme sıfırla (opsiyonel: ?bolum_id=) |
-| DELETE | `/users/:id/quiz` | Quiz sonuçlarını sıfırla (opsiyonel: ?bolum_id=) |
-| POST | `/users/:id/certificates` | Sertifika ver |
-| DELETE | `/users/:id` | Kullanıcıyı sil |
-| GET | `/certificates` | Tüm sertifikalar (filtre: user_id, bolum_id) |
-| DELETE | `/certificates/:id` | Sertifika iptal et |
-| GET | `/logs` | Sistem aktivite logları |
-| DELETE | `/logs` | Eski logları temizle (?days=30) |
-| GET | `/export/users.csv` | Kullanıcı listesini CSV olarak indir |
+| Tablo | Amaç |
+|-------|------|
+| **`users`** | Kullanıcı hesapları (username, email, role, login_count) |
+| **`refresh_tokens`** | JWT refresh token'ları ve revokasyon kaydı |
+| **`user_progress`** | Konu bazlı ilerleme (status, time_spent_sec) |
+| **`task_completions`** | Pratik görev tamamlama kayıtları |
+| **`quiz_answers`** | Bireysel quiz cevapları |
+| **`bolum_quiz_results`** | Quiz sonuçları (score, passed, attempt_count) |
+| **`certificates`** | Verilen sertifikalar (certificate_no, issued_at) |
+| **`password_reset_tokens`** | Admin şifre sıfırlama kayıtları |
+| **`activity_logs`** | Sistem geneli aktivite logları |
 
 ---
 
-## npm Scripts
+## 📡 API Dokümantasyonu
+
+### 🔐 Kimlik Doğrulama (`/api/auth`)
+| Method | Endpoint | Açıklama |
+|--------|----------|----------|
+| `POST` | `/register` | 🆕 Yeni kullanıcı kaydı |
+| `POST` | `/login` | 🔓 Giriş yap |
+| `POST` | `/logout` | 🚪 Çıkış yap |
+| `POST` | `/refresh` | 🔄 Token yenile |
+| `GET` | `/me` | 👤 Mevcut kullanıcı bilgisi |
+| `GET` | `/check-username` | ✓ Kullanıcı adı kontrol et |
+
+### 📊 İlerleme Takibi (`/api/progress`)
+| Method | Endpoint | Açıklama |
+|--------|----------|----------|
+| `GET` | `/dashboard` | 📈 Genel ilerleme özeti |
+| `POST` | `/konu` | ✅ Konu ilerlemesi güncelle |
+| `GET` | `/bolum/:id` | 📖 Bölüm detay ilerleme |
+| `POST` | `/task` | 🎯 Görev tamamlama kaydı |
+
+### ❓ Quiz Sistemi (`/api/quiz`)
+| Method | Endpoint | Açıklama |
+|--------|----------|----------|
+| `POST` | `/answer` | 💭 Tek cevap gönder |
+| `POST` | `/submit` | ✋ Quizi tamamla |
+| `GET` | `/results/:id` | 📊 Quiz sonuçları |
+
+### 👤 Kullanıcı (`/api/user`)
+| Method | Endpoint | Açıklama |
+|--------|----------|----------|
+| `GET` | `/profile` | 👁️ Profil ve istatistikler |
+| `PUT` | `/profile` | ✏️ Profil güncelle |
+| `PUT` | `/password` | 🔑 Şifre değiştir |
+| `GET` | `/activity` | 📋 Aktivite logları |
+
+### ⚙️ Admin (`/api/admin`) — *Admin yetkisi gerekli*
+| Method | Endpoint | Açıklama |
+|--------|----------|----------|
+| `GET` | `/stats` | 📊 Sistem istatistikleri |
+| `GET` | `/users` | 👥 Tüm kullanıcılar |
+| `GET` | `/users/:id` | 👤 Kullanıcı detayı |
+| `PUT` | `/users/:id/status` | 🔄 Kullanıcı aktif/pasif yap |
+| `PUT` | `/users/:id/role` | 🎖️ Rolü değiştir |
+| `POST` | `/users/:id/reset-password` | 🔑 Şifre sıfırla |
+| `DELETE` | `/users/:id/progress` | 🔄 İlerleme sıfırla |
+| `DELETE` | `/users/:id/quiz` | ❌ Quiz sonuçlarını sıfırla |
+| `POST` | `/users/:id/certificates` | 🏆 Sertifika ver |
+| `DELETE` | `/users/:id` | 🗑️ Kullanıcıyı sil |
+| `GET` | `/certificates` | 🏅 Tüm sertifikalar |
+| `GET` | `/logs` | 📝 Sistem logları |
+| `GET` | `/export/users.csv` | 📥 Kullanıcıları CSV'ye aktar |
+
+---
+
+## 📦 npm Komutları
 
 ```bash
-npm start              # Production sunucusu
-npm run dev            # Geliştirme sunucusu (nodemon ile hot reload)
-npm run db:migrate     # Migration'ları uygula (tabloları oluştur)
-npm run db:rollback    # Son migration'ı geri al
-npm run db:seed        # Test verilerini yükle (sadece geliştirme)
-npm run db:reset       # Tüm tabloları sıfırla, yeniden kur ve seed ekle
+npm start              # 🚀 Production sunucusu başlat
+npm run dev            # 📝 Geliştirme sunucusu (nodemon ile hot reload)
+npm run db:migrate     # 🗄️ Migration'ları uygula (tabloları oluştur)
+npm run db:rollback    # ↩️ Son migration'ı geri al
+npm run db:seed        # 🌱 Test verilerini yükle
+npm run db:reset       # 🔄 Veritabanını sıfırla ve yeniden kur
 ```
 
 ---
 
-## Deployment (Canlıya Alma)
+## 🚀 Deployment (Canlıya Alma)
 
-### Railway (Önerilen — Ücretsiz Başlangıç)
+### 🚂 Railway Deployment (Önerilen)
 
-1. [railway.app](https://railway.app) → **New Project → Deploy from GitHub Repo**
-2. Repoyu seç, Railway otomatik algılar (`Procfile` ile)
+1. [railway.app](https://railway.app) → `New Project → Deploy from GitHub Repo`
+2. Repoyu seç, Railway otomatik algılar
 3. **Variables** sekmesinden env değişkenlerini gir:
 
 ```env
 NODE_ENV=production
-JWT_SECRET=<64char-hex>
-COOKIE_SECRET=<32char-hex>
+JWT_SECRET=<64-karakter-hex>
+COOKIE_SECRET=<32-karakter-hex>
 COOKIE_SECURE=true
 DB_CLIENT=sqlite3
 DB_FILENAME=/data/prod.sqlite3
-ALLOWED_ORIGINS=https://your-project.up.railway.app
+ALLOWED_ORIGINS=https://your-domain.railway.app
 ```
 
-4. **Volumes** → Mount path `/data` ekle (SQLite kalıcı disk)
-5. Deploy → migration otomatik çalışır, site canlıya girer
+4. **Volumes** → `/data` mount noktası ekle
+5. Deploy → Otomatik migration ve canlıya çıkış
 
-### Render
+### 🎨 Render Deployment
 
-1. [render.com](https://render.com) → **New Web Service → GitHub Repo**
+1. [render.com](https://render.com) → `New Web Service`
 2. Start command: `node server/index.js`
-3. Disk ekle: Mount path `/data`, `DB_FILENAME=/data/prod.sqlite3`
-4. Environment variables'ları gir (Railway ile aynı)
+3. Kalıcı disk: `/data`
+4. Environment variables'ları gir
 
-### VPS (DigitalOcean / Hetzner)
+### 🖥️ VPS Deployment (DigitalOcean / Hetzner)
 
 ```bash
-git clone https://github.com/KULLANICI_ADIN/hackdev-academy.git
+git clone https://github.com/ali-3450coder/hackdev-academy.git
 cd hackdev-academy
 npm install --omit=dev
-cp .env.example .env   # Doldur
+cp .env.example .env    # Doldur
 NODE_ENV=production npm run db:migrate
 npm start
 ```
 
-> **Not:** Production'da `npm run db:seed` **çalıştırma** — admin hesabını admin panelinden veya DB üzerinden oluştur.
+> ⚠️ **Production'da `npm run db:seed` çalıştırma!**
 
 ---
 
-## Güvenlik
+## 🔐 Güvenlik Özellikleri
 
-- **Helmet.js** — CSP, HSTS, X-Frame-Options ve diğer güvenlik başlıkları
-- **bcrypt** — Şifre hash (12 round)
-- **JWT Rotation** — Her refresh'te yeni token üretilir, eski token revoke edilir
-- **Rate Limiting** — Genel (100/15dk), login (20/15dk), register (3/saat)
-- **httpOnly Cookie** — XSS'e karşı refresh token koruması
-- **Parameterized Queries** — Knex ile SQL injection koruması
-- **Input Validation** — express-validator ile tüm inputlar doğrulanır
-- **CORS** — İzin verilen originler env değişkeniyle kontrol edilir
-- **Admin Middleware** — Rol bazlı erişim kontrolü
-
----
-
-## Önemli Notlar
-
-- `.env` dosyası hiçbir zaman commit edilmez
-- Veritabanı (`*.sqlite3`) hiçbir zaman commit edilmez
-- Admin kimlik bilgileri yalnızca `.env` dosyasında tutulur
-- `npm run db:seed` yalnızca geliştirme ortamında kullanılır
+| Özellik | Teknoloji | Açıklama |
+|---------|-----------|----------|
+| 🛡️ **Headers** | Helmet.js | CSP, HSTS, X-Frame-Options koruması |
+| 🔐 **Şifre Hash** | bcryptjs | 12 round bcrypt hashing |
+| 🔄 **Token Rotation** | JWT | Her refresh'te yeni token, eski token revoke |
+| ⏱️ **Rate Limiting** | express-rate-limit | DDoS koruması (100/15dk genel, 20/15dk login) |
+| 🍪 **HttpOnly Cookie** | express | XSS'e karşı refresh token koruması |
+| 🛡️ **SQL İnjection** | Knex.js | Parameterized queries |
+| ✓ **Input Validation** | express-validator | Tüm input'lar doğrulanır |
+| 🌐 **CORS** | cors | İzin verilen origin'ler env ile kontrol |
+| 🎖️ **RBAC** | Custom Middleware | Rol bazlı erişim kontrolü |
 
 ---
 
-## Lisans
+## 📋 Önemli Notlar
+
+> ⚠️ **Güvenlik Uyarıları**
+
+- ✅ `.env` dosyası `.gitignore`'da — GİT'E ASLA EKLENMEYECEK
+- ✅ Veritabanı (`*.sqlite3`) GİT'E EKLENMEYECEK
+- ✅ Admin şifreleri yalnızca `.env` dosyasında tutulur
+- ✅ `npm run db:seed` **SADECE** geliştirme ortamında kullanılır
+- ✅ Production'da `COOKIE_SECURE=true` yapın
+
+> 💡 **Geliştirme İpuçları**
+
+- Hot reload: `npm run dev` ile çalışın
+- Veritabanı sıfırlama: `npm run db:reset`
+- Yeni migration: `npx knex migrate:make migration_name`
+
+---
+
+## 🤝 Katkıda Bulunma
+
+Bu proje eğitim amaçlıdır. İyileştirmeler için:
+
+1. Fork edin
+2. Feature branch oluşturun (`git checkout -b feature/AmazingFeature`)
+3. Değişiklikleri commit edin (`git commit -m 'Add some AmazingFeature'`)
+4. Push edin (`git push origin feature/AmazingFeature`)
+5. Pull Request açın
+
+---
+
+## 📄 Lisans
 
 Copyright © 2026 Muhammed Ali. Tüm hakları saklıdır.
+
 Detaylar için [LICENSE](./LICENSE) dosyasına bakın.
+
+---
+
+## 📞 İletişim & Destek
+
+- 🐛 **Bug Raporu**: [Issues](https://github.com/ali-3450coder/hackdev-academy/issues)
+- 💡 **Önerim**: [Discussions](https://github.com/ali-3450coder/hackdev-academy/discussions)
+- 📧 **E-posta**: [GitHub'da İletişim Kur](#)
+
+---
+
+<div align="center">
+
+**⭐ Projeden hoşlandınız mı? Yıldız vermeyi unutmayın!**
+
+Made with ❤️ by [Muhammed Ali](https://github.com/ali-3450coder)
+
+</div>
