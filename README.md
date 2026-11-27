@@ -16,91 +16,100 @@ npm --version
 git --version
 ```
 
-## Kurulum
+## Kurulum Adımları
 
-1. Projeyi klonlayın:
+1. Depoyu indirip proje klasörüne girin:
 
 ```bash
 git clone https://github.com/ali-3450coder/hackdev-academy.git
 cd hackdev-academy
 ```
 
-2. Bağımlılıkları yükleyin:
+2. Proje paketlerini yükleyin:
 
 ```bash
 npm install
 ```
 
-3. Örnek ortam dosyasını kopyalayın:
+3. `.env.example` dosyasını `.env` adıyla kopyalayın.
+
+Linux veya macOS:
 
 ```bash
 cp .env.example .env
 ```
 
-4. Güvenli anahtarları üretin:
+Windows Komut İstemi:
 
-```bash
-node -e "console.log('JWT_SECRET=' + require('crypto').randomBytes(64).toString('hex'))"
-node -e "console.log('COOKIE_SECRET=' + require('crypto').randomBytes(32).toString('hex'))"
+```bat
+copy .env.example .env
 ```
 
-Çıkan değerleri `.env` dosyasındaki `JWT_SECRET` ve `COOKIE_SECRET` satırlarına yapıştırın.
+4. Aşağıdaki komutları çalıştırarak iki güvenlik anahtarı oluşturun:
 
-`.env` dosyasına en az aşağıdaki değerleri ekleyin veya güncelleyin:
+```bash
+node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+5. `.env` dosyasını açın ve şu alanları kendi bilgilerinizle doldurun:
+
+```env
+JWT_SECRET=birinci-komuttan-alinan-128-karakterlik-deger
+COOKIE_SECRET=ikinci-komuttan-alinan-64-karakterlik-deger
+SEED_ADMIN_PASSWORD=admin-icin-guclu-sifre
+SEED_TEST_PASSWORD=test-kullanicisi-icin-sifre
+```
+
+Diğer varsayılan değerler proje tarafından kullanılabilir:
 
 ```env
 PORT=3000
 NODE_ENV=development
-JWT_SECRET=buraya-uretilen-anahtari-yapistirin
-COOKIE_SECRET=buraya-uretilen-anahtari-yapistirin
 DB_CLIENT=sqlite3
 DB_FILENAME=./dev.sqlite3
 ALLOWED_ORIGINS=http://localhost:3000
 COOKIE_SECURE=false
-SEED_ADMIN_PASSWORD=guclu-bir-yeni-sifre
-SEED_TEST_PASSWORD=guclu-bir-test-sifresi
 ```
 
-Üretimde `.env` dosyasını Git'e eklemeyin.
-
-5. Veritabanını oluşturun ve ilk verileri yükleyin:
+6. Veritabanını ve örnek hesapları oluşturun:
 
 ```bash
 npm run db:reset
 ```
 
-Bu komut tabloları oluşturur ve örnek kullanıcı verilerini ekler.
+Bu komut sadece yerel geliştirme veritabanını oluşturur veya sıfırlar.
 
-## Uygulamayı Çalıştırma
+## Kullanım Adımları
 
-Geliştirme için:
-
-```bash
-npm run dev
-```
-
-Normal başlatma için:
+1. Uygulamayı başlatın:
 
 ```bash
 npm start
 ```
 
-Tarayıcıda açın:
+Kod üzerinde çalışırken otomatik yeniden başlatma için:
+
+```bash
+npm run dev
+```
+
+2. Tarayıcıda aşağıdaki adresi açın:
 
 ```text
 http://localhost:3000
 ```
 
-## Hesaplara Giriş
-
-Seed işlemi sonrası varsayılan hesaplar:
+3. Giriş sayfasından hesap bilgilerini girin:
 
 | Rol | E-posta | Şifre |
 |---|---|---|
 | Yönetici | `admin@hackdev.academy` | `.env` dosyasındaki `SEED_ADMIN_PASSWORD` |
 | Test kullanıcı | `test@hackdev.academy` | `.env` dosyasındaki `SEED_TEST_PASSWORD` |
 
-`SEED_ADMIN_PASSWORD` ve `SEED_TEST_PASSWORD` değerlerini değiştirdiyseniz girişte yeni değerleri kullanın.
+4. Kullanıcı olarak konuları okuyabilir, ilerlemeyi takip edebilir ve quizleri tamamlayabilirsiniz.
+
+5. Yönetici olarak `http://localhost:3000/admin` adresinden kullanıcıları ve sertifikaları yönetebilirsiniz.
 
 ## Kullanılabilir Komutlar
 
